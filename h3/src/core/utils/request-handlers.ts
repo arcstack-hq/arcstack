@@ -6,7 +6,7 @@ import { Prisma } from "@prisma/client";
 import { env } from "./helpers";
 import path from "node:path";
 
-export const ErrorHandler = (err: HTTPError, _event: H3Event) => {
+export const ErrorHandler = (err: HTTPError, event: H3Event) => {
   const cause: Error | undefined = err.cause as Error;
   const logsDir = path.resolve(process.cwd(), "storage/logs");
   const message = "Something went wrong";
@@ -17,6 +17,9 @@ export const ErrorHandler = (err: HTTPError, _event: H3Event) => {
     code: typeof err === "string" || !err.status ? 500 : err.status,
     message: typeof err === "string" ? `${message}: ${err}` : err.message || message,
   };
+
+  event.res.status = error.code;
+  event.res.statusText = error.message;
 
   if (typeof err !== "string" && err.stack) {
     error.errors = err.stack;
