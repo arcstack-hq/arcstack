@@ -8,6 +8,7 @@
     "scripts": {
         "build": "tsdown",
         "test": "vitest",
+        "version:patch": "pnpm version patch --no-git-tag-version",
         "prepublishOnly": "pnpm build"
     },
     "publishConfig": {

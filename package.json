@@ -10,7 +10,7 @@
     "test:coverage": "vitest run --coverage",
     "test:integration": "vitest run tests/integration",
     "build:packages": "pnpm -r --filter \"@arcstack-hq/*\" build",
-    "version:packages": "pnpm -r --filter \"@arcstack-hq/*\" version patch --no-git-tag-version",
+    "version:packages": "pnpm -r --filter \"@arcstack-hq/*\" version:patch",
     "publish:packages": "pnpm version:packages && pnpm -r --filter \"@arcstack-hq/*\" publish --access public",
     "dev": "tsdown --silent",
     "build": "NODE_ENV=production tsdown",
