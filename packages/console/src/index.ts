@@ -2,24 +2,37 @@
 
 import { fileURLToPath, pathToFileURL } from "node:url";
 
-import logo from "./logo";
 import { ArcstackConsoleApp } from "./app";
 import { Kernel } from "@h3ravel/musket";
-import { join } from "node:path";
-import { realpathSync } from "node:fs";
-import { loadPrototypes } from "@arcstack/common";
+import { MakeController } from "./commands/MakeController";
+import { MakeFullResource } from "./commands/MakeFullResource";
+import { MakeResource } from "./commands/MakeResource";
 import { RouteList } from "./commands/RouteList";
+import { join } from "node:path";
+import { loadPrototypes } from "@arcstack/common";
+import logo from "./logo";
+import { realpathSync } from "node:fs";
 
+export interface RunConsoleOptions {
+    logo?: string;
+}
+
+/**
+ * Loads the core application instance by importing the bootstrap file.
+ * 
+ * @returns 
+ */
 const loadCoreApp = async () => {
     const bootstrapPath = pathToFileURL(join(process.cwd(), "src/core/bootstrap.ts")).href;
     const module = await import(bootstrapPath);
     return module.app;
 };
 
-export interface RunConsoleOptions {
-    logo?: string;
-}
-
+/**
+ * Runs the console kernel, initializing the application and registering commands.
+ * 
+ * @param options 
+ */
 export const runConsoleKernel = async (options: RunConsoleOptions = {}) => {
     loadPrototypes();
 
@@ -29,7 +42,7 @@ export const runConsoleKernel = async (options: RunConsoleOptions = {}) => {
     await Kernel.init(await new ArcstackConsoleApp(app, { stubsDir }).loadConfig(), {
         logo: options.logo ?? logo,
         name: "Cmd",
-        baseCommands: [RouteList],
+        baseCommands: [RouteList, MakeResource, MakeController, MakeFullResource],
         discoveryPaths: [join(process.cwd(), "src/core/console/commands/*.ts")],
         exceptionHandler (exception) {
             throw exception;
@@ -37,6 +50,12 @@ export const runConsoleKernel = async (options: RunConsoleOptions = {}) => {
     });
 };
 
+/**
+ * Determines if the current module is being executed as the entry 
+ * point of the application.
+ * 
+ * @returns 
+ */
 const isEntrypointExecution = () => {
     const argvEntry = process.argv[1];
 

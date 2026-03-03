@@ -23,7 +23,7 @@ export const ErrorHandler = (
   err: BaseError | string | ServerResponse,
   req: Request,
   res: Response,
-  _next: NextFunction,
+  _next?: NextFunction,
 ) => {
   const logsDir = path.resolve(process.cwd(), "storage/logs");
   const message = "Something went wrong";

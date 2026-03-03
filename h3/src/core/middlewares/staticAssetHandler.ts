@@ -26,10 +26,13 @@ export const staticAssetHandler = (publicPath: string = "public") => {
     return serveStatic(event, {
       indexNames: ["/index.html"],
       getContents: (id) => {
-        return <never>readFile(join(before(publicPath, id), id));
+        const file = join(process.cwd(), publicPath, before(publicPath, id));
+        return <never>readFile(file).catch(() => null);
       },
       getMeta: async (id) => {
-        const stats = await stat(join(before(publicPath, id), id)).catch(() => {});
+        const file = join(process.cwd(), publicPath, before(publicPath, id));
+        const stats = await stat(file).catch(() => { });
+
         if (stats?.isFile()) {
           return {
             size: stats.size,

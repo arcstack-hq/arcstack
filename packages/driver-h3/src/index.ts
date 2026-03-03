@@ -1,6 +1,6 @@
+import { ArcstackKitDriver, PromiseOrValue } from "@arcstack/contract";
 import { H3, serve } from "h3";
 
-import { ArcstackKitDriver, PromiseOrValue } from "@arcstack/contract";
 import { Middleware as H3BaseMiddleware } from "clear-router/types/h3";
 
 // oxlint-disable-next-line typescript/no-explicit-any
