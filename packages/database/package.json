@@ -7,7 +7,7 @@
     ],
     "scripts": {
         "build": "tsdown --config-loader unconfig",
-        "prepublishOnly": "pnpm build"
+        "prepublishOnly": "pnpm build && pnpm version patch --no-git-tag-version"
     },
     "publishConfig": {
         "access": "public"
