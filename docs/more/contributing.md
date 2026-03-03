@@ -1,6 +1,6 @@
 # Contributing
 
-Arcstack is built to be framework-flexible/switchable, type-safe, and production-ready. Contributions should preserve these core principles.
+Arkstack is built to be framework-flexible/switchable, type-safe, and production-ready. Contributions should preserve these core principles.
 
 ## Philosophy
 
@@ -49,7 +49,7 @@ Use clear, descriptive commit messages:
 
 When reporting bugs, include:
 
-- Arcstack version
+- Arkstack version
 - Framework used (Express, H3, etc.)
 - Minimal reproduction example
 - Expected vs actual behavior

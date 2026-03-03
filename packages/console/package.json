@@ -1,11 +1,11 @@
 {
-    "name": "@arcstack-hq/console",
+    "name": "@arkstack/console",
     "version": "0.1.4",
     "type": "module",
-    "description": "Console package for Arcstack providing console-specific implementations of core Arcstack features such as routing, middleware, and database integration.",
+    "description": "Console package for Arkstack providing console-specific implementations of core Arkstack features such as routing, middleware, and database integration.",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/arcstack-hq/arcstack.git",
+        "url": "git+https://github.com/arkstack/arkstack.git",
         "directory": "packages/console"
     },
     "keywords": [
@@ -49,8 +49,8 @@
         "clear-router": "^2.1.6"
     },
     "dependencies": {
-        "@arcstack-hq/common": "workspace:^",
-        "@arcstack-hq/contract": "workspace:^",
+        "@arkstack/common": "workspace:^",
+        "@arkstack/contract": "workspace:^",
         "@h3ravel/musket": "^0.10.1",
         "chalk": "^5.6.2",
         "resora": "^0.2.3"

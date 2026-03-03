@@ -1,30 +1,30 @@
 export type PromiseOrValue<T> = T | Promise<T>;
 
-export interface ArcstackMiddlewareConfig<TMiddleware> {
+export interface ArkstackMiddlewareConfig<TMiddleware> {
   global: TMiddleware[];
   before: TMiddleware[];
   after: TMiddleware[];
 }
 
-export interface ArcstackRouteListOptions {
+export interface ArkstackRouteListOptions {
   path?: string;
 }
 
-export interface ArcstackRouterContract<TApp, TRoutes = unknown> {
-  bind(app: TApp): PromiseOrValue<unknown>;
-  list(options?: ArcstackRouteListOptions, app?: TApp): PromiseOrValue<TRoutes>;
+export interface ArkstackRouterContract<TApp, TRoutes = unknown> {
+  bind (app: TApp): PromiseOrValue<unknown>;
+  list (options?: ArkstackRouteListOptions, app?: TApp): PromiseOrValue<TRoutes>;
 }
 
-export interface ArcstackRouterAwareCore<TApp, TRoutes = unknown> {
-  getAppInstance(): TApp;
-  getRouter(): ArcstackRouterContract<TApp, TRoutes>;
+export interface ArkstackRouterAwareCore<TApp, TRoutes = unknown> {
+  getAppInstance (): TApp;
+  getRouter (): ArkstackRouterContract<TApp, TRoutes>;
 }
 
 /**
- * The ArcstackKitDriver class defines the contract for a driver 
- * that can be used with the ArcstackKitContract. 
+ * The ArkstackKitDriver class defines the contract for a driver 
+ * that can be used with the ArkstackKitContract. 
  */
-export abstract class ArcstackKitDriver<TApp, TMiddleware> {
+export abstract class ArkstackKitDriver<TApp, TMiddleware> {
   abstract readonly name: string;
   abstract createApp (): TApp;
   abstract mountPublicAssets (app: TApp, publicPath: string): PromiseOrValue<void>;
@@ -37,13 +37,13 @@ export abstract class ArcstackKitDriver<TApp, TMiddleware> {
 }
 
 /**
- * The ArcstackKitContract class defines the contract for an 
- * application that uses the ArcstackKitDriver.
+ * The ArkstackKitContract class defines the contract for an 
+ * application that uses the ArkstackKitDriver.
  */
-export abstract class ArcstackKitContract<TApp, TMiddleware> {
+export abstract class ArkstackKitContract<TApp, TMiddleware> {
   abstract app: TApp;
-  abstract driver: ArcstackKitDriver<TApp, TMiddleware>;
-  abstract middleware: ArcstackMiddlewareConfig<TMiddleware>;
+  abstract driver: ArkstackKitDriver<TApp, TMiddleware>;
+  abstract middleware: ArkstackMiddlewareConfig<TMiddleware>;
   abstract boot (port: number): Promise<void>;
   abstract shutdown (): Promise<void>;
 }

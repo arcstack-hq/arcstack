@@ -1,8 +1,8 @@
-import { ArcstackConsoleApp } from "@arcstack-hq/console/app";
+import { ArkstackConsoleApp } from "@arkstack/console/app";
 import { Command } from "@h3ravel/musket";
 
 // oxlint-disable-next-line typescript/no-explicit-any
-export class MakeFullResource extends Command<ArcstackConsoleApp<any>> {
+export class MakeFullResource extends Command<ArkstackConsoleApp<any>> {
     protected signature = `make:full-resource
         {prefix : prefix of the resources to create, "Admin" will create AdminResource, AdminCollection and AdminController}
         {--m|model? : name of model to attach to the generated controller}

@@ -5,7 +5,7 @@ import { BaseError } from "./errors";
 import { Prisma } from "@prisma/client";
 import { ServerResponse } from "node:http";
 import { ValidationException } from "kanun";
-import { buildHtmlErrorResponse } from "@arcstack-hq/common";
+import { buildHtmlErrorResponse } from "@arkstack/common";
 import { env } from "./helpers";
 import path from "node:path";
 

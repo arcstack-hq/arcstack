@@ -3,8 +3,8 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   cleanUrls: true,
-  base: '/arcstack/',
-  title: "Arcstack",
+  base: '/arkstack/',
+  title: "Arkstack",
   description: "Simple, Starter Kit for Node.js applications built with TypeScript",
   head: [
     ['link', { rel: 'icon', href: '/banner.png' }],
@@ -12,12 +12,12 @@ export default defineConfig({
     ['meta', { name: 'description', content: 'Simple, Starter Kit for Node.js applications built with TypeScript' }],
     ['meta', { name: 'keywords', content: 'API, Web, Node.js, TypeScript, Starter Kit' }],
     ['meta', { name: 'author', content: 'Toneflix' }],
-    ['meta', { property: 'og:title', content: 'Arcstack' }],
+    ['meta', { property: 'og:title', content: 'Arkstack' }],
     ['meta', { property: 'og:description', content: 'Simple, Starter Kit for Node.js applications built with TypeScript' }],
     ['meta', { property: 'og:image', content: '/banner.png' }],
-    ['meta', { property: 'og:url', content: 'https://arcstack-hq.github.io/arcstack/' }],
+    ['meta', { property: 'og:url', content: 'https://arkstack.github.io/arkstack/' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-    ['meta', { name: 'twitter:title', content: 'Arcstack' }],
+    ['meta', { name: 'twitter:title', content: 'Arkstack' }],
     ['meta', { name: 'twitter:description', content: 'Simple, Starter Kit for Node.js applications built with TypeScript' }],
     ['meta', { name: 'twitter:image', content: '/banner.png' }]
   ],
@@ -56,7 +56,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/arcstack-hq/arcstack' }
+      { icon: 'github', link: 'https://github.com/arkstack/arkstack' }
     ]
   }
 })

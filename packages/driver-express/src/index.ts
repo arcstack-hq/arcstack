@@ -1,6 +1,6 @@
 import express, { type ErrorRequestHandler, type Express, type Handler } from "express";
 
-import { ArcstackKitDriver, PromiseOrValue } from "@arcstack-hq/contract";
+import { ArkstackKitDriver, PromiseOrValue } from "@arkstack/contract";
 
 export interface ExpressDriverOptions {
     bindRouter: (app: Express) => PromiseOrValue<void>;
@@ -8,10 +8,10 @@ export interface ExpressDriverOptions {
 }
 
 /**
- * The ExpressDriver class implements the ArcstackKitDriver 
+ * The ExpressDriver class implements the ArkstackKitDriver 
  * contract for the Express framework.
  */
-export class ExpressDriver extends ArcstackKitDriver<Express, Handler> {
+export class ExpressDriver extends ArkstackKitDriver<Express, Handler> {
     readonly name = "express";
     private readonly options: ExpressDriverOptions;
 

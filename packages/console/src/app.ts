@@ -23,7 +23,7 @@ export const resolveStubsDir = (
     return options?.stubsDir;
 };
 
-export class ArcstackConsoleApp<TCore> extends CliApp {
+export class ArkstackConsoleApp<TCore> extends CliApp {
     core: TCore;
     private readonly options: ConsoleAppOptions;
 

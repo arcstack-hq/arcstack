@@ -2,7 +2,7 @@ packages:
   - packages/*
   - h3
   - express
-  - create-arcstack
+  - create-arkstack
 
 onlyBuiltDependencies:
   - '@prisma/engines'

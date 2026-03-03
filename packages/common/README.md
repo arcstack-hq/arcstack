@@ -1,6 +1,6 @@
-# @arcstack-hq/common
+# @arkstack/common
 
-Common utilities and helpers shared across Arcstack kits, including:
+Common utilities and helpers shared across Arkstack kits, including:
 
 - Logging utilities
 - Configuration management

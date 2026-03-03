@@ -1,4 +1,4 @@
-import type { ArcstackMiddlewareConfig } from "@arcstack-hq/contract";
-import type { H3Middleware } from "@arcstack-hq/driver-h3";
+import type { ArkstackMiddlewareConfig } from "@arkstack/contract";
+import type { H3Middleware } from "@arkstack/driver-h3";
 
-export type MiddlewareConfig = ArcstackMiddlewareConfig<H3Middleware>;
+export type MiddlewareConfig = ArkstackMiddlewareConfig<H3Middleware>;

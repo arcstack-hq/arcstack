@@ -74,7 +74,7 @@ export const baseConfig: UserConfig = {
         'edge.js',
         'nodemailer',
         'typescript',
-        /^@arcstack\/.*/gi,
+        /^@arkstack\/.*/gi,
         /^node:.*/gi,
         /.*\/promises$/gi,
         'fs-readdir-recursive',

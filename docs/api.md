@@ -1,12 +1,12 @@
 # API Reference
 
-This page documents Arcstack’s stable public surface across starter kits.
+This page documents Arkstack’s stable public surface across starter kits.
 
 ## Runtime Contracts
 
-Arcstack defines framework-agnostic boundaries in `@arcstack-hq/contract`.
+Arkstack defines framework-agnostic boundaries in `@arkstack/contract`.
 
-### `ArcstackKitDriver<TApp, TMiddleware>`
+### `ArkstackKitDriver<TApp, TMiddleware>`
 
 Every driver package implements these required methods:
 
@@ -21,12 +21,12 @@ Optional method:
 
 - `registerErrorHandler(app)`
 
-### `ArcstackRouterContract<TApp, TRoutes>`
+### `ArkstackRouterContract<TApp, TRoutes>`
 
 - `bind(app)` — binds discovered routes into the runtime.
 - `list(options?, app?)` — returns route metadata used by `route:list`.
 
-### `ArcstackRouterAwareCore<TApp, TRoutes>`
+### `ArkstackRouterAwareCore<TApp, TRoutes>`
 
 Application core implementations expose:
 
@@ -35,7 +35,7 @@ Application core implementations expose:
 
 ## Shared Console Runtime
 
-Arcstack kits use `@arcstack-hq/console` to run common commands.
+Arkstack kits use `@arkstack/console` to run common commands.
 
 - Entry: `runConsoleKernel()`
 - Loads app core from `src/core/bootstrap.ts`
@@ -44,7 +44,7 @@ Arcstack kits use `@arcstack-hq/console` to run common commands.
 
 ## Built-in Commands
 
-Run commands through the Arcstack CLI entry (for example `npx arch`).
+Run commands through the Arkstack CLI entry (for example `npx arch`).
 
 ### `route:list`
 
@@ -115,7 +115,7 @@ NODE_ENV=production pnpm exec tsdown
 
 ## Template Profiles
 
-Arcstack currently provides four template aliases in `create-arcstack`:
+Arkstack currently provides four template aliases in `create-arkstack`:
 
 - `express`
 - `express-lean`
@@ -138,12 +138,12 @@ Remove:
 
 Core shared packages:
 
-- `@arcstack-hq/contract`
-- `@arcstack-hq/common`
-- `@arcstack-hq/console`
-- `@arcstack-hq/database` (full kits)
+- `@arkstack/contract`
+- `@arkstack/common`
+- `@arkstack/console`
+- `@arkstack/database` (full kits)
 
 Driver packages:
 
-- `@arcstack-hq/driver-express`
-- `@arcstack-hq/driver-h3`
+- `@arkstack/driver-express`
+- `@arkstack/driver-h3`

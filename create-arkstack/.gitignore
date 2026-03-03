@@ -7,5 +7,5 @@ bin/*
 !bin/logo.txt
 .DS_Store
 h3ravel
-arcstack
-arcstack-*
+arkstack
+arkstack-*

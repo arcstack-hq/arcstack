@@ -1,4 +1,4 @@
-import { ArcstackKitDriver, PromiseOrValue } from "@arcstack-hq/contract";
+import { ArkstackKitDriver, PromiseOrValue } from "@arkstack/contract";
 import { H3, serve } from "h3";
 
 import { Middleware as H3BaseMiddleware } from "clear-router/types/h3";
@@ -13,9 +13,9 @@ export interface H3DriverOptions {
 }
 
 /**
- * The H3Driver class implements the ArcstackKitDriver contract for the H3 framework.
+ * The H3Driver class implements the ArkstackKitDriver contract for the H3 framework.
  */
-export class H3Driver extends ArcstackKitDriver<H3, H3Middleware> {
+export class H3Driver extends ArkstackKitDriver<H3, H3Middleware> {
     readonly name = "h3";
     private readonly options: H3DriverOptions;
 

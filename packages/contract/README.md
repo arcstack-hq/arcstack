@@ -1,5 +1,5 @@
-# @arcstack-hq/contract
+# @arkstack/contract
 
-Framework-agnostic contracts used by Arcstack runtime kits.
+Framework-agnostic contracts used by Arkstack runtime kits.
 
 This package defines the shared shape each framework driver must implement.

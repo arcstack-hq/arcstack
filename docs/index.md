@@ -3,11 +3,11 @@
 layout: home
 
 hero:
-  name: "Arcstack"
+  name: "Arkstack"
   tagline: Framework-agnostic TypeScript backend starter kits.
   image:
     src: /banner.png
-    alt: Arcstack banner image
+    alt: Arkstack banner image
   actions:
     - theme: brand
       text: Get Started

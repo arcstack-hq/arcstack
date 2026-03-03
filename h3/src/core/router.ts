@@ -1,4 +1,4 @@
-import { ArcstackRouteListOptions } from "@arcstack-hq/contract";
+import { ArkstackRouteListOptions } from "@arkstack/contract";
 import { Router as ClearRouter } from "clear-router/h3";
 import { H3 } from "h3";
 import { join } from "node:path";
@@ -22,7 +22,7 @@ export class Router extends ClearRouter {
     return router;
   }
 
-  static async list (_options: ArcstackRouteListOptions = {}, app: H3) {
+  static async list (_options: ArkstackRouteListOptions = {}, app: H3) {
     await this.bind(app);
     return this.allRoutes();
   }

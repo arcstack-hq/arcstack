@@ -1,19 +1,19 @@
-# Arcstack
+# Arkstack
 
-[![Create Arcstack][i1]][l1]
+[![Create Arkstack][i1]][l1]
 [![Downloads][d1]][l1]
 
 A framework-agnostic backend starter kit for modern TypeScript servers.
 
-Arcstack provides a structured foundation for building APIs with Express, H3, and future runtimes — without locking your application to a single framework.
+Arkstack provides a structured foundation for building APIs with Express, H3, and future runtimes — without locking your application to a single framework.
 
 It prioritizes architecture first, framework second.
 
 ---
 
-## Why Arcstack?
+## Why Arkstack?
 
-Most starter kits are tightly coupled to one framework. Arcstack is designed around clean architecture and transport-layer abstraction.
+Most starter kits are tightly coupled to one framework. Arkstack is designed around clean architecture and transport-layer abstraction.
 
 - Multi-framework support (Express, H3 — more coming)
 - Opinionated but not restrictive
@@ -30,7 +30,7 @@ Your business logic remains independent of the HTTP runtime.
 ## Quick Start
 
 ```bash
-npm init arcstack my-project
+npm init arkstack my-project
 cd my-project
 npm install
 npm run dev
@@ -88,15 +88,15 @@ New adapters can be added without affecting the application layer.
 
 ## Monorepo Core Packages
 
-- `@arcstack-hq/contract`: framework-agnostic driver contracts used by all kits.
-- `@arcstack-hq/common`: shared lifecycle/network helpers reused by all kits.
-- `@arcstack-hq/console`: shared console runtime used by kits.
+- `@arkstack/contract`: framework-agnostic driver contracts used by all kits.
+- `@arkstack/common`: shared lifecycle/network helpers reused by all kits.
+- `@arkstack/console`: shared console runtime used by kits.
 
 Each runtime kit (Express, H3, future Fastify/Bun) implements a framework-specific driver that conforms to the same contract.
 
 ---
 
-Arcstack uses structured error classes and centralized error middleware.
+Arkstack uses structured error classes and centralized error middleware.
 
 Example:
 
@@ -193,6 +193,6 @@ When adding framework adapters:
 
 MIT
 
-[i1]: https://img.shields.io/npm/v/create-arcstack?style=flat-square&label=create-arcstack&color=%230970ce
-[l1]: https://www.npmjs.com/package/create-arcstack
-[d1]: https://img.shields.io/npm/dt/create-arcstack?style=flat-square&label=Downloads&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fcreate-arcstack
+[i1]: https://img.shields.io/npm/v/create-arkstack?style=flat-square&label=create-arkstack&color=%230970ce
+[l1]: https://www.npmjs.com/package/create-arkstack
+[d1]: https://img.shields.io/npm/dt/create-arkstack?style=flat-square&label=Downloads&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fcreate-arkstack

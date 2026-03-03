@@ -1,17 +1,17 @@
-import { bindGracefulShutdown } from "@arcstack-hq/common";
+import { bindGracefulShutdown } from "@arkstack/common";
 import { Router } from "src/core/router";
 import config from "src/config/middleware";
 import path from "path";
 import { prisma } from "src/core/database";
 import ErrorHandler from "./utils/request-handlers";
-import { ExpressDriver } from "@arcstack-hq/driver-express";
-import { ArcstackKitDriver, ArcstackRouterAwareCore, ArcstackRouterContract, ArcstackRouteListOptions } from "@arcstack-hq/contract";
+import { ExpressDriver } from "@arkstack/driver-express";
+import { ArkstackKitDriver, ArkstackRouterAwareCore, ArkstackRouterContract, ArkstackRouteListOptions } from "@arkstack/contract";
 import { type Express, type Handler } from "express";
 
-export default class Application implements ArcstackRouterAwareCore<Express, unknown> {
+export default class Application implements ArkstackRouterAwareCore<Express, unknown> {
   private app: Express;
   private static app: Express;
-  private driver: ArcstackKitDriver<Express, Handler>;
+  private driver: ArkstackKitDriver<Express, Handler>;
 
   /**
    * Creates an instance of the Application class, initializing 
@@ -50,7 +50,7 @@ export default class Application implements ArcstackRouterAwareCore<Express, unk
   }
 
   /**
-   * Gets the ArcstackKitDriver instance used by the application.
+   * Gets the ArkstackKitDriver instance used by the application.
    * 
    * @returns 
    */
@@ -59,14 +59,14 @@ export default class Application implements ArcstackRouterAwareCore<Express, unk
   }
 
   /**
-   * Gets the ArcstackRouterContract implementation for the Express framework.
+   * Gets the ArkstackRouterContract implementation for the Express framework.
    * 
    * @returns 
    */
-  getRouter (): ArcstackRouterContract<Express, unknown> {
+  getRouter (): ArkstackRouterContract<Express, unknown> {
     return {
       bind: (_app: Express) => Router.bind(),
-      list: (options: ArcstackRouteListOptions = {}) => Router.list(options),
+      list: (options: ArkstackRouteListOptions = {}) => Router.list(options),
     };
   }
 

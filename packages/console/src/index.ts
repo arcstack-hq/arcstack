@@ -2,7 +2,7 @@
 
 import { fileURLToPath, pathToFileURL } from "node:url";
 
-import { ArcstackConsoleApp } from "./app";
+import { ArkstackConsoleApp } from "./app";
 import { BuildCommand } from "./commands/BuildCommand";
 import { DevCommand } from "./commands/DevCommand";
 import { Kernel } from "@h3ravel/musket";
@@ -11,7 +11,7 @@ import { MakeFullResource } from "./commands/MakeFullResource";
 import { MakeResource } from "./commands/MakeResource";
 import { RouteList } from "./commands/RouteList";
 import { join } from "node:path";
-import { loadPrototypes } from "@arcstack-hq/common";
+import { loadPrototypes } from "@arkstack/common";
 import logo from "./logo";
 import { realpathSync } from "node:fs";
 
@@ -39,9 +39,9 @@ export const runConsoleKernel = async (options: RunConsoleOptions = {}) => {
     loadPrototypes();
 
     const app = await loadCoreApp();
-    const stubsDir = process.env.ARCSTACK_STUBS_DIR;
+    const stubsDir = process.env.ARKSTACK_STUBS_DIR;
 
-    await Kernel.init(await new ArcstackConsoleApp(app, { stubsDir }).loadConfig(), {
+    await Kernel.init(await new ArkstackConsoleApp(app, { stubsDir }).loadConfig(), {
         logo: options.logo ?? logo,
         name: "Cmd",
         baseCommands: [

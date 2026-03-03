@@ -1,10 +1,10 @@
-import { ArcstackConsoleApp } from "../app";
-import type { ArcstackRouterAwareCore } from "@arcstack-hq/contract";
+import { ArkstackConsoleApp } from "../app";
+import type { ArkstackRouterAwareCore } from "@arkstack/contract";
 import { Command } from "@h3ravel/musket";
 import type { Route } from "clear-router";
 import chalk from "chalk";
 
-type App = ArcstackConsoleApp<ArcstackRouterAwareCore<unknown, Route[]>>;
+type App = ArkstackConsoleApp<ArkstackRouterAwareCore<unknown, Route[]>>;
 
 export class RouteList extends Command<App> {
     protected signature = `route:list

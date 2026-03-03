@@ -4,7 +4,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 
 import { Prisma } from "@prisma/client";
 import { ValidationException } from "kanun";
-import { buildHtmlErrorResponse } from "@arcstack-hq/common";
+import { buildHtmlErrorResponse } from "@arkstack/common";
 import { env } from "./helpers";
 import path from "node:path";
 

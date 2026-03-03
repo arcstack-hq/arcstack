@@ -10,8 +10,8 @@ import ora from "ora";
 import { Logger } from "@h3ravel/shared";
 import { cleanDirectoryExcept, hoistDirectoryContents } from "src/utils";
 
-export class CreateArcstackCommand extends Command {
-  protected signature = `create-arcstack
+export class CreateArkstackCommand extends Command {
+  protected signature = `create-arkstack
         {location?: The location where this project should be created relative to the current dir.}
         {--n|name?: The name of your project.}
         {--i|install: Install node_modules right away}
@@ -23,7 +23,7 @@ export class CreateArcstackCommand extends Command {
     `;
   protected description = "Display a personalized greeting.";
 
-  async handle() {
+  async handle () {
     const options = this.options();
     const pathName = this.argument("location");
     // const defaultName = pathName ? Str.of(pathName).afterLast("/") : undefined;
@@ -59,15 +59,15 @@ export class CreateArcstackCommand extends Command {
           type: "input",
           name: "appName",
           message: "What is the name of your project:",
-          default: `arcstack-${template}`,
-          // default: defaultName ?? `arcstack-${template}`,
+          default: `arkstack-${template}`,
+          // default: defaultName ?? `arkstack-${template}`,
           when: () => !options.name,
         },
         {
           type: "input",
           name: "description",
           message: "Project Description:",
-          default: `Simple ${Str.of(template).ucfirst()}.js project created with Arcstack.`,
+          default: `Simple ${Str.of(template).ucfirst()}.js project created with Arkstack.`,
           when: () => !options.desc,
         },
       ])

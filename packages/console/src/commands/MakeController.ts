@@ -1,8 +1,8 @@
-import { ArcstackConsoleApp } from "@arcstack-hq/console/app";
+import { ArkstackConsoleApp } from "@arkstack/console/app";
 import { Command } from "@h3ravel/musket";
 
 // oxlint-disable-next-line typescript/no-explicit-any
-export class MakeController extends Command<ArcstackConsoleApp<any>> {
+export class MakeController extends Command<ArkstackConsoleApp<any>> {
     protected signature = `make:controller
         {name : name of the controller to create}
         {--api : make an API controller}

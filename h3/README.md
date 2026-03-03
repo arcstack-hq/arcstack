@@ -1,6 +1,6 @@
-# Arcstack H3.js
+# Arkstack H3.js
 
-H3.js app scaffolded with Tonelix's Arcstack
+H3.js app scaffolded with Tonelix's Arkstack
 
 ## Developing
 

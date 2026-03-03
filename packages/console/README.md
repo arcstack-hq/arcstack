@@ -1,3 +1,3 @@
-# @arcstack-hq/console
+# @arkstack/console
 
-Shared Arcstack console runtime package containing console app, kernel bootstrap, and framework stubs.
+Shared Arkstack console runtime package containing console app, kernel bootstrap, and framework stubs.

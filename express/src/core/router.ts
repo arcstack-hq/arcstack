@@ -1,4 +1,4 @@
-import { ArcstackRouteListOptions } from "@arcstack-hq/contract";
+import { ArkstackRouteListOptions } from "@arkstack/contract";
 import { Router as ClearRouter } from "clear-router/express";
 import { RequestError } from "./utils/errors";
 import express from "express";
@@ -31,7 +31,7 @@ export class Router extends ClearRouter {
     return router;
   }
 
-  static async list (_options: ArcstackRouteListOptions = {}) {
+  static async list (_options: ArkstackRouteListOptions = {}) {
     await this.bind();
     return this.allRoutes();
   }

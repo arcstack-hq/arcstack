@@ -1,6 +1,6 @@
 # Architecture Overview
 
-Arcstack separates framework specifics from application structure by using shared contracts and runtime drivers.
+Arkstack separates framework specifics from application structure by using shared contracts and runtime drivers.
 
 ## Core Idea
 
@@ -10,7 +10,7 @@ Arcstack separates framework specifics from application structure by using share
 
 ## Shared Packages
 
-### `@arcstack-hq/contract`
+### `@arkstack/contract`
 
 Defines framework-agnostic contracts for:
 
@@ -18,15 +18,15 @@ Defines framework-agnostic contracts for:
 - router capabilities
 - app + runtime integration boundaries
 
-### `@arcstack-hq/common`
+### `@arkstack/common`
 
 Provides reusable runtime helpers, including lifecycle and error response utilities.
 
-### `@arcstack-hq/console`
+### `@arkstack/console`
 
 Provides a shared console kernel and base commands used by all kits.
 
-### `@arcstack-hq/database`
+### `@arkstack/database`
 
 Provides shared database bootstrap helpers for full templates.
 
@@ -34,14 +34,14 @@ Provides shared database bootstrap helpers for full templates.
 
 Each runtime implements the contract through a dedicated driver package:
 
-- `@arcstack-hq/driver-express`
-- `@arcstack-hq/driver-h3`
+- `@arkstack/driver-express`
+- `@arkstack/driver-h3`
 
 This keeps runtime-specific behavior in one place while preserving a uniform app structure.
 
 ## Console Command Model
 
-Arcstack centralizes common developer commands in `@arcstack-hq/console` and allows framework-specific extensions via driver stubs.
+Arkstack centralizes common developer commands in `@arkstack/console` and allows framework-specific extensions via driver stubs.
 
 ## Template Profiles
 

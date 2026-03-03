@@ -1,11 +1,11 @@
 {
-    "name": "@arcstack-hq/database",
+    "name": "@arkstack/database",
     "version": "0.1.4",
     "type": "module",
-    "description": "Database package for Arcstack providing database-specific implementations of core Arcstack features such as routing, middleware, and database integration.",
+    "description": "Database package for Arkstack providing database-specific implementations of core Arkstack features such as routing, middleware, and database integration.",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/arcstack-hq/arcstack.git",
+        "url": "git+https://github.com/arkstack/arkstack.git",
         "directory": "packages/database"
     },
     "keywords": [
@@ -15,7 +15,7 @@
         "connection",
         "query",
         "execution",
-        "arcstack",
+        "arkstack",
         "prisma",
         "typeorm",
         "mongoose",

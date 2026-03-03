@@ -1,19 +1,19 @@
 # Roadmap
 
-This roadmap tracks Arcstack progress and upcoming priorities.
+This roadmap tracks Arkstack progress and upcoming priorities.
 
 ## Current Status
 
 ### Completed
 
 - ✅ Framework-agnostic contracts and shared packages
-  - `@arcstack-hq/contract`
-  - `@arcstack-hq/common`
-  - `@arcstack-hq/console`
-  - `@arcstack-hq/database`
+  - `@arkstack/contract`
+  - `@arkstack/common`
+  - `@arkstack/console`
+  - `@arkstack/database`
 - ✅ Driver packages for current runtimes
-  - `@arcstack-hq/driver-express`
-  - `@arcstack-hq/driver-h3`
+  - `@arkstack/driver-express`
+  - `@arkstack/driver-h3`
 - ✅ Shared console command surface
   - `route:list`
   - `make:controller`
@@ -21,7 +21,7 @@ This roadmap tracks Arcstack progress and upcoming priorities.
   - `make:full-resource`
   - `dev`
   - `build`
-- ✅ Lean and full starter profiles in create-arcstack
+- ✅ Lean and full starter profiles in create-arkstack
   - `express`, `h3`
   - `express-lean`, `h3-lean`
 - ✅ Lean profile stripping of app/api/database scaffolding

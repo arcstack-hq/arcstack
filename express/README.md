@@ -1,6 +1,6 @@
-# Arcstack Express.js
+# Arkstack Express.js
 
-Express.js app scaffolded with Tonelix's Arcstack
+Express.js app scaffolded with Tonelix's Arkstack
 
 ## Developing
 

@@ -1,6 +1,6 @@
 # Getting Started
 
-Arcstack helps you scaffold TypeScript backend apps with a consistent architecture across frameworks.
+Arkstack helps you scaffold TypeScript backend apps with a consistent architecture across frameworks.
 
 ## Prerequisites
 
@@ -12,19 +12,19 @@ Arcstack helps you scaffold TypeScript backend apps with a consistent architectu
 ::: code-group
 
 ```sh [npx]
-$ npx create arcstack
+$ npx create arkstack
 ```
 
 ```sh [npm]
-$ npm init arcstack@latest
+$ npm init arkstack@latest
 ```
 
 ```sh [pnpm]
-$ pnpm create arcstack@latest
+$ pnpm create arkstack@latest
 ```
 
 ```sh [yarn]
-$ yarn create arcstack@latest
+$ yarn create arkstack@latest
 ```
 
 :::
@@ -34,19 +34,19 @@ You can also provide a target directory:
 ::: code-group
 
 ```sh [npx]
-$ npx create arcstack my-app
+$ npx create arkstack my-app
 ```
 
 ```sh [npm]
-$ npm init arcstack@latest my-app
+$ npm init arkstack@latest my-app
 ```
 
 ```sh [pnpm]
-$ pnpm create arcstack@latest my-app
+$ pnpm create arkstack@latest my-app
 ```
 
 ```sh [yarn]
-$ yarn create arcstack@latest my-app
+$ yarn create arkstack@latest my-app
 ```
 
 :::
@@ -86,18 +86,18 @@ $ yarn dev
 
 - `npx arch dev` - run in development mode
 - `npx arch build` - build for production
-- `npx arch` - run Arcstack console commands
+- `npx arch` - run Arkstack console commands
 - `pnpm lint` - run lint checks
 
 ## Full vs Lean
 
-Use **full** templates when you want the complete Arcstack experience with Prisma and database features included. Full kits come with:
+Use **full** templates when you want the complete Arkstack experience with Prisma and database features included. Full kits come with:
 
 - `src/app` with generated controllers, resources, and services
 - `src/routes/api.ts` with scaffolded API routes
 - Prisma and related runtime files and dependencies
 
-Use **lean** templates when you want a minimal HTTP starter without database dependencies. In lean kits, Arcstack removes:
+Use **lean** templates when you want a minimal HTTP starter without database dependencies. In lean kits, Arkstack removes:
 
 - `src/app`
 - `src/routes/api.ts`
@@ -105,11 +105,11 @@ Use **lean** templates when you want a minimal HTTP starter without database dep
 
 ## Monorepo Packages (Concept)
 
-Arcstack kits build on shared packages:
+Arkstack kits build on shared packages:
 
-- `@arcstack-hq/contract`
-- `@arcstack-hq/common`
-- `@arcstack-hq/console`
-- `@arcstack-hq/database` (full kits)
+- `@arkstack/contract`
+- `@arkstack/common`
+- `@arkstack/console`
+- `@arkstack/database` (full kits)
 
 For architecture details, see [Architecture Overview](/architecture/overview).

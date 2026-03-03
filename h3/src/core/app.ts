@@ -1,18 +1,18 @@
-import { bindGracefulShutdown } from "@arcstack-hq/common";
+import { bindGracefulShutdown } from "@arkstack/common";
 
 import config from "src/config/middleware";
 import { prisma } from "src/core/database";
-import { ArcstackKitDriver, ArcstackRouterAwareCore, ArcstackRouterContract, ArcstackRouteListOptions } from "@arcstack-hq/contract";
-import { H3Driver, type H3Middleware } from "@arcstack-hq/driver-h3";
+import { ArkstackKitDriver, ArkstackRouterAwareCore, ArkstackRouterContract, ArkstackRouteListOptions } from "@arkstack/contract";
+import { H3Driver, type H3Middleware } from "@arkstack/driver-h3";
 import { H3 } from "h3";
 import { Router } from "src/core/router";
 import ErrorHandler from "./utils/request-handlers";
 import { staticAssetHandler } from "./middlewares/staticAssetHandler";
 
-export default class Application implements ArcstackRouterAwareCore<H3, unknown> {
+export default class Application implements ArkstackRouterAwareCore<H3, unknown> {
   private app: H3;
   private static app: H3;
-  private driver: ArcstackKitDriver<H3, H3Middleware>;
+  private driver: ArkstackKitDriver<H3, H3Middleware>;
 
   /**
    * Creates an instance of the Application class, initializing 
@@ -58,7 +58,7 @@ export default class Application implements ArcstackRouterAwareCore<H3, unknown>
   }
 
   /**
-   * Gets the ArcstackKitDriver instance used by the application.
+   * Gets the ArkstackKitDriver instance used by the application.
    * 
    * @returns 
    */
@@ -67,14 +67,14 @@ export default class Application implements ArcstackRouterAwareCore<H3, unknown>
   }
 
   /**
-   * Gets the ArcstackRouterContract implementation for the H3 framework.
+   * Gets the ArkstackRouterContract implementation for the H3 framework.
    * 
    * @returns 
    */
-  getRouter (): ArcstackRouterContract<H3, unknown> {
+  getRouter (): ArkstackRouterContract<H3, unknown> {
     return {
       bind: (app: H3) => Router.bind(app),
-      list: (options: ArcstackRouteListOptions = {}, app?: H3) => Router.list(options, app ?? this.app),
+      list: (options: ArkstackRouteListOptions = {}, app?: H3) => Router.list(options, app ?? this.app),
     };
   }
 

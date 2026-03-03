@@ -1,11 +1,11 @@
 {
-    "name": "@arcstack-hq/driver-express",
+    "name": "@arkstack/driver-express",
     "version": "0.1.4",
     "type": "module",
-    "description": "Express driver package for Arcstack providing Express-specific implementations of core Arcstack features such as routing, middleware, and database integration.",
+    "description": "Express driver package for Arkstack providing Express-specific implementations of core Arkstack features such as routing, middleware, and database integration.",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/arcstack-hq/arcstack.git",
+        "url": "git+https://github.com/arkstack/arkstack.git",
         "directory": "packages/driver-express"
     },
     "keywords": [
@@ -15,7 +15,7 @@
         "routing",
         "middleware",
         "database",
-        "arcstack",
+        "arkstack",
         "http",
         "server",
         "rest",
@@ -39,7 +39,7 @@
         "./package.json": "./package.json"
     },
     "dependencies": {
-        "@arcstack-hq/contract": "workspace:^"
+        "@arkstack/contract": "workspace:^"
     },
     "peerDependencies": {
         "express": "^5.2.1"

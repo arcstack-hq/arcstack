@@ -15,7 +15,7 @@ afterEach(async () => {
 
 describe("makeLeanProfile", () => {
     test("removes app dir, api route, and prisma/database artifacts from lean kits", async () => {
-        const location = await mkdtemp(join(tmpdir(), "create-arcstack-lean-"));
+        const location = await mkdtemp(join(tmpdir(), "create-arkstack-lean-"));
         tempDirs.push(location);
 
         await mkdir(join(location, "src/app/http/controllers"), { recursive: true });
@@ -78,7 +78,7 @@ describe("makeLeanProfile", () => {
             JSON.stringify(
                 {
                     dependencies: {
-                        "@arcstack-hq/database": "workspace:^",
+                        "@arkstack/database": "workspace:^",
                         "@prisma/adapter-pg": "^7.4.0",
                         "@prisma/client": "^7.4.0",
                         pg: "^8.18.0",
@@ -105,7 +105,7 @@ describe("makeLeanProfile", () => {
         expect(existsSync(join(location, "prisma"))).toBe(false);
 
         const pkg = JSON.parse(await readFile(join(location, "package.json"), "utf-8"));
-        expect(pkg.dependencies["@arcstack-hq/database"]).toBeUndefined();
+        expect(pkg.dependencies["@arkstack/database"]).toBeUndefined();
         expect(pkg.dependencies["@prisma/adapter-pg"]).toBeUndefined();
         expect(pkg.dependencies["@prisma/client"]).toBeUndefined();
         expect(pkg.dependencies.pg).toBeUndefined();

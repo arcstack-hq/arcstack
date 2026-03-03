@@ -1,11 +1,11 @@
 {
-    "name": "@arcstack-hq/common",
+    "name": "@arkstack/common",
     "version": "0.1.4",
     "type": "module",
-    "description": "Common package for Arcstack providing common implementations of core Arcstack features such as routing, middleware, and database integration.",
+    "description": "Common package for Arkstack providing common implementations of core Arkstack features such as routing, middleware, and database integration.",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/arcstack-hq/arcstack.git",
+        "url": "git+https://github.com/arkstack/arkstack.git",
         "directory": "packages/common"
     },
     "keywords": [
@@ -16,7 +16,7 @@
         "configuration",
         "error-handling",
         "validation",
-        "arcstack"
+        "arkstack"
     ],
     "files": [
         "dist"

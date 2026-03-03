@@ -1,4 +1,4 @@
-import type { ArcstackMiddlewareConfig } from "@arcstack-hq/contract";
+import type { ArkstackMiddlewareConfig } from "@arkstack/contract";
 import type { Handler } from "express";
 
-export type MiddlewareConfig = ArcstackMiddlewareConfig<Handler>;
+export type MiddlewareConfig = ArkstackMiddlewareConfig<Handler>;

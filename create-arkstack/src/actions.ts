@@ -81,7 +81,7 @@ export default class {
       /** */
     }
 
-    Logger.success("Your Arcstack project has been created successfully");
+    Logger.success("Your Arkstack project has been created successfully");
     Logger.parse(
       [
         ["cd", "cyan"],
@@ -193,7 +193,7 @@ export default class {
     if (existsSync(pkgPath)) {
       const pkg = await readFile(pkgPath, "utf-8").then(JSON.parse);
       const depsToRemove = [
-        "@arcstack-hq/database",
+        "@arkstack/database",
         "@prisma/adapter-pg",
         "@prisma/client",
         "pg",
