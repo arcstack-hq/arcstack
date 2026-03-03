@@ -2,6 +2,7 @@ import { ArcstackConsoleApp } from "@arcstack/console/app";
 import { Command } from "@h3ravel/musket";
 import { Router } from "src/core/router";
 
+// oxlint-disable-next-line typescript/no-explicit-any
 type App = ArcstackConsoleApp<any>;
 
 export class RouteList extends Command<App> {

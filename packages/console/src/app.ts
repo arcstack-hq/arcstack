@@ -1,3 +1,4 @@
+// oxlint-disable typescript/no-explicit-any
 import { isAbsolute, join } from "node:path";
 
 import { CliApp } from "resora";

@@ -1,3 +1,4 @@
+// oxlint-disable typescript/no-explicit-any
 import { H3Event, HTTPError } from "h3";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 

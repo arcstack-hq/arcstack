@@ -23,7 +23,7 @@ export class RequestError extends HTTPError {
   ): asserts value is T {
     if (!value) {
       if (ctx) {
-        return ErrorHandler(new RequestError(message, code), ctx) as any;
+        return ErrorHandler(new RequestError(message, code), ctx) as never;
       }
 
       throw new RequestError(message, code);

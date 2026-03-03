@@ -1,3 +1,4 @@
+// oxlint-disable typescript/no-explicit-any
 import { H3Event } from "h3";
 import { NextFunction } from "clear-router/types/h3";
 import { vary } from "../utils/vary";
@@ -124,7 +125,7 @@ const configureAllowedHeaders = (
   return headers;
 };
 
-function configureExposedHeaders(options: { exposedHeaders?: string[] | string }) {
+function configureExposedHeaders (options: { exposedHeaders?: string[] | string }) {
   let headers = options.exposedHeaders;
   if (!headers) {
     return null;
@@ -140,7 +141,7 @@ function configureExposedHeaders(options: { exposedHeaders?: string[] | string }
   return null;
 }
 
-function configureMaxAge(options: { maxAge?: number | string }) {
+function configureMaxAge (options: { maxAge?: number | string }) {
   var maxAge = (typeof options.maxAge === "number" || options.maxAge) && options.maxAge.toString();
   if (maxAge && maxAge.length) {
     return {
@@ -151,7 +152,7 @@ function configureMaxAge(options: { maxAge?: number | string }) {
   return null;
 }
 
-function applyHeaders(headers: any[], res: H3Event["res"]) {
+function applyHeaders (headers: any[], res: H3Event["res"]) {
   for (var i = 0, n = headers.length; i < n; i++) {
     var header = headers[i];
     if (header) {
@@ -179,34 +180,34 @@ export const cors =
       preflightContinue?: boolean;
     } = {},
   ) =>
-  async (event: H3Event, next: NextFunction) => {
-    const headers = [],
-      method = event.req.method && event.req.method.toUpperCase && event.req.method.toUpperCase();
+    async (event: H3Event, next: NextFunction) => {
+      const headers = [],
+        method = event.req.method && event.req.method.toUpperCase && event.req.method.toUpperCase();
 
-    if (method === "OPTIONS") {
-      // preflight
-      headers.push(configureOrigin(options, event.req));
-      headers.push(configureCredentials(options));
-      headers.push(configureMethods(options));
-      headers.push(configureAllowedHeaders(options, event.req));
-      headers.push(configureMaxAge(options));
-      headers.push(configureExposedHeaders(options));
-      applyHeaders(headers, event.res);
+      if (method === "OPTIONS") {
+        // preflight
+        headers.push(configureOrigin(options, event.req));
+        headers.push(configureCredentials(options));
+        headers.push(configureMethods(options));
+        headers.push(configureAllowedHeaders(options, event.req));
+        headers.push(configureMaxAge(options));
+        headers.push(configureExposedHeaders(options));
+        applyHeaders(headers, event.res);
 
-      if (options.preflightContinue) {
-        next();
+        if (options.preflightContinue) {
+          next();
+        } else {
+          // Safari (and potentially other browsers) need content-length 0,
+          //   for 204 or they just hang waiting for a body
+          event.res.status = options.optionsSuccessStatus;
+          event.res.headers.set("Content-Length", "0");
+        }
       } else {
-        // Safari (and potentially other browsers) need content-length 0,
-        //   for 204 or they just hang waiting for a body
-        event.res.status = options.optionsSuccessStatus;
-        event.res.headers.set("Content-Length", "0");
+        // actual response
+        headers.push(configureOrigin(options, event.req));
+        headers.push(configureCredentials(options));
+        headers.push(configureExposedHeaders(options));
+        applyHeaders(headers, event.res);
+        next();
       }
-    } else {
-      // actual response
-      headers.push(configureOrigin(options, event.req));
-      headers.push(configureCredentials(options));
-      headers.push(configureExposedHeaders(options));
-      applyHeaders(headers, event.res);
-      next();
-    }
-  };
+    };

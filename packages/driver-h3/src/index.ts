@@ -3,6 +3,7 @@ import { H3, serve } from "h3";
 import { ArcstackKitDriver } from "@arcstack/contract";
 import { Middleware as H3BaseMiddleware } from "clear-router/types/h3";
 
+// oxlint-disable-next-line typescript/no-explicit-any
 export type H3Middleware = H3BaseMiddleware | [H3BaseMiddleware, Record<string, any>];
 
 export interface H3DriverOptions {

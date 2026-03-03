@@ -2,9 +2,8 @@ import { ArcstackConsoleApp } from "@arcstack/console/app";
 import { Command } from "@h3ravel/musket";
 import { Router } from "src/core/router";
 
-type App = ArcstackConsoleApp<any>;
-
-export class RouteList extends Command<App> {
+// oxlint-disable-next-line typescript/no-explicit-any
+export class RouteList extends Command<ArcstackConsoleApp<any>> {
   protected signature = `route:list
         {--p|path? : Path to filter routes by}
     `;
