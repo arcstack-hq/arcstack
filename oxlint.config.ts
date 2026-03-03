@@ -27,6 +27,6 @@ export default defineConfig({
       },
     ],
   },
-  ignorePatterns: ['dist/**', 'node_modules/**', 'src/**/*.spec.ts', 'coverage/**'],
+  ignorePatterns: ['dist/**', 'node_modules/**', 'src/**/*.spec.ts', 'coverage/**', 'tests/**', 'stubs/**', 'docs/**'],
   plugins: ['eslint', 'typescript', 'import'],
 })
