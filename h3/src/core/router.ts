@@ -1,26 +1,29 @@
+import { ArcstackRouteListOptions } from "@arcstack/contract";
 import { Router as ClearRouter } from "clear-router/h3";
 import { H3 } from "h3";
-import { createRequire } from "module";
-
-const require = createRequire(import.meta.url);
+import { join } from "node:path";
+import { pathToFileURL } from "node:url";
 
 export class Router extends ClearRouter {
-  static bind(app: H3) {
-    ClearRouter.group("/api", () => {
-      require("src/routes/api");
+  static async bind (app: H3) {
+    // Register API routes
+    await ClearRouter.group("/api", async () => {
+      await import(pathToFileURL(join(process.cwd(), "src/routes/api.ts")).href);
     });
 
-    ClearRouter.group("/", () => {
-      require("src/routes/web");
+    // Register web routes
+    await ClearRouter.group("/", async () => {
+      await import(pathToFileURL(join(process.cwd(), "src/routes/web.ts")).href);
     });
 
+    // Apply the registered routes to the H3 application
     const router = ClearRouter.apply(app);
 
     return router;
   }
 
-  static list(_options: { path?: string }, app: H3) {
-    this.bind(app);
+  static async list (_options: ArcstackRouteListOptions = {}, app: H3) {
+    await this.bind(app);
     return this.allRoutes();
   }
 }

@@ -1,11 +1,12 @@
 // oxlint-disable typescript/no-explicit-any
-import { H3Event, HTTPError } from "h3";
+import { H3Event, HTTPError, HTTPResponse } from "h3";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 
 import { Prisma } from "@prisma/client";
 import { ValidationException } from "kanun";
 import { env } from "./helpers";
 import path from "node:path";
+import { buildHtmlErrorResponse } from "@arcstack/common";
 
 /**
  * Global error handler for the H3 application. 
@@ -70,7 +71,7 @@ export const ErrorHandler = (err: HTTPError, event: H3Event) => {
   // If the request is an API call, return a JSON response. Otherwise, you might want to render an error page.
   if (
     event.req.headers.get("accept")?.includes("application/json") ||
-    event.req.url?.startsWith("/api")
+    event.req._url?.pathname?.startsWith("/api")
   ) {
     return {
       ...error,
@@ -78,6 +79,17 @@ export const ErrorHandler = (err: HTTPError, event: H3Event) => {
       message: error.message,
     }
   }
+
+  return new HTTPResponse(buildHtmlErrorResponse({
+    message: error.message,
+    stack: error.stack,
+    code: error.code,
+  }), {
+    status: error.code,
+    headers: {
+      "Content-Type": "text/html",
+    },
+  });
 };
 
 export default ErrorHandler;

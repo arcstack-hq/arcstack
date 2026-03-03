@@ -2,14 +2,14 @@ import { bindGracefulShutdown } from "@arcstack/common";
 
 import config from "src/config/middleware";
 import { prisma } from "src/core/database";
-import { ArcstackKitDriver } from "@arcstack/contract";
+import { ArcstackKitDriver, ArcstackRouterAwareCore, ArcstackRouterContract, ArcstackRouteListOptions } from "@arcstack/contract";
 import { H3Driver, type H3Middleware } from "@arcstack/driver-h3";
 import { H3 } from "h3";
 import { Router } from "src/core/router";
 import ErrorHandler from "./utils/request-handlers";
 import { staticAssetHandler } from "./middlewares/staticAssetHandler";
 
-export default class Application {
+export default class Application implements ArcstackRouterAwareCore<H3, unknown> {
   private app: H3;
   private static app: H3;
   private driver: ArcstackKitDriver<H3, H3Middleware>;
@@ -26,13 +26,14 @@ export default class Application {
         new H3({
           onError: ErrorHandler,
         }),
-      bindRouter: (runtime) => {
-        Router.bind(runtime);
+      bindRouter: async (runtime) => {
+        await Router.bind(runtime);
       },
       mountPublicAssets: (runtime) => {
         runtime.use(staticAssetHandler());
       },
     });
+
     this.app = app ?? this.driver.createApp();
 
     Application.app = this.app;
@@ -63,6 +64,18 @@ export default class Application {
    */
   getDriver () {
     return this.driver;
+  }
+
+  /**
+   * Gets the ArcstackRouterContract implementation for the H3 framework.
+   * 
+   * @returns 
+   */
+  getRouter (): ArcstackRouterContract<H3, unknown> {
+    return {
+      bind: (app: H3) => Router.bind(app),
+      list: (options: ArcstackRouteListOptions = {}, app?: H3) => Router.list(options, app ?? this.app),
+    };
   }
 
   /**

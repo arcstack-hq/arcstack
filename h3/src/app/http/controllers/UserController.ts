@@ -1,4 +1,4 @@
-import BaseController from "@controllers/BaseController";
+import { BaseController } from "@controllers/BaseController";
 import { HttpContext } from "clear-router/types/h3";
 import UserCollection from "../resources/UserCollection";
 import UserResource from "../resources/UserResource";
@@ -6,7 +6,7 @@ import UserResource from "../resources/UserResource";
 /**
  * UserController
  */
-export default class extends BaseController {
+export default class UserController extends BaseController {
   /**
    * Get all resources
    *
