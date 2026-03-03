@@ -1,6 +1,8 @@
-import { App } from "../app";
+import { ArcstackConsoleApp } from "@arcstack/console/app";
 import { Command } from "@h3ravel/musket";
 import { Router } from "src/core/router";
+
+type App = ArcstackConsoleApp<any>;
 
 export class RouteList extends Command<App> {
   protected signature = `route:list
@@ -9,7 +11,7 @@ export class RouteList extends Command<App> {
 
   protected description = "List all registered routes";
 
-  async handle() {
-    console.log(Router.list(this.options(), this.app.core.getH3Instance()));
+  async handle () {
+    console.log(Router.list(this.options(), this.app.core.getAppInstance()));
   }
 }

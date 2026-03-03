@@ -14,20 +14,21 @@ export default defineConfig([
     platform: "node",
     outDir: "dist",
     format: "esm",
+    sourcemap: true,
     logLevel: "silent",
     watch: env === "development" ? [".env", ".env.*", "src", "tsconfig.json"] : false,
     plugins:
       env === "development" && process.env.CLI_BUILD !== "true"
         ? [
-            run({
-              env: Object.assign({}, process.env, {
-                NODE_ENV: env,
-              }),
-              execArgv: ["-r", "source-map-support/register", "-r", "tsconfig-paths/register"],
-              allowRestarts: false,
-              input: process.cwd() + "/src/server.ts",
+          run({
+            env: Object.assign({}, process.env, {
+              NODE_ENV: env,
             }),
-          ]
+            execArgv: ["-r", "source-map-support/register", "-r", "tsconfig-paths/register"],
+            allowRestarts: false,
+            input: process.cwd() + "/src/server.ts",
+          }),
+        ]
         : [],
     outExtensions: (e) => {
       return {
@@ -36,7 +37,7 @@ export default defineConfig([
       };
     },
     skipNodeModulesBundle: true,
-    hooks(e) {
+    hooks (e) {
       e.hook("build:done", async (e) => {
         for (let i = 0; i < e.chunks.length; i++) {
           const chunk = e.chunks[i];

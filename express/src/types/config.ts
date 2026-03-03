@@ -1,7 +1,4 @@
+import type { ArcstackMiddlewareConfig } from "@arcstack/contract";
 import type { Handler } from "express";
 
-export interface MiddlewareConfig {
-  global: Handler[];
-  before: Handler[];
-  after: Handler[];
-}
+export type MiddlewareConfig = ArcstackMiddlewareConfig<Handler>;

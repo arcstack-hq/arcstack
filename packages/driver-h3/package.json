@@ -1,0 +1,26 @@
+{
+    "name": "@arcstack/driver-h3",
+    "version": "0.1.1",
+    "type": "module",
+    "files": [
+        "dist",
+        "stubs"
+    ],
+    "scripts": {
+        "build": "tsdown"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "exports": {
+        ".": "./dist/index.js",
+        "./package.json": "./package.json"
+    },
+    "dependencies": {
+        "@arcstack/contract": "workspace:^"
+    },
+    "peerDependencies": {
+        "clear-router": "^2.1.4",
+        "h3": "2.0.1-rc.14"
+    }
+}

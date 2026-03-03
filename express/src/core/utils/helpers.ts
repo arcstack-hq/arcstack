@@ -1,113 +1,3 @@
-// oxlint-disable typescript/no-explicit-any
-import { NextFunction, Request, Response } from "express";
-import { constructFrom, isPast } from "date-fns";
-
-import { Flatten } from "src/types/basic";
-import { RequestError } from "./errors";
-import jwt from "jsonwebtoken";
-import { prisma } from "src/core/database";
-
-/**
- * Flatten an object with array values
- *
- * @param obj
- * @returns
- */
-export const flattenObject = (
-  obj: Record<string, string | string[] | undefined>,
-): Record<string, string | undefined> => {
-  return Object.fromEntries(
-    Object.entries(obj).map(([key, value]) => [
-      key,
-      Array.isArray(value) ? (value[0] ?? undefined) : value,
-    ]),
-  );
-};
-
-/**
- * Flatten an object and make it dot.accessible
- *
- * @param obj
- * @param currentKey
- * @returns
- */
-export const doter = <T extends Record<string, unknown>>(
-  obj: T,
-  currentKey?: string,
-): Flatten<T> => {
-  const result: Record<string, unknown> = {};
-
-  for (const [key, value] of Object.entries(obj)) {
-    const newKey = currentKey ? `${currentKey}.${key}` : key;
-
-    if (typeof value === "object" && value !== null && !Array.isArray(value)) {
-      Object.assign(result, doter(value as Record<string, unknown>, newKey));
-    } else {
-      result[newKey] = value;
-    }
-  }
-
-  return result as Flatten<T>;
-};
-
-/**
- * Generate JWT access token
- *
- * @param data
- * @returns
- */
-export const generateAccessToken = (data: { username: string; id: string; index: number }) => {
-  const token = jwt.sign(data, env("JWT_SECRET", ""), {
-    expiresIn: env("JWT_EXPIRES_IN"),
-  });
-  const tokenData = jwt.verify(token, env("JWT_SECRET", "")) as jwt.JwtPayload;
-
-  return { token, jwt: tokenData };
-};
-
-export const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
-  const authHeader = req.headers["authorization"];
-  const token = authHeader && authHeader.split(" ")[1];
-
-  RequestError.assertFound(token, "Unauthenticated", 401, req, res);
-
-  try {
-    jwt.verify(token!, env("JWT_SECRET", ""), async (err: any, jwtPayload: any) => {
-      RequestError.assertFound(!err, "Unauthenticated", 401);
-
-      const accessToken = await prisma.personalAccessToken.findFirst({
-        where: { token },
-        include: { user: true },
-      });
-
-      let user = accessToken?.user;
-
-      // Test environment fallback: allow JWT-only auth without DB token lookup
-      if (!user && process.env.NODE_ENV === "test" && jwtPayload?.id) {
-        user = (await prisma.user.findUnique({
-          where: { id: jwtPayload.id },
-        })) as never;
-      }
-
-      // Check if user exists and token is valid (with null-safe expiry check)
-      if (
-        !user ||
-        (!accessToken && process.env.NODE_ENV !== "test") ||
-        (accessToken && isPast(constructFrom(accessToken.expiresAt!, new Date())))
-      ) {
-        return RequestError.abortIf(true, "Unauthenticated", 401, req, res);
-      }
-
-      req.user = user as never;
-      req.authToken = accessToken?.token;
-
-      next();
-    });
-  } catch {
-    RequestError.abortIf(true, "Unauthenticated", 401, req, res);
-  }
-};
-
 /**
  * Read the .env file
  *
@@ -115,7 +5,7 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
  * @param def
  * @returns
  */
-export const env = <X = string, Y = undefined>(
+export const env = <X = string, Y = undefined> (
   env: string,
   defaultValue?: Y,
 ): Y extends undefined ? X : Y => {
@@ -172,17 +62,6 @@ export const appUrl = (link?: string): string => {
     // Return default URL with link if provided
     return link ? `${defaultUrl}/${link.replace(/^\/+/, "")}` : defaultUrl;
   }
-};
-
-export const secureOtp = (length = 6) => {
-  const digits = "0123456789";
-  let otp = "";
-  const array = new Uint8Array(length);
-  crypto.getRandomValues(array);
-  for (let i = 0; i < length; i++) {
-    otp += digits[array[i] % 10];
-  }
-  return otp;
 };
 
 /**

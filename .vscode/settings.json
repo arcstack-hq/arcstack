@@ -6,6 +6,6 @@
   "oxc.trace.server": "verbose",
   "oxc.enable": true,
   "[typescript]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   }
 }

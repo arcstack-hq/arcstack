@@ -1,5 +1,7 @@
-import { App } from "../app";
+import { ArcstackConsoleApp } from "@arcstack/console/app";
 import { Command } from "@h3ravel/musket";
+
+type App = ArcstackConsoleApp<any>;
 
 export class MakeFullResource extends Command<App> {
   protected signature = `make:full-resource
@@ -11,7 +13,7 @@ export class MakeFullResource extends Command<App> {
   protected description =
     "Create a full new set of API resources (Controller, Resource, Collection)";
 
-  async handle() {
+  async handle () {
     this.app.command = this;
 
     const res1 = this.app.makeResource(this.argument("prefix"), {});

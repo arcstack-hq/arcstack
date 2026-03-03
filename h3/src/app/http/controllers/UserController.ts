@@ -1,7 +1,7 @@
-import { Resource, ResourceCollection } from "resora";
-
 import BaseController from "@controllers/BaseController";
 import { HttpContext } from "clear-router/types/h3";
+import UserCollection from "../resources/UserCollection";
+import UserResource from "../resources/UserResource";
 
 /**
  * UserController
@@ -14,7 +14,7 @@ export default class extends BaseController {
    * @param res
    */
   index = async ({ req }: HttpContext) => {
-    return await new ResourceCollection({ data: [] })
+    return await new UserCollection([])
       .additional({
         status: "success",
         message: "OK",
@@ -31,7 +31,7 @@ export default class extends BaseController {
    * @param res
    */
   show = async ({ req }: HttpContext) => {
-    return new Resource({ data: {} })
+    return new UserResource({ data: {} })
       .additional({
         status: "success",
         message: "OK",
@@ -48,7 +48,7 @@ export default class extends BaseController {
    * @param res
    */
   create = async ({ req }: HttpContext) => {
-    return new Resource({ data: {} })
+    return new UserResource({ data: {} })
       .additional({
         status: "success",
         message: "New User created successfully",
@@ -65,7 +65,12 @@ export default class extends BaseController {
    * @param res
    */
   update = async ({ req }: HttpContext) => {
-    return new Resource({ data: {} })
+    const data = await this.validate({
+      name: "string|required",
+      age: "numeric|required|min:30",
+    });
+
+    return new UserResource({ data })
       .additional({
         status: "success",
         message: "User updated successfully",
@@ -82,7 +87,7 @@ export default class extends BaseController {
    * @param res
    */
   destroy = async ({ req }: HttpContext) => {
-    return new Resource({ data: {} })
+    return new UserResource({ data: {} })
       .additional({
         status: "success",
         message: "User deleted successfully",

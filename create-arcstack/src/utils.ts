@@ -1,7 +1,6 @@
-import { readdir, rename } from "node:fs/promises";
+import { readdir, rename, rm } from "node:fs/promises";
 
 import path from "node:path";
-import { rm } from "node:fs/promises";
 
 /**
  * Removes all files in dirPath except the one specified by keepFileName
@@ -9,7 +8,7 @@ import { rm } from "node:fs/promises";
  * @param dirPath
  * @param keepFileName
  */
-export async function cleanDirectoryExcept(dirPath: string, keepFileName: string) {
+export async function cleanDirectoryExcept (dirPath: string, keepFileName: string) {
   const files = await readdir(dirPath);
 
   for (const file of files) {
@@ -27,7 +26,7 @@ export async function cleanDirectoryExcept(dirPath: string, keepFileName: string
  * @param dirPath
  * @param parent
  */
-export async function hoistDirectoryContents(parent: string, dirPath: string) {
+export async function hoistDirectoryContents (parent: string, dirPath: string) {
   const source = path.isAbsolute(dirPath) ? dirPath : path.join(process.cwd(), dirPath);
 
   const targetParent = path.isAbsolute(parent) ? parent : path.join(process.cwd(), parent);

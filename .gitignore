@@ -6,3 +6,4 @@ dist
 /generated/prisma
 /storage/**
 /storage/**
+docs/architecture/unification-roadmap.md

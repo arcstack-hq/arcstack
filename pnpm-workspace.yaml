@@ -1,4 +1,5 @@
 packages:
+  - packages/*
   - h3
   - express
   - create-arcstack

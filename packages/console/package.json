@@ -1,0 +1,30 @@
+{
+    "name": "@arcstack/console",
+    "version": "0.1.1",
+    "type": "module",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsdown",
+        "test": "vitest"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        },
+        "./app": {
+            "types": "./dist/app.d.ts",
+            "import": "./dist/app.js"
+        }
+    },
+    "dependencies": {
+        "@arcstack/common": "workspace:^",
+        "@h3ravel/musket": "^0.10.1",
+        "resora": "^0.2.3"
+    }
+}

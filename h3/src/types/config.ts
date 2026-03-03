@@ -1,9 +1,4 @@
-import { Middleware as IMiddleware } from "clear-router/types/h3";
+import type { ArcstackMiddlewareConfig } from "@arcstack/contract";
+import type { H3Middleware } from "@arcstack/driver-h3";
 
-type Middleware = IMiddleware | [IMiddleware, Record<string, any>];
-
-export interface MiddlewareConfig {
-  global: Middleware[];
-  before: Middleware[];
-  after: Middleware[];
-}
+export type MiddlewareConfig = ArcstackMiddlewareConfig<H3Middleware>;

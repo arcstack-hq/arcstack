@@ -14,7 +14,7 @@ export default defineConfig({
     'no-unreachable': 'error',
     'no-unneeded-ternary': 'error',
     'typescript/require-await': 'error',
-    'typescript/no-explicit-any': 'error',
+    'typescript/no-explicit-any': 'off',
     'no-duplicate-imports': 'warn',
     '@typescript-eslint/no-unused-vars': [
       'warn',

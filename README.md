@@ -86,6 +86,16 @@ New adapters can be added without affecting the application layer.
 
 ---
 
+## Monorepo Core Packages
+
+- `@arcstack/contract`: framework-agnostic driver contracts used by all kits.
+- `@arcstack/common`: shared lifecycle/network helpers reused by all kits.
+- `@arcstack/console`: shared console runtime used by kits.
+
+Each runtime kit (Express, H3, future Fastify/Bun) implements a framework-specific driver that conforms to the same contract.
+
+---
+
 Arcstack uses structured error classes and centralized error middleware.
 
 Example:

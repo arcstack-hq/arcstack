@@ -13,24 +13,6 @@ export class BaseError extends Error {
         this.statusCode = statusCode
     }
 }
-export class ValidationError extends BaseError {
-    errors: { [key: string]: string[] | string }
-    statusCode: number = 422;
-
-    constructor(message?: string, errors: { [key: string]: string[] | string } = {}, options?: ErrorOptions) {
-        super(message, 422, options);
-        this.errors = errors
-    }
-
-    static withMessages (messages: { [key: string]: string[] }) {
-        const keys = Object.keys(messages)
-        const message = keys.length > 1
-            ? `${messages[keys[0]][0]} and ${keys.length - 1} other error(s)`
-            : messages[keys[0]][0]
-
-        throw new ValidationError(message, messages);
-    }
-}
 
 export class RequestError extends BaseError {
 

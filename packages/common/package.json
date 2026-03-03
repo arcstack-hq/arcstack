@@ -1,0 +1,21 @@
+{
+    "name": "@arcstack/common",
+    "version": "0.1.1",
+    "type": "module",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsdown --config-loader unconfig"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "exports": {
+        ".": "./dist/index.js",
+        "./package.json": "./package.json"
+    },
+    "dependencies": {
+        "detect-port": "^2.1.0"
+    }
+}

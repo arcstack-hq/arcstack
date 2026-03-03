@@ -1,5 +1,7 @@
-import { App } from "../app";
+import { ArcstackConsoleApp } from "@arcstack/console/app";
 import { Command } from "@h3ravel/musket";
+
+type App = ArcstackConsoleApp<any>;
 
 export class MakeController extends Command<App> {
   protected signature = `make:controller
@@ -11,9 +13,9 @@ export class MakeController extends Command<App> {
 
   protected description = "Create a new controller file";
 
-  async handle() {
+  async handle () {
     this.app.command = this
-    
+
     if (!this.argument("name")) return void this.error("Error: Controller name is required.");
 
     const name = this.app.makeController(this.argument("name"), this.options());

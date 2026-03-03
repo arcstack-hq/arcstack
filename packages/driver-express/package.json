@@ -1,0 +1,28 @@
+{
+    "name": "@arcstack/driver-express",
+    "version": "0.1.1",
+    "type": "module",
+    "files": [
+        "dist",
+        "stubs"
+    ],
+    "scripts": {
+        "build": "tsdown"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "exports": {
+        ".": "./dist/index.js",
+        "./package.json": "./package.json"
+    },
+    "dependencies": {
+        "@arcstack/contract": "workspace:^"
+    },
+    "peerDependencies": {
+        "express": "^5.2.1"
+    },
+    "devDependencies": {
+        "@types/express": "^5.0.6"
+    }
+}

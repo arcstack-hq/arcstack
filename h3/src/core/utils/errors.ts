@@ -2,30 +2,6 @@ import ErrorHandler from "./request-handlers";
 import { HTTPError } from "h3";
 import { HttpContext } from "clear-router/types/h3";
 
-export class ValidationError extends HTTPError {
-  errors: { [key: string]: string[] | string };
-  status: number = 422;
-
-  constructor(
-    message?: string,
-    errors: { [key: string]: string[] | string } = {},
-    options?: ErrorOptions,
-  ) {
-    super(message ?? "Validation error", { ...options, status: 422 });
-    this.errors = errors;
-  }
-
-  static withMessages(messages: { [key: string]: string[] }) {
-    const keys = Object.keys(messages);
-    const message =
-      keys.length > 1
-        ? `${messages[keys[0]][0]} and ${keys.length - 1} other error(s)`
-        : messages[keys[0]][0];
-
-    throw new ValidationError(message, messages);
-  }
-}
-
 export class RequestError extends HTTPError {
   status: number;
 
@@ -39,7 +15,7 @@ export class RequestError extends HTTPError {
    * @param message
    * @param code
    */
-  static assertFound<T>(
+  static assertFound<T> (
     value: T | null | undefined,
     message: string,
     code: number = 404,
@@ -62,7 +38,7 @@ export class RequestError extends HTTPError {
    * @param res
    * @throws {RequestError} Throws a RequestError if the boolean condition is true. If req and res are provided, it will send the error response immediately.
    */
-  static abortIf<T>(
+  static abortIf<T> (
     boolean: T,
     message: string,
     code?: number,
@@ -70,7 +46,7 @@ export class RequestError extends HTTPError {
   ): asserts boolean is T {
     if (boolean) {
       if (ctx) {
-        return ErrorHandler(new RequestError(message, code), ctx) as any;
+        return ErrorHandler(new RequestError(message, code), ctx) as never;
       }
 
       throw new RequestError(message, code);
