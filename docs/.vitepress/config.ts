@@ -56,7 +56,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/arkstack/arkstack' }
+      { icon: 'github', link: 'https://github.com/arkstack-hq/arkstack' }
     ]
   }
 })

@@ -1,8 +1,41 @@
 {
   "name": "create-arkstack",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Scaffold new H3.js or Express.js applications using Toneflix's arkstack templates and starter kits",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arkstack-hq/arkstack.git",
+    "directory": "create-arkstack"
+  },
+  "keywords": [
+    "toneflix",
+    "create-arkstack",
+    "h3",
+    "express",
+    "scaffold",
+    "template",
+    "starter kit",
+    "cli",
+    "generator",
+    "boilerplate",
+    "project setup",
+    "node.js",
+    "javascript",
+    "typescript",
+    "web development",
+    "full-stack",
+    "backend",
+    "framework",
+    "web server",
+    "api",
+    "microservices",
+    "serverless",
+    "cloud",
+    "dev tools",
+    "productivity",
+    "arkstack"
+  ],
   "main": "build/index.js",
   "private": false,
   "publishConfig": {
@@ -14,16 +47,6 @@
   "exports": {
     ".": "./bin/run.js"
   },
-  "keywords": [
-    "toneflix",
-    "create-arkstack",
-    "h3",
-    "express",
-    "scaffold",
-    "template",
-    "starter kit",
-    "cli"
-  ],
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",

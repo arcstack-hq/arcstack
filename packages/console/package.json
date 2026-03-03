@@ -5,7 +5,7 @@
     "description": "Console package for Arkstack providing console-specific implementations of core Arkstack features such as routing, middleware, and database integration.",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/arkstack/arkstack.git",
+        "url": "git+https://github.com/arkstack-hq/arkstack.git",
         "directory": "packages/console"
     },
     "keywords": [
