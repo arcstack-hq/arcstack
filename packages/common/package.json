@@ -1,13 +1,13 @@
 {
     "name": "@arcstack/common",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "type": "module",
     "files": [
         "dist"
     ],
     "scripts": {
         "build": "tsdown --config-loader unconfig",
-        "prepublishOnly": "pnpm build && pnpm version patch --no-git-tag-version"
+        "prepublishOnly": "pnpm build"
     },
     "publishConfig": {
         "access": "public"
