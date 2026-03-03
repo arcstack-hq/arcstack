@@ -1,6 +1,6 @@
 {
     "name": "@arcstack-hq/contract",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "type": "module",
     "description": "Contract package for Arcstack providing contract-specific implementations of core Arcstack features such as routing, middleware, and database integration.",
     "repository": {
@@ -8,6 +8,14 @@
         "url": "git+https://github.com/arcstack-hq/arcstack.git",
         "directory": "packages/contract"
     },
+    "keywords": [
+        "contract",
+        "interface",
+        "types",
+        "validation",
+        "schema",
+        "arcstack"
+    ],
     "files": [
         "dist"
     ],
