@@ -20,7 +20,7 @@
         "@arcstack/contract": "workspace:^"
     },
     "peerDependencies": {
-        "clear-router": "^2.1.4",
+        "clear-router": "^2.1.6",
         "h3": "2.0.1-rc.14"
     }
 }

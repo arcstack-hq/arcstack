@@ -37,7 +37,7 @@ export class RequestError extends BaseError {
     ): asserts value is T {
         if (!value) {
             if (req && res) {
-                return ErrorHandler(new RequestError(message, code), req, res)
+                return void ErrorHandler(new RequestError(message, code), req, res)
             }
 
             throw new RequestError(message, code);
@@ -61,7 +61,7 @@ export class RequestError extends BaseError {
     ): asserts  boolean is T {
         if (boolean) {
             if (req && res) {
-                return ErrorHandler(new RequestError(message, code), req, res)
+                return void ErrorHandler(new RequestError(message, code), req, res)
             }
 
             throw new RequestError(message, code);

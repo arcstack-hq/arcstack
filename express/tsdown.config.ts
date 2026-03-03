@@ -43,7 +43,7 @@ export default defineConfig([
           const chunk = e.chunks[i];
           if (chunk.fileName.endsWith(".js")) {
             let code = readFileSync(path.join(chunk.outDir, chunk.fileName), "utf-8");
-            code = code.replace(/src\//g, "dist/");
+            code = code.replace(/src\//g, "dist/").replace(/\.ts/g, ".js");
             writeFileSync(path.join(chunk.outDir, chunk.fileName), code, "utf-8");
           }
         }

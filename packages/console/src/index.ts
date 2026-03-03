@@ -2,11 +2,13 @@
 
 import { fileURLToPath, pathToFileURL } from "node:url";
 
+import logo from "./logo";
 import { ArcstackConsoleApp } from "./app";
 import { Kernel } from "@h3ravel/musket";
 import { join } from "node:path";
 import { realpathSync } from "node:fs";
 import { loadPrototypes } from "@arcstack/common";
+import { RouteList } from "./commands/RouteList";
 
 const loadCoreApp = async () => {
     const bootstrapPath = pathToFileURL(join(process.cwd(), "src/core/bootstrap.ts")).href;
@@ -25,8 +27,9 @@ export const runConsoleKernel = async (options: RunConsoleOptions = {}) => {
     const stubsDir = process.env.ARCSTACK_STUBS_DIR;
 
     await Kernel.init(await new ArcstackConsoleApp(app, { stubsDir }).loadConfig(), {
+        logo: options.logo ?? logo,
         name: "Cmd",
-        logo: options.logo,
+        baseCommands: [RouteList],
         discoveryPaths: [join(process.cwd(), "src/core/console/commands/*.ts")],
         exceptionHandler (exception) {
             throw exception;

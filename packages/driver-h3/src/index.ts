@@ -1,14 +1,14 @@
 import { H3, serve } from "h3";
 
-import { ArcstackKitDriver } from "@arcstack/contract";
+import { ArcstackKitDriver, PromiseOrValue } from "@arcstack/contract";
 import { Middleware as H3BaseMiddleware } from "clear-router/types/h3";
 
 // oxlint-disable-next-line typescript/no-explicit-any
 export type H3Middleware = H3BaseMiddleware | [H3BaseMiddleware, Record<string, any>];
 
 export interface H3DriverOptions {
-    bindRouter: (app: H3) => void;
-    mountPublicAssets: (app: H3, publicPath: string) => void;
+    bindRouter: (app: H3) => PromiseOrValue<void>;
+    mountPublicAssets: (app: H3, publicPath: string) => PromiseOrValue<void>;
     createApp?: () => H3;
 }
 
@@ -44,8 +44,8 @@ export class H3Driver extends ArcstackKitDriver<H3, H3Middleware> {
      * @param app 
      * @param publicPath 
      */
-    mountPublicAssets (app: H3, publicPath: string): void {
-        this.options.mountPublicAssets(app, publicPath);
+    mountPublicAssets (app: H3, publicPath: string): PromiseOrValue<void> {
+        return this.options.mountPublicAssets(app, publicPath);
     }
 
     /**
@@ -53,8 +53,8 @@ export class H3Driver extends ArcstackKitDriver<H3, H3Middleware> {
      * 
      * @param app 
      */
-    bindRouter (app: H3): void {
-        this.options.bindRouter(app);
+    bindRouter (app: H3): PromiseOrValue<void> {
+        return this.options.bindRouter(app);
     }
 
     /**

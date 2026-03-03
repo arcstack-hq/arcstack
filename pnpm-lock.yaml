@@ -105,6 +105,9 @@ importers:
       '@arcstack/contract':
         specifier: workspace:^
         version: link:../packages/contract
+      '@arcstack/database':
+        specifier: workspace:^
+        version: link:../packages/database
       '@arcstack/driver-express':
         specifier: workspace:^
         version: link:../packages/driver-express
@@ -124,8 +127,8 @@ importers:
         specifier: ^5.6.2
         version: 5.6.2
       clear-router:
-        specifier: ^2.1.4
-        version: 2.1.4(express@5.2.1)(h3@2.0.1-rc.14)
+        specifier: ^2.1.6
+        version: 2.1.6(express@5.2.1)(h3@2.0.1-rc.14)
       commander:
         specifier: ^14.0.3
         version: 14.0.3
@@ -220,6 +223,9 @@ importers:
       '@arcstack/contract':
         specifier: workspace:^
         version: link:../packages/contract
+      '@arcstack/database':
+        specifier: workspace:^
+        version: link:../packages/database
       '@arcstack/driver-h3':
         specifier: workspace:^
         version: link:../packages/driver-h3
@@ -239,8 +245,8 @@ importers:
         specifier: ^5.6.2
         version: 5.6.2
       clear-router:
-        specifier: ^2.1.4
-        version: 2.1.4(express@5.2.1)(h3@2.0.1-rc.14)
+        specifier: ^2.1.6
+        version: 2.1.6(express@5.2.1)(h3@2.0.1-rc.14)
       commander:
         specifier: ^14.0.3
         version: 14.0.3
@@ -317,14 +323,25 @@ importers:
       '@arcstack/common':
         specifier: workspace:^
         version: link:../common
+      '@arcstack/contract':
+        specifier: workspace:^
+        version: link:../contract
       '@h3ravel/musket':
         specifier: ^0.10.1
         version: 0.10.1(@types/node@25.2.3)
+      chalk:
+        specifier: ^5.6.2
+        version: 5.6.2
+      clear-router:
+        specifier: ^2.1.6
+        version: 2.1.6(express@5.2.1)(h3@2.0.1-rc.14)
       resora:
         specifier: ^0.2.3
         version: 0.2.3(@types/node@25.2.3)
 
   packages/contract: {}
+
+  packages/database: {}
 
   packages/driver-express:
     dependencies:
@@ -345,8 +362,8 @@ importers:
         specifier: workspace:^
         version: link:../contract
       clear-router:
-        specifier: ^2.1.4
-        version: 2.1.4(express@5.2.1)(h3@2.0.1-rc.14)
+        specifier: ^2.1.6
+        version: 2.1.6(express@5.2.1)(h3@2.0.1-rc.14)
       h3:
         specifier: 2.0.1-rc.14
         version: 2.0.1-rc.14
@@ -1908,8 +1925,8 @@ packages:
   citty@0.2.1:
     resolution: {integrity: sha512-kEV95lFBhQgtogAPlQfJJ0WGVSokvLr/UEoFPiKKOXF7pl98HfUVUD0ejsuTCld/9xH9vogSywZ5KqHzXrZpqg==}
 
-  clear-router@2.1.4:
-    resolution: {integrity: sha512-DKE0wFme4GMLNr5olkUAbih7FOGYFQgVQ+kcERN4M9TMZyDPsIPBYnrqi4Jy1ialNlPojfmCoCOUeBPqkS2uBw==}
+  clear-router@2.1.6:
+    resolution: {integrity: sha512-Eh/Xhy4qqaSuNcMmLd/SqbJYrzHDelYO1hGRKtckJBYY/S5KyAfax4Cdk8p2eI9FPpSnIV5/OVdzBUuSfExWog==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       express: ^5.1.0
@@ -5144,7 +5161,7 @@ snapshots:
 
   citty@0.2.1: {}
 
-  clear-router@2.1.4(express@5.2.1)(h3@2.0.1-rc.14):
+  clear-router@2.1.6(express@5.2.1)(h3@2.0.1-rc.14):
     optionalDependencies:
       express: 5.2.1
       h3: 2.0.1-rc.14

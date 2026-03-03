@@ -1,9 +1,9 @@
 import express, { type ErrorRequestHandler, type Express, type Handler } from "express";
 
-import { ArcstackKitDriver } from "@arcstack/contract";
+import { ArcstackKitDriver, PromiseOrValue } from "@arcstack/contract";
 
 export interface ExpressDriverOptions {
-    bindRouter: (app: Express) => void;
+    bindRouter: (app: Express) => PromiseOrValue<void>;
     errorHandler?: ErrorRequestHandler | Handler;
 }
 
@@ -49,8 +49,8 @@ export class ExpressDriver extends ArcstackKitDriver<Express, Handler> {
      * 
      * @param app 
      */
-    bindRouter (app: Express): void {
-        this.options.bindRouter(app);
+    bindRouter (app: Express): PromiseOrValue<void> {
+        return this.options.bindRouter(app);
     }
 
     /**

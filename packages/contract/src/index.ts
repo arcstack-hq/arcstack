@@ -6,6 +6,20 @@ export interface ArcstackMiddlewareConfig<TMiddleware> {
   after: TMiddleware[];
 }
 
+export interface ArcstackRouteListOptions {
+  path?: string;
+}
+
+export interface ArcstackRouterContract<TApp, TRoutes = unknown> {
+  bind(app: TApp): PromiseOrValue<unknown>;
+  list(options?: ArcstackRouteListOptions, app?: TApp): PromiseOrValue<TRoutes>;
+}
+
+export interface ArcstackRouterAwareCore<TApp, TRoutes = unknown> {
+  getAppInstance(): TApp;
+  getRouter(): ArcstackRouterContract<TApp, TRoutes>;
+}
+
 /**
  * The ArcstackKitDriver class defines the contract for a driver 
  * that can be used with the ArcstackKitContract. 

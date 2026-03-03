@@ -1,27 +1,38 @@
+import { ArcstackRouteListOptions } from "@arcstack/contract";
 import { Router as ClearRouter } from "clear-router/express";
-import { createRequire } from "module";
+import { RequestError } from "./utils/errors";
 import express from "express";
-
-const require = createRequire(import.meta.url);
+import { join } from "node:path";
+import { pathToFileURL } from "node:url";
 
 export class Router extends ClearRouter {
-  static bind() {
+  static async bind () {
     const router = express.Router();
 
-    ClearRouter.group("/api", () => {
-      require("src/routes/api");
+    // Register API routes
+    await ClearRouter.group("/api", async () => {
+      await import(pathToFileURL(join(process.cwd(), "src/routes/api.ts")).href);
     });
 
-    ClearRouter.group("/", () => {
-      require("src/routes/web");
+    // Register web routes
+    await ClearRouter.group("/", async () => {
+      await import(pathToFileURL(join(process.cwd(), "src/routes/web.ts")).href);
     });
 
+    // Apply the registered routes to the Express application
     ClearRouter.apply(router);
+
+    // Handle unmatched routes
+    router.all("/*splat", (req, _res, next) => {
+      const url = req.originalUrl || req.url;
+      next(new RequestError(`Cannot find any route matching [${req.method}] ${url}`, 404));
+    });
 
     return router;
   }
 
-  static list(_options: { path?: string }) {
+  static async list (_options: ArcstackRouteListOptions = {}) {
+    await this.bind();
     return this.allRoutes();
   }
 }

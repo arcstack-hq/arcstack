@@ -5,10 +5,10 @@ import path from "path";
 import { prisma } from "src/core/database";
 import ErrorHandler from "./utils/request-handlers";
 import { ExpressDriver } from "@arcstack/driver-express";
-import { ArcstackKitDriver } from "@arcstack/contract";
+import { ArcstackKitDriver, ArcstackRouterAwareCore, ArcstackRouterContract, ArcstackRouteListOptions } from "@arcstack/contract";
 import { type Express, type Handler } from "express";
 
-export default class Application {
+export default class Application implements ArcstackRouterAwareCore<Express, unknown> {
   private app: Express;
   private static app: Express;
   private driver: ArcstackKitDriver<Express, Handler>;
@@ -22,8 +22,8 @@ export default class Application {
    */
   constructor(app?: Express) {
     this.driver = new ExpressDriver({
-      bindRouter: (runtime) => {
-        runtime.use(Router.bind());
+      bindRouter: async (runtime) => {
+        runtime.use(await Router.bind());
       },
       errorHandler: ErrorHandler,
     });
@@ -56,6 +56,18 @@ export default class Application {
    */
   getDriver () {
     return this.driver;
+  }
+
+  /**
+   * Gets the ArcstackRouterContract implementation for the Express framework.
+   * 
+   * @returns 
+   */
+  getRouter (): ArcstackRouterContract<Express, unknown> {
+    return {
+      bind: (_app: Express) => Router.bind(),
+      list: (options: ArcstackRouteListOptions = {}) => Router.list(options),
+    };
   }
 
   /**

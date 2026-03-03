@@ -2,8 +2,12 @@ import 'dotenv/config'
 
 import { PrismaClient } from '@prisma/client'
 import { PrismaPg } from '@prisma/adapter-pg'
+import { createDatabaseClient } from '@arcstack/database'
 
-const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL || '' })
-const prisma = new PrismaClient({ adapter })
+const prisma = createDatabaseClient({
+    connectionString: process.env.DATABASE_URL,
+    createAdapter: ({ connectionString }) => new PrismaPg({ connectionString }),
+    createClient: ({ adapter }) => new PrismaClient({ adapter }),
+})
 
 export { prisma }
