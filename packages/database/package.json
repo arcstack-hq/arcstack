@@ -1,6 +1,6 @@
 {
     "name": "@arkstack/database",
-    "version": "0.1.4",
+    "version": "0.1.0",
     "type": "module",
     "description": "Database package for Arkstack providing database-specific implementations of core Arkstack features such as routing, middleware, and database integration.",
     "repository": {
