@@ -107,9 +107,9 @@ Use **lean** templates when you want a minimal HTTP starter without database dep
 
 Arcstack kits build on shared packages:
 
-- `@arcstack/contract`
-- `@arcstack/common`
-- `@arcstack/console`
-- `@arcstack/database` (full kits)
+- `@arcstack-hq/contract`
+- `@arcstack-hq/common`
+- `@arcstack-hq/console`
+- `@arcstack-hq/database` (full kits)
 
 For architecture details, see [Architecture Overview](/architecture/overview).

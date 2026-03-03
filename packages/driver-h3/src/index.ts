@@ -1,4 +1,4 @@
-import { ArcstackKitDriver, PromiseOrValue } from "@arcstack/contract";
+import { ArcstackKitDriver, PromiseOrValue } from "@arcstack-hq/contract";
 import { H3, serve } from "h3";
 
 import { Middleware as H3BaseMiddleware } from "clear-router/types/h3";

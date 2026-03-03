@@ -1,9 +1,9 @@
-import { bindGracefulShutdown } from "@arcstack/common";
+import { bindGracefulShutdown } from "@arcstack-hq/common";
 
 import config from "src/config/middleware";
 import { prisma } from "src/core/database";
-import { ArcstackKitDriver, ArcstackRouterAwareCore, ArcstackRouterContract, ArcstackRouteListOptions } from "@arcstack/contract";
-import { H3Driver, type H3Middleware } from "@arcstack/driver-h3";
+import { ArcstackKitDriver, ArcstackRouterAwareCore, ArcstackRouterContract, ArcstackRouteListOptions } from "@arcstack-hq/contract";
+import { H3Driver, type H3Middleware } from "@arcstack-hq/driver-h3";
 import { H3 } from "h3";
 import { Router } from "src/core/router";
 import ErrorHandler from "./utils/request-handlers";

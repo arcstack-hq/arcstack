@@ -11,7 +11,7 @@ import { MakeFullResource } from "./commands/MakeFullResource";
 import { MakeResource } from "./commands/MakeResource";
 import { RouteList } from "./commands/RouteList";
 import { join } from "node:path";
-import { loadPrototypes } from "@arcstack/common";
+import { loadPrototypes } from "@arcstack-hq/common";
 import logo from "./logo";
 import { realpathSync } from "node:fs";
 

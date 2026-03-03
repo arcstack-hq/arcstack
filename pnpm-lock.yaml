@@ -99,19 +99,19 @@ importers:
 
   express:
     dependencies:
-      '@arcstack/common':
+      '@arcstack-hq/common':
         specifier: workspace:^
         version: link:../packages/common
-      '@arcstack/console':
+      '@arcstack-hq/console':
         specifier: workspace:^
         version: link:../packages/console
-      '@arcstack/contract':
+      '@arcstack-hq/contract':
         specifier: workspace:^
         version: link:../packages/contract
-      '@arcstack/database':
+      '@arcstack-hq/database':
         specifier: workspace:^
         version: link:../packages/database
-      '@arcstack/driver-express':
+      '@arcstack-hq/driver-express':
         specifier: workspace:^
         version: link:../packages/driver-express
       '@h3ravel/musket':
@@ -217,19 +217,19 @@ importers:
 
   h3:
     dependencies:
-      '@arcstack/common':
+      '@arcstack-hq/common':
         specifier: workspace:^
         version: link:../packages/common
-      '@arcstack/console':
+      '@arcstack-hq/console':
         specifier: workspace:^
         version: link:../packages/console
-      '@arcstack/contract':
+      '@arcstack-hq/contract':
         specifier: workspace:^
         version: link:../packages/contract
-      '@arcstack/database':
+      '@arcstack-hq/database':
         specifier: workspace:^
         version: link:../packages/database
-      '@arcstack/driver-h3':
+      '@arcstack-hq/driver-h3':
         specifier: workspace:^
         version: link:../packages/driver-h3
       '@h3ravel/musket':
@@ -323,10 +323,10 @@ importers:
 
   packages/console:
     dependencies:
-      '@arcstack/common':
+      '@arcstack-hq/common':
         specifier: workspace:^
         version: link:../common
-      '@arcstack/contract':
+      '@arcstack-hq/contract':
         specifier: workspace:^
         version: link:../contract
       '@h3ravel/musket':
@@ -348,7 +348,7 @@ importers:
 
   packages/driver-express:
     dependencies:
-      '@arcstack/contract':
+      '@arcstack-hq/contract':
         specifier: workspace:^
         version: link:../contract
       express:
@@ -361,7 +361,7 @@ importers:
 
   packages/driver-h3:
     dependencies:
-      '@arcstack/contract':
+      '@arcstack-hq/contract':
         specifier: workspace:^
         version: link:../contract
       clear-router:

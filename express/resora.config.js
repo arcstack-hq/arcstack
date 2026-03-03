@@ -30,7 +30,7 @@ export default defineConfig({
     next: 'next',
   },
   resourcesDir: 'src/app/http/resources',
-  localStubsDir: 'node_modules/@arcstack/driver-express/stubs',
+  localStubsDir: 'node_modules/@arcstack-hq/driver-express/stubs',
   stubs: {
     resource: 'resource.stub',
     collection: 'resource.collection.stub',

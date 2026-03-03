@@ -1,4 +1,4 @@
-import { ArcstackConsoleApp } from "@arcstack/console/app";
+import { ArcstackConsoleApp } from "@arcstack-hq/console/app";
 import { Command } from "@h3ravel/musket";
 
 // oxlint-disable-next-line typescript/no-explicit-any

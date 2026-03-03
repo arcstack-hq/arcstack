@@ -1,5 +1,5 @@
 {
-    "name": "@arcstack/driver-h3",
+    "name": "@arcstack-hq/driver-h3",
     "version": "0.1.1",
     "type": "module",
     "files": [
@@ -18,7 +18,7 @@
         "./package.json": "./package.json"
     },
     "dependencies": {
-        "@arcstack/contract": "workspace:^"
+        "@arcstack-hq/contract": "workspace:^"
     },
     "peerDependencies": {
         "clear-router": "^2.1.6",

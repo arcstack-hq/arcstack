@@ -1,4 +1,4 @@
-# @arcstack/contract
+# @arcstack-hq/contract
 
 Framework-agnostic contracts used by Arcstack runtime kits.
 

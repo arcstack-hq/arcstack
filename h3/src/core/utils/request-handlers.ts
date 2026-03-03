@@ -4,9 +4,9 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 
 import { Prisma } from "@prisma/client";
 import { ValidationException } from "kanun";
+import { buildHtmlErrorResponse } from "@arcstack-hq/common";
 import { env } from "./helpers";
 import path from "node:path";
-import { buildHtmlErrorResponse } from "@arcstack/common";
 
 /**
  * Global error handler for the H3 application. 

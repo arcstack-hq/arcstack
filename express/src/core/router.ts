@@ -1,4 +1,4 @@
-import { ArcstackRouteListOptions } from "@arcstack/contract";
+import { ArcstackRouteListOptions } from "@arcstack-hq/contract";
 import { Router as ClearRouter } from "clear-router/express";
 import { RequestError } from "./utils/errors";
 import express from "express";

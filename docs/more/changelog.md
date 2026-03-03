@@ -8,9 +8,9 @@ The format follows semantic versioning principles.
 
 ### Added
 
-- Framework-agnostic shared packages: `@arcstack/contract`, `@arcstack/common`, `@arcstack/console`, `@arcstack/database`.
-- Dedicated runtime drivers: `@arcstack/driver-express` and `@arcstack/driver-h3`.
-- Shared console base commands in `@arcstack/console`: `route:list`, `make:controller`, `make:resource`, `make:full-resource`, `dev`, `build`.
+- Framework-agnostic shared packages: `@arcstack-hq/contract`, `@arcstack-hq/common`, `@arcstack-hq/console`, `@arcstack-hq/database`.
+- Dedicated runtime drivers: `@arcstack-hq/driver-express` and `@arcstack-hq/driver-h3`.
+- Shared console base commands in `@arcstack-hq/console`: `route:list`, `make:controller`, `make:resource`, `make:full-resource`, `dev`, `build`.
 - Lean starter profiles in scaffolding: `express-lean` and `h3-lean`.
 - Root-level tests for shared command surface and integration behavior.
 
@@ -19,7 +19,7 @@ The format follows semantic versioning principles.
 - Moved duplicated console logic from kit-local implementations into shared console package architecture.
 - Standardized router contract usage for route binding/listing across runtimes.
 - Lean kit generation now strips app/api/database scaffolding by removing `src/app`, `src/routes/api.ts`, Prisma/database files, and DB dependencies.
-- Added root script `publish:packages` to publish `@arcstack/*` packages.
+- Added root script `publish:packages` to publish `@arcstack-hq/*` packages.
 
 ### Docs
 

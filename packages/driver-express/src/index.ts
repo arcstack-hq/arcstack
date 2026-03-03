@@ -1,6 +1,6 @@
 import express, { type ErrorRequestHandler, type Express, type Handler } from "express";
 
-import { ArcstackKitDriver, PromiseOrValue } from "@arcstack/contract";
+import { ArcstackKitDriver, PromiseOrValue } from "@arcstack-hq/contract";
 
 export interface ExpressDriverOptions {
     bindRouter: (app: Express) => PromiseOrValue<void>;

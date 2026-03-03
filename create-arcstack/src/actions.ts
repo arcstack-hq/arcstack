@@ -184,7 +184,7 @@ export default class {
     if (existsSync(pkgPath)) {
       const pkg = await readFile(pkgPath, "utf-8").then(JSON.parse);
       const depsToRemove = [
-        "@arcstack/database",
+        "@arcstack-hq/database",
         "@prisma/adapter-pg",
         "@prisma/client",
         "pg",

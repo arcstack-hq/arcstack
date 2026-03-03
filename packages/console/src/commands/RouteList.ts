@@ -1,5 +1,5 @@
 import { ArcstackConsoleApp } from "../app";
-import type { ArcstackRouterAwareCore } from "@arcstack/contract";
+import type { ArcstackRouterAwareCore } from "@arcstack-hq/contract";
 import { Command } from "@h3ravel/musket";
 import type { Route } from "clear-router";
 import chalk from "chalk";

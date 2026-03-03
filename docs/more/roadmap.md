@@ -7,13 +7,13 @@ This roadmap tracks Arcstack progress and upcoming priorities.
 ### Completed
 
 - ✅ Framework-agnostic contracts and shared packages
-  - `@arcstack/contract`
-  - `@arcstack/common`
-  - `@arcstack/console`
-  - `@arcstack/database`
+  - `@arcstack-hq/contract`
+  - `@arcstack-hq/common`
+  - `@arcstack-hq/console`
+  - `@arcstack-hq/database`
 - ✅ Driver packages for current runtimes
-  - `@arcstack/driver-express`
-  - `@arcstack/driver-h3`
+  - `@arcstack-hq/driver-express`
+  - `@arcstack-hq/driver-h3`
 - ✅ Shared console command surface
   - `route:list`
   - `make:controller`

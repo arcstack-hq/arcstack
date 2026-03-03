@@ -1,5 +1,5 @@
 {
-    "name": "@arcstack/console",
+    "name": "@arcstack-hq/console",
     "version": "0.1.1",
     "type": "module",
     "files": [
@@ -30,8 +30,8 @@
         "clear-router": "^2.1.6"
     },
     "dependencies": {
-        "@arcstack/common": "workspace:^",
-        "@arcstack/contract": "workspace:^",
+        "@arcstack-hq/common": "workspace:^",
+        "@arcstack-hq/contract": "workspace:^",
         "@h3ravel/musket": "^0.10.1",
         "chalk": "^5.6.2",
         "resora": "^0.2.3"

@@ -12,14 +12,14 @@
     "lint:fix": "oxlint --fix && oxfmt",
     "dev": "tsdown --log-level silent",
     "build": "NODE_ENV=production tsdown",
-    "cmd": "NODE_OPTIONS=--enable-source-maps tsx ./node_modules/@arcstack/console/dist/index.js"
+    "cmd": "NODE_OPTIONS=--enable-source-maps tsx ./node_modules/@arcstack-hq/console/dist/index.js"
   },
   "dependencies": {
-    "@arcstack/common": "workspace:^",
-    "@arcstack/console": "workspace:^",
-    "@arcstack/contract": "workspace:^",
-    "@arcstack/database": "workspace:^",
-    "@arcstack/driver-h3": "workspace:^",
+    "@arcstack-hq/common": "workspace:^",
+    "@arcstack-hq/console": "workspace:^",
+    "@arcstack-hq/contract": "workspace:^",
+    "@arcstack-hq/database": "workspace:^",
+    "@arcstack-hq/driver-h3": "workspace:^",
     "@h3ravel/musket": "^0.10.1",
     "@prisma/adapter-pg": "^7.4.0",
     "@prisma/client": "^7.4.0",

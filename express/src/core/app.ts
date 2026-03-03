@@ -1,11 +1,11 @@
-import { bindGracefulShutdown } from "@arcstack/common";
+import { bindGracefulShutdown } from "@arcstack-hq/common";
 import { Router } from "src/core/router";
 import config from "src/config/middleware";
 import path from "path";
 import { prisma } from "src/core/database";
 import ErrorHandler from "./utils/request-handlers";
-import { ExpressDriver } from "@arcstack/driver-express";
-import { ArcstackKitDriver, ArcstackRouterAwareCore, ArcstackRouterContract, ArcstackRouteListOptions } from "@arcstack/contract";
+import { ExpressDriver } from "@arcstack-hq/driver-express";
+import { ArcstackKitDriver, ArcstackRouterAwareCore, ArcstackRouterContract, ArcstackRouteListOptions } from "@arcstack-hq/contract";
 import { type Express, type Handler } from "express";
 
 export default class Application implements ArcstackRouterAwareCore<Express, unknown> {

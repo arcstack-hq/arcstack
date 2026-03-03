@@ -4,7 +4,7 @@ This page documents Arcstack’s stable public surface across starter kits.
 
 ## Runtime Contracts
 
-Arcstack defines framework-agnostic boundaries in `@arcstack/contract`.
+Arcstack defines framework-agnostic boundaries in `@arcstack-hq/contract`.
 
 ### `ArcstackKitDriver<TApp, TMiddleware>`
 
@@ -35,7 +35,7 @@ Application core implementations expose:
 
 ## Shared Console Runtime
 
-Arcstack kits use `@arcstack/console` to run common commands.
+Arcstack kits use `@arcstack-hq/console` to run common commands.
 
 - Entry: `runConsoleKernel()`
 - Loads app core from `src/core/bootstrap.ts`
@@ -138,12 +138,12 @@ Remove:
 
 Core shared packages:
 
-- `@arcstack/contract`
-- `@arcstack/common`
-- `@arcstack/console`
-- `@arcstack/database` (full kits)
+- `@arcstack-hq/contract`
+- `@arcstack-hq/common`
+- `@arcstack-hq/console`
+- `@arcstack-hq/database` (full kits)
 
 Driver packages:
 
-- `@arcstack/driver-express`
-- `@arcstack/driver-h3`
+- `@arcstack-hq/driver-express`
+- `@arcstack-hq/driver-h3`
