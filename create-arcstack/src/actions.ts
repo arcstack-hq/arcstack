@@ -124,6 +124,9 @@ export default class {
     const pkg = await readFile(pkgPath!, "utf-8").then(JSON.parse);
 
     delete pkg.packageManager;
+    delete pkg.predev;
+    delete pkg.prebuild;
+    delete pkg.precmd;
     pkg.name = Str.slugify(this.appName ?? basename(this.location!).replace(".", ""), "-");
     if (this.description) {
       pkg.description = this.description;
