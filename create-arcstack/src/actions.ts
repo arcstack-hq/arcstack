@@ -124,9 +124,11 @@ export default class {
     const pkg = await readFile(pkgPath!, "utf-8").then(JSON.parse);
 
     delete pkg.packageManager;
-    delete pkg.predev;
-    delete pkg.prebuild;
-    delete pkg.precmd;
+    delete pkg.scripts.predev;
+    delete pkg.scripts.prebuild;
+    delete pkg.scripts.precmd;
+    delete pkg.scripts.build;
+    delete pkg.scripts.dev;
     pkg.name = Str.slugify(this.appName ?? basename(this.location!).replace(".", ""), "-");
     if (this.description) {
       pkg.description = this.description;
@@ -163,5 +165,70 @@ export default class {
     if (existsSync(exampleEnvPath)) {
       await copyFile(exampleEnvPath, envPath);
     }
+  }
+
+  async makeLeanProfile (_kit: "express" | "h3") {
+    const filesToRemove = [
+      "src/app",
+      "src/routes/api.ts",
+      "src/core/database.ts",
+      "prisma",
+      "prisma.config.ts",
+    ];
+
+    await Promise.allSettled(
+      filesToRemove.map((file) => rm(join(this.location!, file), { force: true, recursive: true })),
+    );
+
+    const pkgPath = join(this.location!, "package.json");
+    if (existsSync(pkgPath)) {
+      const pkg = await readFile(pkgPath, "utf-8").then(JSON.parse);
+      const depsToRemove = [
+        "@arcstack/database",
+        "@prisma/adapter-pg",
+        "@prisma/client",
+        "pg",
+        "prisma",
+        "@types/pg",
+      ];
+
+      for (const dep of depsToRemove) {
+        delete pkg.dependencies?.[dep];
+        delete pkg.devDependencies?.[dep];
+      }
+
+      await writeFile(pkgPath, JSON.stringify(pkg, null, 2));
+    }
+
+    const filesToPatch = [
+      "src/core/app.ts",
+      "src/core/utils/request-handlers.ts",
+    ];
+
+    for (const file of filesToPatch) {
+      const filePath = join(this.location!, file);
+
+      if (!existsSync(filePath)) {
+        continue;
+      }
+
+      let content = await readFile(filePath, "utf-8");
+
+      content = content
+        .replace('import { prisma } from "src/core/database";\n', "")
+        .replace('import { Prisma } from "@prisma/client";\n', "")
+        .replace("  async shutdown () {\n    await prisma.$disconnect();\n    process.exit(0);\n  }", "  async shutdown () {\n    process.exit(0);\n  }")
+        .replace(
+          " * Shuts down the application by disconnecting from the database and exiting the process.",
+          " * Shuts down the application and exits the process.",
+        )
+        .replace(
+          /\n\s*if \((?:err|cause) instanceof Prisma\.PrismaClientKnownRequestError && (?:err|cause)\.code === "P2025"\) \{\n\s*error\.code = 404;\n\s*error\.message = `\$\{(?:err|cause)\.meta\?\.modelName\} not found!`;\n\s*\}\n/g,
+          "\n",
+        );
+
+      await writeFile(filePath, content, "utf-8");
+    }
+
   }
 }

@@ -25,8 +25,8 @@
     "cli"
   ],
   "scripts": {
-    "quick:test": "pnpm vitest",
-    "test": "pnpm run quick:test",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "runner": "tsx --experimental-specifier-resolution=node src/run.ts",
     "build": "tsdown",
     "version": "pnpm run build",
@@ -55,9 +55,7 @@
   "devDependencies": {
     "@changesets/cli": "^2.29.5",
     "eslint": "^9.32.0",
-    "ts-node": "^10.9.2",
-    "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.2.4"
+    "ts-node": "^10.9.2"
   },
   "packageManager": "pnpm@10.14.0"
 }

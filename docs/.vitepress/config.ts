@@ -1,0 +1,62 @@
+import { defineConfig } from 'vitepress'
+
+// https://vitepress.dev/reference/site-config
+export default defineConfig({
+  cleanUrls: true,
+  base: '/arcstack/',
+  title: "Arcstack",
+  description: "Simple, Starter Kit for Node.js applications built with TypeScript",
+  head: [
+    ['link', { rel: 'icon', href: '/banner.png' }],
+    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
+    ['meta', { name: 'description', content: 'Simple, Starter Kit for Node.js applications built with TypeScript' }],
+    ['meta', { name: 'keywords', content: 'API, Web, Node.js, TypeScript, Starter Kit' }],
+    ['meta', { name: 'author', content: 'Toneflix' }],
+    ['meta', { property: 'og:title', content: 'Arcstack' }],
+    ['meta', { property: 'og:description', content: 'Simple, Starter Kit for Node.js applications built with TypeScript' }],
+    ['meta', { property: 'og:image', content: '/banner.png' }],
+    ['meta', { property: 'og:url', content: 'https://arcstack-hq.github.io/arcstack/' }],
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:title', content: 'Arcstack' }],
+    ['meta', { name: 'twitter:description', content: 'Simple, Starter Kit for Node.js applications built with TypeScript' }],
+    ['meta', { name: 'twitter:image', content: '/banner.png' }]
+  ],
+  themeConfig: {
+    // https://vitepress.dev/reference/default-theme-config
+    nav: [
+      { text: 'Home', link: '/' },
+      { text: 'Guide', link: '/guide/getting-started' },
+      { text: 'Architecture', link: '/architecture/overview' },
+      { text: 'API', link: '/api' }
+    ],
+
+    sidebar: [
+      {
+        text: 'Guide',
+        items: [
+          { text: 'Getting Started', link: '/guide/getting-started' },
+          { text: 'Api Reference', link: '/api' },
+        ]
+      },
+      {
+        text: 'Architecture',
+        items: [
+          { text: 'Overview', link: '/architecture/overview' },
+          { text: 'Unification Roadmap', link: '/architecture/unification-roadmap' },
+        ]
+      },
+      {
+        text: 'More',
+        items: [
+          { text: 'Roadmap', link: '/more/roadmap' },
+          { text: 'Contributing', link: '/more/contributing' },
+          { text: 'Changelog', link: '/more/changelog' },
+        ]
+      }
+    ],
+
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/arcstack-hq/arcstack' }
+    ]
+  }
+})

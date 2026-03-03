@@ -150,14 +150,23 @@ export class CreateArcstackCommand extends Command {
     }
 
     const source: string = pre && kit.prereleaseSource ? kit.prereleaseSource! : kit.source;
+    const selectedAlias = (kit.baseAlias ?? kit.alias).replace(/-lean$/i, "") as "express" | "h3";
     const actions = new Actions(join(process.cwd(), location), appName, description);
     const spinner = ora(`Loading Template...`).start();
 
     const result = await actions.download(source, install, token, options.overwrite);
 
-    if (result.dir && kit.alias) {
-      await cleanDirectoryExcept(result.dir, kit.alias);
-      await hoistDirectoryContents(result.dir, join(result.dir, kit.alias));
+    if (result.dir && selectedAlias) {
+      await cleanDirectoryExcept(result.dir, selectedAlias);
+      await hoistDirectoryContents(result.dir, join(result.dir, selectedAlias));
+    }
+
+    if (kit.lean) {
+      spinner.info(Logger.parse([[
+        "Applying lean profile...",
+        "green",
+      ]], "", false)).start();
+      await actions.makeLeanProfile(selectedAlias);
     }
 
     spinner.info(Logger.parse([["Cleaning Up...", "green"]], "", false)).start();

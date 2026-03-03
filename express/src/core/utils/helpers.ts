@@ -62,19 +62,4 @@ export const appUrl = (link?: string): string => {
     // Return default URL with link if provided
     return link ? `${defaultUrl}/${link.replace(/^\/+/, "")}` : defaultUrl;
   }
-};
-
-/**
- *
- * @param str String to truncate
- * @param len Length of the string
- * @param suffix Suffix to add to the string
- */
-export const truncateText = (str: string, len: number = 20, suffix: string = "..."): string => {
-  if (!str) {
-    return "";
-  }
-  str = str.replace(/(<([^>]+)>)/gi, "");
-  const s = (str || "").length > len ? str.substring(0, len - 3) + suffix : str || "";
-  return s.replace("\n", " ").replace(" " + suffix, suffix.slice(1));
-};
+}; 

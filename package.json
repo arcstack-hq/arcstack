@@ -5,10 +5,17 @@
   "scripts": {
     "lint": "oxlint",
     "lint:fix": "oxlint --fix && oxfmt",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:integration": "vitest run tests/integration",
     "build:packages": "pnpm -r --filter \"@arcstack/*\" build",
+    "publish:packages": "pnpm -r --filter \"@arcstack/*\" publish --access public",
     "dev": "tsdown --silent",
     "build": "NODE_ENV=production tsdown",
-    "cmd": "tsx src/core/commands/index.ts"
+    "cmd": "tsx src/core/commands/index.ts",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
     "@types/node": "^25.2.3",
@@ -22,6 +29,8 @@
     "tsdown": "^0.20.3",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitepress": "^1.6.4",
     "vitest": "^3.2.4"
   }
 }

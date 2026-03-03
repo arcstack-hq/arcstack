@@ -1,6 +1,6 @@
 import { assert, test } from "vitest";
 
-import { resolveStubsDir } from "../src/app";
+import { resolveStubsDir } from "../../packages/console/src/app";
 
 test("resolveStubsDir prefers localStubsDir from config", () => {
     const selected = resolveStubsDir({

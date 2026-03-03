@@ -6,7 +6,8 @@
         "dist"
     ],
     "scripts": {
-        "build": "tsdown --config-loader unconfig"
+        "build": "tsdown --config-loader unconfig",
+        "prepublishOnly": "pnpm build"
     },
     "publishConfig": {
         "access": "public"

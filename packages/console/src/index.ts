@@ -3,6 +3,8 @@
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 import { ArcstackConsoleApp } from "./app";
+import { BuildCommand } from "./commands/BuildCommand";
+import { DevCommand } from "./commands/DevCommand";
 import { Kernel } from "@h3ravel/musket";
 import { MakeController } from "./commands/MakeController";
 import { MakeFullResource } from "./commands/MakeFullResource";
@@ -42,7 +44,14 @@ export const runConsoleKernel = async (options: RunConsoleOptions = {}) => {
     await Kernel.init(await new ArcstackConsoleApp(app, { stubsDir }).loadConfig(), {
         logo: options.logo ?? logo,
         name: "Cmd",
-        baseCommands: [RouteList, MakeResource, MakeController, MakeFullResource],
+        baseCommands: [
+            RouteList,
+            MakeResource,
+            MakeController,
+            MakeFullResource,
+            DevCommand,
+            BuildCommand
+        ],
         discoveryPaths: [join(process.cwd(), "src/core/console/commands/*.ts")],
         exceptionHandler (exception) {
             throw exception;
