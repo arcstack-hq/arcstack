@@ -8,5 +8,4 @@ bin/*
 .DS_Store
 h3ravel
 arcstack
-arcstack-h3
-arcstack-express
+arcstack-*

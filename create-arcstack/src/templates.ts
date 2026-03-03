@@ -26,18 +26,18 @@ export const templates: {
       source: "github:toneflix/arcstack",
     },
     {
-      name: "H3 Starter Kit",
-      alias: "h3",
-      hint: "A H3 application starter kit",
-      source: "github:toneflix/arcstack",
-    },
-    {
       name: "Express Lean Starter Kit",
       alias: "express-lean",
       hint: "A minimal Express application starter kit",
       source: "github:toneflix/arcstack",
       lean: true,
       baseAlias: "express",
+    },
+    {
+      name: "H3 Starter Kit",
+      alias: "h3",
+      hint: "A H3 application starter kit",
+      source: "github:toneflix/arcstack",
     },
     {
       name: "H3 Lean Starter Kit",
@@ -48,3 +48,11 @@ export const templates: {
       baseAlias: "h3",
     },
   ];
+
+export const dependencyTemplates = {
+  "@arcstack-hq/common": "^0.1.4",
+  "@arcstack-hq/console": "^0.1.4",
+  "@arcstack-hq/contract": "^0.1.4",
+  "@arcstack-hq/database": "^0.1.4",
+  "@arcstack-hq/driver-express": "^0.1.4"
+}

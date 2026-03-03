@@ -5,6 +5,7 @@ import path, { basename, join, relative } from "node:path";
 
 import { Str } from "@h3ravel/support";
 import { chdir } from "node:process";
+import { dependencyTemplates } from "./templates";
 import { downloadTemplate } from "giget";
 import { existsSync } from "node:fs";
 
@@ -129,9 +130,17 @@ export default class {
     delete pkg.scripts.precmd;
     delete pkg.scripts.build;
     delete pkg.scripts.dev;
-    pkg.name = Str.slugify(this.appName ?? basename(this.location!).replace(".", ""), "-");
+
+    pkg.name = Str.slugify(
+      this.appName ?? basename(this.location!).replace('.', ''), '-'
+    );
+
     if (this.description) {
       pkg.description = this.description;
+    }
+
+    for (const [name, version] of Object.entries(dependencyTemplates)) {
+      pkg.dependencies[name] = version;
     }
 
     await Promise.allSettled([
