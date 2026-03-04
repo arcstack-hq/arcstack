@@ -71,5 +71,6 @@ jobs:
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
         with:
+          directory: ./coverage
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: arkstack-hq/arkstack
