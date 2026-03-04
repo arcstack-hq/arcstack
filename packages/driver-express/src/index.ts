@@ -1,6 +1,6 @@
-import express, { type ErrorRequestHandler, type Express, type Handler } from "express";
+import express, { type ErrorRequestHandler, type Express, type Handler } from 'express'
 
-import { ArkstackKitDriver, PromiseOrValue } from "@arkstack/contract";
+import { ArkstackKitDriver, PromiseOrValue } from '@arkstack/contract'
 
 export interface ExpressDriverOptions {
     bindRouter: (app: Express) => PromiseOrValue<void>;
@@ -12,8 +12,8 @@ export interface ExpressDriverOptions {
  * contract for the Express framework.
  */
 export class ExpressDriver extends ArkstackKitDriver<Express, Handler> {
-    readonly name = "express";
-    private readonly options: ExpressDriverOptions;
+    readonly name = 'express'
+    private readonly options: ExpressDriverOptions
 
     /**
      * Creates an instance of ExpressDriver.
@@ -21,8 +21,8 @@ export class ExpressDriver extends ArkstackKitDriver<Express, Handler> {
      * @param options 
      */
     constructor(options: ExpressDriverOptions) {
-        super();
-        this.options = options;
+        super()
+        this.options = options
     }
 
     /**
@@ -31,7 +31,7 @@ export class ExpressDriver extends ArkstackKitDriver<Express, Handler> {
      * @returns 
      */
     createApp (): Express {
-        return express();
+        return express()
     }
 
     /**
@@ -41,7 +41,7 @@ export class ExpressDriver extends ArkstackKitDriver<Express, Handler> {
      * @param publicPath 
      */
     mountPublicAssets (app: Express, publicPath: string): void {
-        app.use(express.static(publicPath));
+        app.use(express.static(publicPath))
     }
 
     /**
@@ -50,7 +50,7 @@ export class ExpressDriver extends ArkstackKitDriver<Express, Handler> {
      * @param app 
      */
     bindRouter (app: Express): PromiseOrValue<void> {
-        return this.options.bindRouter(app);
+        return this.options.bindRouter(app)
     }
 
     /**
@@ -60,7 +60,7 @@ export class ExpressDriver extends ArkstackKitDriver<Express, Handler> {
      * @param middleware 
      */
     applyMiddleware (app: Express, middleware: Handler): void {
-        app.use(middleware);
+        app.use(middleware)
     }
 
     /**
@@ -71,7 +71,7 @@ export class ExpressDriver extends ArkstackKitDriver<Express, Handler> {
      */
     registerErrorHandler (app: Express): void {
         if (this.options.errorHandler) {
-            app.use(this.options.errorHandler as ErrorRequestHandler);
+            app.use(this.options.errorHandler as ErrorRequestHandler)
         }
     }
 
@@ -83,7 +83,7 @@ export class ExpressDriver extends ArkstackKitDriver<Express, Handler> {
      */
     start (app: Express, port: number): void {
         app.listen(port, () => {
-            console.log(`Server is running on http://localhost:${port}`);
-        });
+            console.log(`Server is running on http://localhost:${port}`)
+        })
     }
 }

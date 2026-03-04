@@ -1,13 +1,13 @@
-import ErrorHandler from "./request-handlers";
-import { HTTPError } from "h3";
-import { HttpContext } from "clear-router/types/h3";
+import ErrorHandler from './request-handlers'
+import { HTTPError } from 'h3'
+import { HttpContext } from 'clear-router/types/h3'
 
 export class RequestError extends HTTPError {
-  status: number;
+  status: number
 
   constructor(message?: string, statusCode: number = 400, options?: ErrorOptions) {
-    super(message ?? "Bad Request", { ...options, status: statusCode });
-    this.status = statusCode;
+    super(message ?? 'Bad Request', { ...options, status: statusCode })
+    this.status = statusCode
   }
 
   /**
@@ -23,10 +23,10 @@ export class RequestError extends HTTPError {
   ): asserts value is T {
     if (!value) {
       if (ctx) {
-        return ErrorHandler(new RequestError(message, code), ctx) as never;
+        return ErrorHandler(new RequestError(message, code), ctx) as never
       }
 
-      throw new RequestError(message, code);
+      throw new RequestError(message, code)
     }
   }
 
@@ -46,17 +46,17 @@ export class RequestError extends HTTPError {
   ): asserts boolean is T {
     if (boolean) {
       if (ctx) {
-        return ErrorHandler(new RequestError(message, code), ctx) as never;
+        return ErrorHandler(new RequestError(message, code), ctx) as never
       }
 
-      throw new RequestError(message, code);
+      throw new RequestError(message, code)
     }
   }
 }
 
 export class AutheticationError extends RequestError {
   constructor(message?: string, options?: ErrorOptions) {
-    super(message, 401, options);
-    this.message = message ?? "Unauthenticated";
+    super(message, 401, options)
+    this.message = message ?? 'Unauthenticated'
   }
 }

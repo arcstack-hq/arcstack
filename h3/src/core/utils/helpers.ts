@@ -9,28 +9,28 @@ export const env = <X = string, Y = undefined> (
   env: string,
   defaultValue?: Y,
 ): Y extends undefined ? X : Y => {
-  let val: string | number | boolean | undefined | null = process.env[env] ?? "";
+  let val: string | number | boolean | undefined | null = process.env[env] ?? ''
 
-  if ([true, "true", "on", false, "false", "off"].includes(val)) {
-    val = [true, "true", "on"].includes(val);
+  if ([true, 'true', 'on', false, 'false', 'off'].includes(val)) {
+    val = [true, 'true', 'on'].includes(val)
   }
 
-  if (!isNaN(Number(val)) && typeof val !== "boolean") {
-    val = Number(val);
+  if (!isNaN(Number(val)) && typeof val !== 'boolean') {
+    val = Number(val)
   }
 
-  if (val === "") {
-    val = undefined;
+  if (val === '') {
+    val = undefined
   }
 
-  if (val === "null") {
-    val = null;
+  if (val === 'null') {
+    val = null
   }
 
-  val ??= defaultValue as typeof val;
+  val ??= defaultValue as typeof val
 
-  return val as Y extends undefined ? X : Y;
-};
+  return val as Y extends undefined ? X : Y
+}
 
 /**
  * Build the app url
@@ -39,30 +39,32 @@ export const env = <X = string, Y = undefined> (
  * @returns
  */
 export const appUrl = (link?: string): string => {
-  const port = env("PORT") || "3000";
-  const defaultUrl = `http://localhost:${port}`;
-  const appUrl = env("APP_URL") ?? defaultUrl;
+  const port = env('PORT') || '3000'
+  const defaultUrl = `http://localhost:${port}`
+  const appUrl = env('APP_URL') ?? defaultUrl
 
   try {
-    const url = new URL(appUrl);
+    const url = new URL(appUrl)
     // Append port only if APP_URL has a port or is localhost
-    if (url.port || url.hostname === "localhost") {
-      url.port = port;
+    if (url.port || url.hostname === 'localhost') {
+      url.port = port
     }
     // Remove trailing slash from base URL
-    let baseUrl = url.toString().replace(/\/$/, "");
+    const baseUrl = url.toString().replace(/\/$/, '')
     // Append link with proper path separator
     if (link) {
       // Ensure link starts with '/' and remove duplicate slashes
-      const normalizedLink = `/${link.replace(/^\/+/, "")}`;
-      return `${baseUrl}${normalizedLink}`;
+      const normalizedLink = `/${link.replace(/^\/+/, '')}`
+      
+return `${baseUrl}${normalizedLink}`
     }
-    return baseUrl;
+    
+return baseUrl
   } catch {
     // Return default URL with link if provided
-    return link ? `${defaultUrl}/${link.replace(/^\/+/, "")}` : defaultUrl;
+    return link ? `${defaultUrl}/${link.replace(/^\/+/, '')}` : defaultUrl
   }
-};
+}
 
 /**
  * Returns everything in `subject` before the first occurrence of `search`.
@@ -73,7 +75,7 @@ export const appUrl = (link?: string): string => {
  * @returns
  */
 export function before (search: string, subject: string): string {
-  const index = subject.indexOf(search);
+  const index = subject.indexOf(search)
 
-  return index === -1 ? subject : subject.slice(0, index);
+  return index === -1 ? subject : subject.slice(0, index)
 }

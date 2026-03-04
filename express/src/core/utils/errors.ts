@@ -1,25 +1,25 @@
-import { Request, Response } from "express"
+import { Request, Response } from 'express'
 
-import ErrorHandler from "./request-handlers";
+import ErrorHandler from './request-handlers'
 
 export class BaseError extends Error {
 
-    errors?: { [key: string]: string[] | string } | undefined = undefined;
+    errors?: { [key: string]: string[] | string } | undefined = undefined
 
-    statusCode: number;
+    statusCode: number
 
     constructor(message?: string, statusCode: number = 400, options?: ErrorOptions) {
-        super(message, options);
+        super(message, options)
         this.statusCode = statusCode
     }
 }
 
 export class RequestError extends BaseError {
 
-    statusCode: number;
+    statusCode: number
 
     constructor(message?: string, statusCode: number = 400, options?: ErrorOptions) {
-        super(message, statusCode, options);
+        super(message, statusCode, options)
         this.statusCode = statusCode
     }
 
@@ -40,7 +40,7 @@ export class RequestError extends BaseError {
                 return void ErrorHandler(new RequestError(message, code), req, res)
             }
 
-            throw new RequestError(message, code);
+            throw new RequestError(message, code)
         }
     }
 
@@ -64,14 +64,14 @@ export class RequestError extends BaseError {
                 return void ErrorHandler(new RequestError(message, code), req, res)
             }
 
-            throw new RequestError(message, code);
+            throw new RequestError(message, code)
         }
     }
 }
 
 export class AutheticationError extends RequestError {
     constructor(message?: string, options?: ErrorOptions) {
-        super(message, 401, options);
+        super(message, 401, options)
         this.message = message ?? 'Unauthenticated'
     }
 }

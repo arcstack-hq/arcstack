@@ -1,6 +1,6 @@
-import { IUser } from "./models/interfaces";
+import { IUser } from './models/interfaces'
 
-declare module "resora" {
+declare module 'resora' {
   interface Config {
     stubs: {
       controller: string;
@@ -13,7 +13,7 @@ declare module "resora" {
 
 declare global {
   namespace Express {
-    interface User extends IUser { }
+    // interface User extends IUser { }
 
     interface Request {
       user?: User | undefined;
@@ -22,4 +22,4 @@ declare global {
   }
 }
 
-export { };
+export { }

@@ -1,25 +1,25 @@
-import { assert, test } from "vitest";
+import { assert, test } from 'vitest'
 
-import { resolveStubsDir } from "../../packages/console/src/app";
+import { resolveStubsDir } from '../../packages/console/src/app'
 
-test("resolveStubsDir prefers localStubsDir from config", () => {
+test('resolveStubsDir prefers localStubsDir from config', () => {
     const selected = resolveStubsDir({
-        localStubsDir: "src/core/console/stubs",
-    });
+        localStubsDir: 'src/core/console/stubs',
+    })
 
-    assert.equal(selected, `${process.cwd()}/src/core/console/stubs`);
-});
+    assert.equal(selected, `${process.cwd()}/src/core/console/stubs`)
+})
 
-test("resolveStubsDir falls back to options stubsDir", () => {
+test('resolveStubsDir falls back to options stubsDir', () => {
     const selected = resolveStubsDir(undefined, {
-        stubsDir: "/tmp/stubs",
-    });
+        stubsDir: '/tmp/stubs',
+    })
 
-    assert.equal(selected, "/tmp/stubs");
-});
+    assert.equal(selected, '/tmp/stubs')
+})
 
-test("resolveStubsDir returns undefined without config or fallback", () => {
-    const selected = resolveStubsDir(undefined);
+test('resolveStubsDir returns undefined without config or fallback', () => {
+    const selected = resolveStubsDir(undefined)
 
-    assert.equal(selected, undefined);
-});
+    assert.equal(selected, undefined)
+})

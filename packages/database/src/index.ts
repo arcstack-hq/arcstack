@@ -19,8 +19,8 @@ export interface CreateDatabaseClientOptions<TAdapter, TClient> {
 export const createDatabaseClient = <TAdapter, TClient> (
     options: CreateDatabaseClientOptions<TAdapter, TClient>,
 ): TClient => {
-    const connectionString = options.connectionString ?? process.env.DATABASE_URL ?? "";
-    const adapter = options.createAdapter({ connectionString });
+    const connectionString = options.connectionString ?? process.env.DATABASE_URL ?? ''
+    const adapter = options.createAdapter({ connectionString })
 
-    return options.createClient({ adapter });
-};
+    return options.createClient({ adapter })
+}

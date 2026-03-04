@@ -1,7 +1,7 @@
-import { Router } from "src/core/router";
+import { Router } from 'src/core/router'
 
-Router.get("/", ({ res }) => {
+Router.get('/', ({ res }) => {
   res
-    .setHeader("Content-Type", "text/html")
-    .send("Welcome to the Express application!");
-});
+    .setHeader('Content-Type', 'text/html')
+    .send('Welcome to the Express application!')
+})

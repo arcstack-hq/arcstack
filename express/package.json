@@ -6,8 +6,8 @@
   "scripts": {
     "predev": "pnpm -w run build:packages --log-level silent",
     "prebuild": "pnpm -w run build:packages --log-level silent",
-    "lint": "oxlint",
-    "lint:fix": "oxlint --fix && oxfmt",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
     "dev": "tsdown --log-level silent",
     "build": "NODE_ENV=production tsdown",
     "cmd": "NODE_OPTIONS=--enable-source-maps tsx ./node_modules/@arkstack/console/dist/index.js"
@@ -38,6 +38,8 @@
     "simple-body-validator": "^1.3.9"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@eslint/markdown": "^7.5.1",
     "@rollup/plugin-run": "^3.1.0",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
@@ -45,13 +47,13 @@
     "@types/method-override": "^3.0.0",
     "@types/node": "^25.2.3",
     "@types/pg": "^8.16.0",
-    "oxfmt": "^0.32.0",
-    "oxlint": "^1.47.0",
     "prisma": "^7.4.0",
+    "eslint": "^10.0.2",
     "source-map-support": "^0.5.21",
     "tsconfig-paths": "^4.2.0",
     "tsdown": "^0.20.3",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1"
   }
 }

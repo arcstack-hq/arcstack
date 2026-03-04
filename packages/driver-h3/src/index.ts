@@ -1,7 +1,7 @@
-import { ArkstackKitDriver, PromiseOrValue } from "@arkstack/contract";
-import { H3, serve } from "h3";
+import { ArkstackKitDriver, PromiseOrValue } from '@arkstack/contract'
+import { H3, serve } from 'h3'
 
-import { Middleware as H3BaseMiddleware } from "clear-router/types/h3";
+import { Middleware as H3BaseMiddleware } from 'clear-router/types/h3'
 
 // oxlint-disable-next-line typescript/no-explicit-any
 export type H3Middleware = H3BaseMiddleware | [H3BaseMiddleware, Record<string, any>];
@@ -16,8 +16,8 @@ export interface H3DriverOptions {
  * The H3Driver class implements the ArkstackKitDriver contract for the H3 framework.
  */
 export class H3Driver extends ArkstackKitDriver<H3, H3Middleware> {
-    readonly name = "h3";
-    private readonly options: H3DriverOptions;
+    readonly name = 'h3'
+    private readonly options: H3DriverOptions
 
     /**
      * Creates an instance of H3Driver.
@@ -25,8 +25,8 @@ export class H3Driver extends ArkstackKitDriver<H3, H3Middleware> {
      * @param options 
      */
     constructor(options: H3DriverOptions) {
-        super();
-        this.options = options;
+        super()
+        this.options = options
     }
 
     /**
@@ -35,7 +35,7 @@ export class H3Driver extends ArkstackKitDriver<H3, H3Middleware> {
      * @returns 
      */
     createApp (): H3 {
-        return this.options.createApp?.() ?? new H3();
+        return this.options.createApp?.() ?? new H3()
     }
 
     /**
@@ -45,7 +45,7 @@ export class H3Driver extends ArkstackKitDriver<H3, H3Middleware> {
      * @param publicPath 
      */
     mountPublicAssets (app: H3, publicPath: string): PromiseOrValue<void> {
-        return this.options.mountPublicAssets(app, publicPath);
+        return this.options.mountPublicAssets(app, publicPath)
     }
 
     /**
@@ -54,7 +54,7 @@ export class H3Driver extends ArkstackKitDriver<H3, H3Middleware> {
      * @param app 
      */
     bindRouter (app: H3): PromiseOrValue<void> {
-        return this.options.bindRouter(app);
+        return this.options.bindRouter(app)
     }
 
     /**
@@ -67,7 +67,7 @@ export class H3Driver extends ArkstackKitDriver<H3, H3Middleware> {
         app.use(
             Array.isArray(middleware) ? middleware[0] : middleware,
             Array.isArray(middleware) ? middleware[1] : undefined,
-        );
+        )
     }
 
     /**
@@ -77,6 +77,6 @@ export class H3Driver extends ArkstackKitDriver<H3, H3Middleware> {
      * @param port 
      */
     start (app: H3, port: number): void {
-        serve(app, { port });
+        serve(app, { port })
     }
 }

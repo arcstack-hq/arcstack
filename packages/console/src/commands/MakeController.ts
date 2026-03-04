@@ -1,5 +1,5 @@
-import { ArkstackConsoleApp } from "@arkstack/console/app";
-import { Command } from "@h3ravel/musket";
+import { ArkstackConsoleApp } from '@arkstack/console/app'
+import { Command } from '@h3ravel/musket'
 
 // oxlint-disable-next-line typescript/no-explicit-any
 export class MakeController extends Command<ArkstackConsoleApp<any>> {
@@ -8,17 +8,17 @@ export class MakeController extends Command<ArkstackConsoleApp<any>> {
         {--api : make an API controller}
         {--m|model? : name of model to attach to controller}
         {--force : force overwrite if controller already exists}
-    `;
+    `
 
-    protected description = "Create a new controller file";
+    protected description = 'Create a new controller file'
 
     async handle () {
-        this.app.command = this;
+        this.app.command = this
 
-        if (!this.argument("name")) return void this.error("Error: Controller name is required.");
+        if (!this.argument('name')) return void this.error('Error: Controller name is required.')
 
-        const name = this.app.makeController(this.argument("name"), this.options());
+        const name = this.app.makeController(this.argument('name'), this.options())
 
-        this.success(`Controller ${name} created successfully!`);
+        this.success(`Controller ${name} created successfully!`)
     }
 }

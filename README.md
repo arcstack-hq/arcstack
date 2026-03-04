@@ -40,7 +40,7 @@ npm run dev
 
 ## Project Structure
 
-```
+```txt
 src/
  ├── app/
  │   ├── http/
@@ -101,7 +101,7 @@ Arkstack uses structured error classes and centralized error middleware.
 Example:
 
 ```ts
-throw new RequestError("Profile not found", 404);
+throw new RequestError('Profile not found', 404);
 ```
 
 All errors return consistent JSON:
@@ -122,8 +122,8 @@ Standardized API responses:
 
 ```ts
 return new UserResource(req, res, user).json().status(200).additional({
-  status: "success",
-  message: "User retrieved",
+  status: 'success',
+  message: 'User retrieved',
 });
 ```
 

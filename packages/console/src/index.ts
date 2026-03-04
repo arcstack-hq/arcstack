@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from 'node:url'
 
-import { ArkstackConsoleApp } from "./app";
-import { BuildCommand } from "./commands/BuildCommand";
-import { DevCommand } from "./commands/DevCommand";
-import { Kernel } from "@h3ravel/musket";
-import { MakeController } from "./commands/MakeController";
-import { MakeFullResource } from "./commands/MakeFullResource";
-import { MakeResource } from "./commands/MakeResource";
-import { RouteList } from "./commands/RouteList";
-import { join } from "node:path";
-import { loadPrototypes } from "@arkstack/common";
-import logo from "./logo";
-import { realpathSync } from "node:fs";
+import { ArkstackConsoleApp } from './app'
+import { BuildCommand } from './commands/BuildCommand'
+import { DevCommand } from './commands/DevCommand'
+import { Kernel } from '@h3ravel/musket'
+import { MakeController } from './commands/MakeController'
+import { MakeFullResource } from './commands/MakeFullResource'
+import { MakeResource } from './commands/MakeResource'
+import { RouteList } from './commands/RouteList'
+import { join } from 'node:path'
+import { loadPrototypes } from '@arkstack/common'
+import logo from './logo'
+import { realpathSync } from 'node:fs'
 
 export interface RunConsoleOptions {
     logo?: string;
@@ -25,10 +25,11 @@ export interface RunConsoleOptions {
  * @returns 
  */
 const loadCoreApp = async () => {
-    const bootstrapPath = pathToFileURL(join(process.cwd(), "src/core/bootstrap.ts")).href;
-    const module = await import(bootstrapPath);
-    return module.app;
-};
+    const bootstrapPath = pathToFileURL(join(process.cwd(), 'src/core/bootstrap.ts')).href
+    const module = await import(bootstrapPath)
+    
+return module.app
+}
 
 /**
  * Runs the console kernel, initializing the application and registering commands.
@@ -36,14 +37,14 @@ const loadCoreApp = async () => {
  * @param options 
  */
 export const runConsoleKernel = async (options: RunConsoleOptions = {}) => {
-    loadPrototypes();
+    loadPrototypes()
 
-    const app = await loadCoreApp();
-    const stubsDir = process.env.ARKSTACK_STUBS_DIR;
+    const app = await loadCoreApp()
+    const stubsDir = process.env.ARKSTACK_STUBS_DIR
 
     await Kernel.init(await new ArkstackConsoleApp(app, { stubsDir }).loadConfig(), {
         logo: options.logo ?? logo,
-        name: "Cmd",
+        name: 'Cmd',
         baseCommands: [
             RouteList,
             MakeResource,
@@ -52,12 +53,12 @@ export const runConsoleKernel = async (options: RunConsoleOptions = {}) => {
             DevCommand,
             BuildCommand
         ],
-        discoveryPaths: [join(process.cwd(), "src/core/console/commands/*.ts")],
+        discoveryPaths: [join(process.cwd(), 'src/core/console/commands/*.ts')],
         exceptionHandler (exception) {
-            throw exception;
+            throw exception
         },
-    });
-};
+    })
+}
 
 /**
  * Determines if the current module is being executed as the entry 
@@ -66,22 +67,22 @@ export const runConsoleKernel = async (options: RunConsoleOptions = {}) => {
  * @returns 
  */
 const isEntrypointExecution = () => {
-    const argvEntry = process.argv[1];
+    const argvEntry = process.argv[1]
 
     if (!argvEntry) {
-        return false;
+        return false
     }
 
     try {
-        const currentModulePath = realpathSync(fileURLToPath(import.meta.url));
-        const entryPath = realpathSync(argvEntry);
+        const currentModulePath = realpathSync(fileURLToPath(import.meta.url))
+        const entryPath = realpathSync(argvEntry)
 
-        return currentModulePath === entryPath;
+        return currentModulePath === entryPath
     } catch {
-        return import.meta.url === pathToFileURL(argvEntry).href;
+        return import.meta.url === pathToFileURL(argvEntry).href
     }
-};
+}
 
 if (isEntrypointExecution()) {
-    await runConsoleKernel();
+    await runConsoleKernel()
 }

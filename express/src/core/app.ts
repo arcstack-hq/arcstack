@@ -1,17 +1,17 @@
-import { bindGracefulShutdown } from "@arkstack/common";
-import { Router } from "src/core/router";
-import config from "src/config/middleware";
-import path from "path";
-import { prisma } from "src/core/database";
-import ErrorHandler from "./utils/request-handlers";
-import { ExpressDriver } from "@arkstack/driver-express";
-import { ArkstackKitDriver, ArkstackRouterAwareCore, ArkstackRouterContract, ArkstackRouteListOptions } from "@arkstack/contract";
-import { type Express, type Handler } from "express";
+import { bindGracefulShutdown } from '@arkstack/common'
+import { Router } from 'src/core/router'
+import config from 'src/config/middleware'
+import path from 'path'
+import { prisma } from 'src/core/database'
+import ErrorHandler from './utils/request-handlers'
+import { ExpressDriver } from '@arkstack/driver-express'
+import { ArkstackKitDriver, ArkstackRouterAwareCore, ArkstackRouterContract, ArkstackRouteListOptions } from '@arkstack/contract'
+import { type Express, type Handler } from 'express'
 
 export default class Application implements ArkstackRouterAwareCore<Express, unknown> {
-  private app: Express;
-  private static app: Express;
-  private driver: ArkstackKitDriver<Express, Handler>;
+  private app: Express
+  private static app: Express
+  private driver: ArkstackKitDriver<Express, Handler>
 
   /**
    * Creates an instance of the Application class, initializing 
@@ -23,12 +23,12 @@ export default class Application implements ArkstackRouterAwareCore<Express, unk
   constructor(app?: Express) {
     this.driver = new ExpressDriver({
       bindRouter: async (runtime) => {
-        runtime.use(await Router.bind());
+        runtime.use(await Router.bind())
       },
       errorHandler: ErrorHandler,
-    });
-    this.app = app ?? this.driver.createApp();
-    Application.app = this.app;
+    })
+    this.app = app ?? this.driver.createApp()
+    Application.app = this.app
   }
 
   /**
@@ -37,7 +37,7 @@ export default class Application implements ArkstackRouterAwareCore<Express, unk
    * @returns 
    */
   getAppInstance () {
-    return this.app;
+    return this.app
   }
 
   /**
@@ -46,7 +46,7 @@ export default class Application implements ArkstackRouterAwareCore<Express, unk
    * @returns 
    */
   static getAppInstance () {
-    return Application.app;
+    return Application.app
   }
 
   /**
@@ -55,7 +55,7 @@ export default class Application implements ArkstackRouterAwareCore<Express, unk
    * @returns 
    */
   getDriver () {
-    return this.driver;
+    return this.driver
   }
 
   /**
@@ -67,7 +67,7 @@ export default class Application implements ArkstackRouterAwareCore<Express, unk
     return {
       bind: (_app: Express) => Router.bind(),
       list: (options: ArkstackRouteListOptions = {}) => Router.list(options),
-    };
+    }
   }
 
   /**
@@ -78,30 +78,30 @@ export default class Application implements ArkstackRouterAwareCore<Express, unk
    */
   public async boot (port: number) {
     // Load public assets
-    await this.driver.mountPublicAssets(this.app, path.join(process.cwd(), "public"));
+    await this.driver.mountPublicAssets(this.app, path.join(process.cwd(), 'public'))
 
     // Bind the router
-    await this.driver.bindRouter(this.app);
+    await this.driver.bindRouter(this.app)
 
     for (const middleware of config(this.app).global) {
-      await this.driver.applyMiddleware(this.app, middleware);
+      await this.driver.applyMiddleware(this.app, middleware)
     }
 
     // Error Handler
-    await this.driver.registerErrorHandler?.(this.app);
+    await this.driver.registerErrorHandler?.(this.app)
 
     // Start the server
-    await this.driver.start(this.app, port);
+    await this.driver.start(this.app, port)
 
     // Handle graceful shutdown
-    bindGracefulShutdown(async () => await this.shutdown());
+    bindGracefulShutdown(async () => await this.shutdown())
   }
 
   /**
    * Shuts down the application by disconnecting from the database and exiting the process.
    */
   async shutdown () {
-    await prisma.$disconnect();
-    process.exit(0);
+    await prisma.$disconnect()
+    process.exit(0)
   }
 }

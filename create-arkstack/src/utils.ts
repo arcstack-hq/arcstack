@@ -1,6 +1,6 @@
-import { readdir, rename, rm } from "node:fs/promises";
+import { readdir, rename, rm } from 'node:fs/promises'
 
-import path from "node:path";
+import path from 'node:path'
 
 /**
  * Removes all files in dirPath except the one specified by keepFileName
@@ -9,14 +9,14 @@ import path from "node:path";
  * @param keepFileName
  */
 export async function cleanDirectoryExcept (dirPath: string, keepFileName: string) {
-  const files = await readdir(dirPath);
+  const files = await readdir(dirPath)
 
   for (const file of files) {
-    if (file === keepFileName) continue;
+    if (file === keepFileName) continue
 
-    const fullPath = path.join(dirPath, file);
+    const fullPath = path.join(dirPath, file)
 
-    await rm(fullPath, { recursive: true, force: true });
+    await rm(fullPath, { recursive: true, force: true })
   }
 }
 
@@ -27,22 +27,22 @@ export async function cleanDirectoryExcept (dirPath: string, keepFileName: strin
  * @param parent
  */
 export async function hoistDirectoryContents (parent: string, dirPath: string) {
-  const source = path.isAbsolute(dirPath) ? dirPath : path.join(process.cwd(), dirPath);
+  const source = path.isAbsolute(dirPath) ? dirPath : path.join(process.cwd(), dirPath)
 
-  const targetParent = path.isAbsolute(parent) ? parent : path.join(process.cwd(), parent);
+  const targetParent = path.isAbsolute(parent) ? parent : path.join(process.cwd(), parent)
 
   if (!source.startsWith(targetParent)) {
-    throw new Error("Source must be inside the parent directory");
+    throw new Error('Source must be inside the parent directory')
   }
 
-  const entries = await readdir(source);
+  const entries = await readdir(source)
 
   for (const entry of entries) {
-    const from = path.join(source, entry);
-    const to = path.join(targetParent, entry);
+    const from = path.join(source, entry)
+    const to = path.join(targetParent, entry)
 
-    await rename(from, to);
+    await rename(from, to)
   }
 
-  await rm(source, { recursive: true });
+  await rm(source, { recursive: true })
 }

@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest"
+import { describe, expect, test } from 'vitest'
 
 describe('Support Package\'s Str', () => {
     test('plural of user is users', () => {

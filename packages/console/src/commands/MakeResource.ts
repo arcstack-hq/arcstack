@@ -1,4 +1,4 @@
-import { MakeResource as MakeResourceBase } from "resora";
+import { MakeResource as MakeResourceBase } from 'resora'
 
 export class MakeResource extends MakeResourceBase {
     signature = `#make:
@@ -15,7 +15,7 @@ export class MakeResource extends MakeResourceBase {
             | {prefix : prefix of the resources to create, "Admin" will create AdminResource, AdminCollection}
             | {--force : Create the resource or collection file even if it already exists.}
         }
-    `;
+    `
 
-    description = "Create a new resource or resource collection file";
+    description = 'Create a new resource or resource collection file'
 }

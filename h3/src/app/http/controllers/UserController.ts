@@ -1,7 +1,7 @@
-import { BaseController } from "@controllers/BaseController";
-import { HttpContext } from "clear-router/types/h3";
-import UserCollection from "../resources/UserCollection";
-import UserResource from "../resources/UserResource";
+import { BaseController } from '@controllers/BaseController'
+import { HttpContext } from 'clear-router/types/h3'
+import UserCollection from '../resources/UserCollection'
+import UserResource from '../resources/UserResource'
 
 /**
  * UserController
@@ -16,13 +16,13 @@ export default class UserController extends BaseController {
   index = async ({ req }: HttpContext) => {
     return await new UserCollection([])
       .additional({
-        status: "success",
-        message: "OK",
+        status: 'success',
+        message: 'OK',
         code: 200,
       })
       .response(req)
-      .setStatusCode(200);
-  };
+      .setStatusCode(200)
+  }
 
   /**
    * Get a specific resource
@@ -33,13 +33,13 @@ export default class UserController extends BaseController {
   show = async ({ req }: HttpContext) => {
     return new UserResource({ data: {} })
       .additional({
-        status: "success",
-        message: "OK",
+        status: 'success',
+        message: 'OK',
         code: 200,
       })
       .response(req)
-      .setStatusCode(200);
-  };
+      .setStatusCode(200)
+  }
 
   /**
    * Create a resource
@@ -50,13 +50,13 @@ export default class UserController extends BaseController {
   create = async ({ req }: HttpContext) => {
     return new UserResource({ data: {} })
       .additional({
-        status: "success",
-        message: "New User created successfully",
+        status: 'success',
+        message: 'New User created successfully',
         code: 201,
       })
       .response(req)
-      .setStatusCode(201);
-  };
+      .setStatusCode(201)
+  }
 
   /**
    * Update a specific resource
@@ -66,19 +66,19 @@ export default class UserController extends BaseController {
    */
   update = async ({ req }: HttpContext) => {
     const data = await this.validate({
-      name: "string|required",
-      age: "numeric|required|min:30",
-    });
+      name: 'string|required',
+      age: 'numeric|required|min:30',
+    })
 
     return new UserResource({ data })
       .additional({
-        status: "success",
-        message: "User updated successfully",
+        status: 'success',
+        message: 'User updated successfully',
         code: 202,
       })
       .response(req)
-      .setStatusCode(202);
-  };
+      .setStatusCode(202)
+  }
 
   /**
    * Delete a specific resource
@@ -89,11 +89,11 @@ export default class UserController extends BaseController {
   destroy = async ({ req }: HttpContext) => {
     return new UserResource({ data: {} })
       .additional({
-        status: "success",
-        message: "User deleted successfully",
+        status: 'success',
+        message: 'User deleted successfully',
         code: 202,
       })
       .response(req)
-      .setStatusCode(202);
-  };
+      .setStatusCode(202)
+  }
 }

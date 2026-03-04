@@ -31,7 +31,7 @@ export abstract class ArkstackKitDriver<TApp, TMiddleware> {
   abstract bindRouter (app: TApp): PromiseOrValue<void>;
   abstract applyMiddleware (app: TApp, middleware: TMiddleware): PromiseOrValue<void>;
   registerErrorHandler (_app: TApp): PromiseOrValue<void> {
-    return;
+    return
   }
   abstract start (app: TApp, port: number): PromiseOrValue<void>;
 }

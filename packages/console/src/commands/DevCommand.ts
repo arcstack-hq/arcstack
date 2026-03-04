@@ -1,31 +1,32 @@
-import { Command } from "@h3ravel/musket";
-import { spawn } from "node:child_process";
+import { Command } from '@h3ravel/musket'
+import { spawn } from 'node:child_process'
 
 export class DevCommand extends Command {
-    protected signature = "dev";
+    protected signature = 'dev'
 
-    protected description = "Run the development server";
+    protected description = 'Run the development server'
 
     async handle () {
         await new Promise<void>((resolve, reject) => {
-            const command = process.platform === "win32" ? "pnpm.cmd" : "pnpm";
-            const child = spawn(command, ["exec", "tsdown", "--log-level", "silent"], {
+            const command = process.platform === 'win32' ? 'pnpm.cmd' : 'pnpm'
+            const child = spawn(command, ['exec', 'tsdown', '--log-level', 'silent'], {
                 cwd: process.cwd(),
-                stdio: "inherit",
-            });
+                stdio: 'inherit',
+            })
 
-            child.on("error", (error) => {
-                reject(error);
-            });
+            child.on('error', (error) => {
+                reject(error)
+            })
 
-            child.on("exit", (code) => {
+            child.on('exit', (code) => {
                 if (code === 0 || code === null) {
-                    resolve();
-                    return;
+                    resolve()
+                    
+return
                 }
 
-                reject(new Error(`tsdown exited with code ${code}`));
-            });
-        });
+                reject(new Error(`tsdown exited with code ${code}`))
+            })
+        })
     }
 }

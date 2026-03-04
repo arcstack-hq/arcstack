@@ -1,16 +1,16 @@
-import { detect } from "detect-port";
+import { detect } from 'detect-port'
 
 export const bootWithDetectedPort = async (
   boot: (port: number) => Promise<void>,
   preferredPort: number = 3000,
 ) => {
-  const port = await detect(preferredPort);
-  await boot(port);
-};
+  const port = await detect(preferredPort)
+  await boot(port)
+}
 
 
 export const buildHtmlErrorResponse = ({
-  message = "An unexpected error occurred.",
+  message = 'An unexpected error occurred.',
   stack,
   title,
   code = 500,
@@ -21,17 +21,17 @@ export const buildHtmlErrorResponse = ({
   title?: string;
 }) => {
   const titleMap: Record<number, string> = {
-    400: "Bad Request",
-    401: "Unauthorized",
-    403: "Forbidden",
-    404: "Not Found",
-    500: "Internal Server Error",
-    502: "Bad Gateway",
-    503: "Service Unavailable",
-    504: "Gateway Timeout",
-  };
+    400: 'Bad Request',
+    401: 'Unauthorized',
+    403: 'Forbidden',
+    404: 'Not Found',
+    500: 'Internal Server Error',
+    502: 'Bad Gateway',
+    503: 'Service Unavailable',
+    504: 'Gateway Timeout',
+  }
 
-  title = titleMap[code] || title || "Error";
+  title = titleMap[code] || title || 'Error'
 
   return `
     <html>
@@ -65,8 +65,8 @@ export const buildHtmlErrorResponse = ({
         <h1>${code}</h1>
         <h3>${title}</h3>
         <p>${message}</p>
-        ${stack ? `<h2>Stack Trace:</h2><pre>${stack}</pre>` : ""}
+        ${stack ? `<h2>Stack Trace:</h2><pre>${stack}</pre>` : ''}
       </body>
     </html>
-  `;
-};
+  `
+}

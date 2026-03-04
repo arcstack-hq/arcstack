@@ -12,14 +12,16 @@ export const findUpConfig = async (base: string, name: string, extensions: strin
                 }
             }
         } catch {/** */ }
-        return ''
+        
+return ''
     }))!
 }
 
 export const exists = async (e: string) => {
     try {
         await stat(e)
-        return true
+        
+return true
     } catch {
         return false
     }

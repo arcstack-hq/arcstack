@@ -1,7 +1,7 @@
-import { Resource, ResourceCollection } from "resora";
+import { Resource, ResourceCollection } from 'resora'
 
-import { BaseController } from "@controllers/BaseController";
-import { HttpContext } from "clear-router/types/express";
+import { BaseController } from '@controllers/BaseController'
+import { HttpContext } from 'clear-router/types/express'
 
 /**
  * UserController
@@ -16,13 +16,13 @@ export default class UserController extends BaseController {
   index = async ({ res }: HttpContext) => {
     return new ResourceCollection({ data: [] }, res)
       .additional({
-        status: "success",
-        message: "OK",
+        status: 'success',
+        message: 'OK',
         code: 200,
       })
       .response()
-      .setStatusCode(200);
-  };
+      .setStatusCode(200)
+  }
 
   /**
    * Get a specific resource
@@ -32,13 +32,13 @@ export default class UserController extends BaseController {
   show = async ({ res }: HttpContext) => {
     return new Resource({ data: {} }, res)
       .additional({
-        status: "success",
-        message: "OK",
+        status: 'success',
+        message: 'OK',
         code: 200,
       })
       .response()
-      .setStatusCode(200);
-  };
+      .setStatusCode(200)
+  }
 
   /**
    * Create a resource
@@ -48,13 +48,13 @@ export default class UserController extends BaseController {
   create = async ({ res }: HttpContext) => {
     return new Resource({ data: {} }, res)
       .additional({
-        status: "success",
-        message: "New User created successfully",
+        status: 'success',
+        message: 'New User created successfully',
         code: 201,
       })
       .response()
-      .setStatusCode(201);
-  };
+      .setStatusCode(201)
+  }
 
   /**
    * Update a specific resource
@@ -64,13 +64,13 @@ export default class UserController extends BaseController {
   update = async ({ res }: HttpContext) => {
     return new Resource({ data: {} }, res)
       .additional({
-        status: "success",
-        message: "User updated successfully",
+        status: 'success',
+        message: 'User updated successfully',
         code: 202,
       })
       .response()
-      .setStatusCode(202);
-  };
+      .setStatusCode(202)
+  }
 
   /**
    * Delete a specific resource
@@ -80,11 +80,11 @@ export default class UserController extends BaseController {
   destroy = async ({ res }: HttpContext) => {
     return new Resource({ data: {} }, res)
       .additional({
-        status: "success",
-        message: "User deleted successfully",
+        status: 'success',
+        message: 'User deleted successfully',
         code: 202,
       })
       .response()
-      .setStatusCode(202);
-  };
+      .setStatusCode(202)
+  }
 }

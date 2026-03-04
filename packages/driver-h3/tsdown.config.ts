@@ -1,17 +1,17 @@
-import { defineConfig } from "tsdown";
+import { defineConfig } from 'tsdown'
 
 export default defineConfig({
-    entry: ["src/index.ts"],
+    entry: ['src/index.ts'],
     exports: true,
-    format: "esm",
+    format: 'esm',
     sourcemap: true,
     dts: true,
     clean: true,
-    outDir: "dist",
+    outDir: 'dist',
     outExtensions (ctx) {
         return {
-            "js": ctx.format === 'cjs' ? ".cjs" : ".js",
-            "d.ts": ".ts",
-        };
+            'js': ctx.format === 'cjs' ? '.cjs' : '.js',
+            'd.ts': '.ts',
+        }
     }
-});
+})

@@ -1,4 +1,4 @@
-import { Resource } from "resora";
+import { Resource } from 'resora'
 
 /**
  * UserResource
@@ -9,6 +9,6 @@ export default class extends Resource {
    * @returns this
    */
   data() {
-    return this.toArray();
+    return this.toArray()
   }
 }
