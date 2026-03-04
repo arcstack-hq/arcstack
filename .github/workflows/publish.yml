@@ -52,7 +52,7 @@ jobs:
         run: pnpm lint
 
       - name: Build the project
-        run: pnpm build
+        run: pnpm build:packages
 
       - name: Run tests
         run: pnpm test
