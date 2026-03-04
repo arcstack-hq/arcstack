@@ -2,6 +2,8 @@
 
 [![Create Arkstack][i1]][l1]
 [![Downloads][d1]][l1]
+[![Deploy Documentation](https://github.com/arkstack-hq/arkstack/actions/workflows/deploy-docs.yml/badge.svg)](https://github.com/arkstack-hq/arkstack/actions/workflows/deploy-docs.yml)
+[![CI](https://github.com/arkstack-hq/arkstack/actions/workflows/ci.yml/badge.svg)](https://github.com/arkstack-hq/arkstack/actions/workflows/ci.yml)
 
 A framework-agnostic backend starter kit for modern TypeScript servers.
 
