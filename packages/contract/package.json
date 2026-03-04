@@ -3,6 +3,7 @@
     "version": "0.1.1",
     "type": "module",
     "description": "Contract package for Arkstack providing contract-specific implementations of core Arkstack features such as routing, middleware, and database integration.",
+    "homepage": "https://arkstack.toneflix.net",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/arkstack-hq/arkstack.git",
