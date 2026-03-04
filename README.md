@@ -10,6 +10,7 @@
 [![Driver H3 Downloads](https://img.shields.io/npm/dt/@arkstack/driver-h3?style=flat-square&label=@arkstack/driver-h3&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F@arkstack/driver-h3)](https://www.npmjs.com/package/@arkstack/driver-h3)
 [![Deploy Documentation](https://github.com/arkstack-hq/arkstack/actions/workflows/deploy-docs.yml/badge.svg)](https://github.com/arkstack-hq/arkstack/actions/workflows/deploy-docs.yml)
 [![CI](https://github.com/arkstack-hq/arkstack/actions/workflows/ci.yml/badge.svg)](https://github.com/arkstack-hq/arkstack/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/arkstack-hq/arkstack/graph/badge.svg?token=6TBKA80JXB)](https://codecov.io/gh/arkstack-hq/arkstack)
 
 A framework-agnostic backend starter kit for modern TypeScript servers.
 
