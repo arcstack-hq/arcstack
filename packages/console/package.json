@@ -1,6 +1,6 @@
 {
     "name": "@arkstack/console",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "type": "module",
     "description": "Console package for Arkstack providing console-specific implementations of core Arkstack features such as routing, middleware, and database integration.",
     "repository": {
@@ -33,7 +33,7 @@
         "access": "public"
     },
     "bin": {
-        "arch": "./dist/index.js"
+        "ark": "./dist/index.js"
     },
     "exports": {
         ".": {

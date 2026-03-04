@@ -6,8 +6,8 @@ hero:
   name: "Arkstack"
   tagline: Framework-agnostic TypeScript backend starter kits.
   image:
-    src: /banner.png
-    alt: Arkstack banner image
+    src: /logo.jpg
+    alt: Arkstack logo
   actions:
     - theme: brand
       text: Get Started

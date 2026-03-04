@@ -7,21 +7,22 @@ export default defineConfig({
   title: "Arkstack",
   description: "Simple, Starter Kit for Node.js applications built with TypeScript",
   head: [
-    ['link', { rel: 'icon', href: '/banner.png' }],
+    ['link', { rel: 'icon', href: '/logo.png' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
     ['meta', { name: 'description', content: 'Simple, Starter Kit for Node.js applications built with TypeScript' }],
     ['meta', { name: 'keywords', content: 'API, Web, Node.js, TypeScript, Starter Kit' }],
     ['meta', { name: 'author', content: 'Toneflix' }],
     ['meta', { property: 'og:title', content: 'Arkstack' }],
     ['meta', { property: 'og:description', content: 'Simple, Starter Kit for Node.js applications built with TypeScript' }],
-    ['meta', { property: 'og:image', content: '/banner.png' }],
+    ['meta', { property: 'og:image', content: '/logo.jpg' }],
     ['meta', { property: 'og:url', content: 'https://arkstack.github.io/arkstack/' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:title', content: 'Arkstack' }],
     ['meta', { name: 'twitter:description', content: 'Simple, Starter Kit for Node.js applications built with TypeScript' }],
-    ['meta', { name: 'twitter:image', content: '/banner.png' }]
+    ['meta', { name: 'twitter:image', content: '/logo.jpg' }]
   ],
   themeConfig: {
+    logo: '/logo.png',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
@@ -35,7 +36,7 @@ export default defineConfig({
         text: 'Guide',
         items: [
           { text: 'Getting Started', link: '/guide/getting-started' },
-          { text: 'Api Reference', link: '/api' },
+          { text: 'API Reference', link: '/api' },
         ]
       },
       {

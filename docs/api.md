@@ -44,7 +44,7 @@ Arkstack kits use `@arkstack/console` to run common commands.
 
 ## Built-in Commands
 
-Run commands through the Arkstack CLI entry (for example `npx arch`).
+Run commands through the Arkstack CLI entry (for example `npx ark`).
 
 ### `route:list`
 

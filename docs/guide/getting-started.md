@@ -84,9 +84,9 @@ $ yarn dev
 
 ## Useful Commands
 
-- `npx arch dev` - run in development mode
-- `npx arch build` - build for production
-- `npx arch` - run Arkstack console commands
+- `npx ark dev` - run in development mode
+- `npx ark build` - build for production
+- `npx ark` - run Arkstack console commands
 - `pnpm lint` - run lint checks
 
 ## Full vs Lean
