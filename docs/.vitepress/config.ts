@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   cleanUrls: true,
-  base: '/arkstack/',
+  // base: '/arkstack/',
   title: "Arkstack",
   description: "Simple, Starter Kit for Node.js applications built with TypeScript",
   head: [
