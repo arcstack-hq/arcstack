@@ -2,6 +2,12 @@
 
 [![Create Arkstack][i1]][l1]
 [![Downloads][d1]][l1]
+[![Contract Downloads](https://img.shields.io/npm/dt/@arkstack/contract?style=flat-square&label=@arkstack/contract&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F@arkstack/contract)](https://www.npmjs.com/package/@arkstack/contract)
+[![Common Downloads](https://img.shields.io/npm/dt/@arkstack/common?style=flat-square&label=@arkstack/common&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F@arkstack/common)](https://www.npmjs.com/package/@arkstack/common)
+[![Console Downloads](https://img.shields.io/npm/dt/@arkstack/console?style=flat-square&label=@arkstack/console&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F@arkstack/console)](https://www.npmjs.com/package/@arkstack/console)
+[![Database Downloads](https://img.shields.io/npm/dt/@arkstack/database?style=flat-square&label=@arkstack/database&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F@arkstack/database)](https://www.npmjs.com/package/@arkstack/database)
+[![Driver Express Downloads](https://img.shields.io/npm/dt/@arkstack/driver-express?style=flat-square&label=@arkstack/driver-express&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F@arkstack/driver-express)](https://www.npmjs.com/package/@arkstack/driver-express)
+[![Driver H3 Downloads](https://img.shields.io/npm/dt/@arkstack/driver-h3?style=flat-square&label=@arkstack/driver-h3&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F@arkstack/driver-h3)](https://www.npmjs.com/package/@arkstack/driver-h3)
 [![Deploy Documentation](https://github.com/arkstack-hq/arkstack/actions/workflows/deploy-docs.yml/badge.svg)](https://github.com/arkstack-hq/arkstack/actions/workflows/deploy-docs.yml)
 [![CI](https://github.com/arkstack-hq/arkstack/actions/workflows/ci.yml/badge.svg)](https://github.com/arkstack-hq/arkstack/actions/workflows/ci.yml)
 
