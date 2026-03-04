@@ -61,8 +61,8 @@ jobs:
 
       - name: Build the project
         run: |
-          cd express && npm prisma generate && pnpm build
-          cd ../h3 && npm prisma generate && pnpm build
+          cd express; npm prisma generate; pnpm build
+          cd ../h3; npm prisma generate; pnpm build
           cd ../
           pnpm build:packages
 
