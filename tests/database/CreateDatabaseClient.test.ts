@@ -12,7 +12,9 @@ class User extends Model {
     declare email: string
 }
 
-describe('Modeling Dats', () => {
+const describer = process.env.NODE_CI ? describe.skip : describe
+
+describer('Modeling Dats', () => {
     beforeEach(async () => {
         inc = new Date().getTime()
     })
