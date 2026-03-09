@@ -228,8 +228,9 @@ export default class {
       let content = await readFile(filePath, 'utf-8')
 
       content = content
-        .replace('import { prisma } from "src/core/database";\n', '')
-        .replace('import { Prisma } from "@prisma/client";\n', '')
+        .replace('import { ModelNotFoundException } from \'arkormx\';\n', '')
+        .replace('import { prisma } from \'src/core/database\';\n', '')
+        .replace('import { Prisma } from \'@prisma/client\';\n', '')
         .replace('  async shutdown () {\n    await prisma.$disconnect();\n    process.exit(0);\n  }', '  async shutdown () {\n    process.exit(0);\n  }')
         .replace(
           ' * Shuts down the application by disconnecting from the database and exiting the process.',
@@ -237,6 +238,10 @@ export default class {
         )
         .replace(
           /\n\s*if \((?:err|cause) instanceof Prisma\.PrismaClientKnownRequestError && (?:err|cause)\.code === "P2025"\) \{\n\s*error\.code = 404;\n\s*error\.message = `\$\{(?:err|cause)\.meta\?\.modelName\} not found!`;\n\s*\}\n/g,
+          '\n',
+        )
+        .replace(
+          /\n\s*if \((?:err|cause) instanceof ModelNotFoundException\) \{\n\s*error\.code = 404;\n\s*error\.message = `\$\{(?:err|cause)\.getModelName\(\)\} not found!`;\n\s*\}\n/g,
           '\n',
         )
 
