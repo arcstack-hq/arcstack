@@ -53,7 +53,7 @@ export const runConsoleKernel = async (options: RunConsoleOptions = {}) => {
             DevCommand,
             BuildCommand,
         ],
-        discoveryPaths: [join(process.cwd(), 'src/core/console/commands/*.ts')],
+        discoveryPaths: [join(process.cwd(), 'src/app/console/commands/*.ts')],
         exceptionHandler (exception) {
             throw exception
         },

@@ -36,6 +36,8 @@ export default defineConfig({
         text: 'Guide',
         items: [
           { text: 'Getting Started', link: '/guide/getting-started' },
+          { text: 'CLI', link: '/guide/cli' },
+          { text: 'Database & Modeling', link: '/guide/database-modeling' },
           { text: 'API Reference', link: '/api' },
         ]
       },

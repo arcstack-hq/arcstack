@@ -89,6 +89,8 @@ $ yarn dev
 - `npx ark` - run Arkstack console commands
 - `pnpm lint` - run lint checks
 
+For full command usage and generation workflows, see [Arkstack CLI](/guide/cli).
+
 ## Full vs Lean
 
 Use **full** templates when you want the complete Arkstack experience with Prisma and database features included. Full kits come with:
@@ -112,3 +114,5 @@ Arkstack kits build on shared packages:
 - `@arkstack/console`
 
 For architecture details, see [Architecture Overview](/architecture/overview).
+
+If you are using a full template with database features, continue with [Database & Modeling](/guide/database-modeling).

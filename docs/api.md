@@ -40,7 +40,7 @@ Arkstack kits use `@arkstack/console` to run common commands.
 - Entry: `runConsoleKernel()`
 - Loads app core from `src/core/bootstrap.ts`
 - Registers built-in base commands
-- Discovers local custom commands from `src/core/console/commands/*.ts`
+- Discovers local custom commands from `src/app/console/commands/*.ts`
 
 ## Built-in Commands
 

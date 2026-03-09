@@ -1,6 +1,6 @@
 import { H3 } from 'h3'
 import { MiddlewareConfig } from 'src/types/config'
-import { cors } from '../core/middlewares/cors'
+import { cors } from '@app/http/middlewares/cors'
 
 const config = (_app: H3): MiddlewareConfig => {
   return {

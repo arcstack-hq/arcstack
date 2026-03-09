@@ -67,7 +67,7 @@ export const runConsoleKernel = async (options: RunConsoleOptions = {}) => {
             ModelsSyncCommand,
             SeedCommand,
         ],
-        discoveryPaths: [join(process.cwd(), 'src/core/console/commands/*.ts')],
+        discoveryPaths: [join(process.cwd(), 'src/app/console/commands/*.ts')],
         exceptionHandler (exception) {
             throw exception
         },

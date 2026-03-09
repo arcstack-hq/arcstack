@@ -4,10 +4,10 @@ import { resolveStubsDir } from '../../packages/console/src/app'
 
 test('resolveStubsDir prefers localStubsDir from config', () => {
     const selected = resolveStubsDir({
-        localStubsDir: 'src/core/console/stubs',
+        localStubsDir: 'src/app/console/stubs',
     })
 
-    assert.equal(selected, `${process.cwd()}/src/core/console/stubs`)
+    assert.equal(selected, `${process.cwd()}/src/app/console/stubs`)
 })
 
 test('resolveStubsDir falls back to options stubsDir', () => {

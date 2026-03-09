@@ -51,7 +51,10 @@ npm run dev
 ```txt
 src/
  ├── app/
+ │   ├── console/
+ │   │   └── commands/
  │   ├── http/
+ │   │   ├── middlewares/
  │   │   ├── controllers/
  │   |   |── resources/
  │   └── services/
@@ -59,8 +62,6 @@ src/
  ├── config/
  │
  ├── core/
- │   ├── console/
- │   ├── middlewares/
  │   └── utils/
  │
  ├── routes/

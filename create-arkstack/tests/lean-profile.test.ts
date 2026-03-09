@@ -34,15 +34,12 @@ describe('makeLeanProfile', () => {
         await writeFile(
             join(location, 'src/core/app.ts'),
             [
-                'import { prisma } from "src/core/database";',
-                '',
                 'export default class Application {',
                 '  /**',
                 '   * Shuts down the application by disconnecting from the database and exiting the process.',
                 '   */',
                 '  async shutdown () {',
-                '    await prisma.$disconnect();',
-                '    process.exit(0);',
+                '    process.exit(0)',
                 '  }',
                 '}',
                 '',
@@ -52,25 +49,25 @@ describe('makeLeanProfile', () => {
         await writeFile(
             join(location, 'src/core/utils/request-handlers.ts'),
             [
-                'import { Prisma } from "@prisma/client";',
+                'import { ModelNotFoundException } from \'arkormx\'',
                 '',
                 'export const ErrorHandler = (cause: unknown) => {',
-                '  const error: Record<string, any> = {};',
+                '  const error: Record<string, any> = {}',
                 '',
-                '  if (cause instanceof Prisma.PrismaClientKnownRequestError && cause.code === "P2025") {',
-                '    error.code = 404;',
-                '    error.message = `${cause.meta?.modelName} not found!`;',
+                '  if (cause instanceof ModelNotFoundException) {',
+                '    error.code = 404',
+                '    error.message = `${cause.getModelName()} not found!`',
                 '  }',
                 '',
-                '  return error;',
-                '};',
+                '  return error',
+                '}',
                 '',
             ].join('\n'),
         )
 
         await writeFile(
             join(location, 'src/routes/api.ts'),
-            'Router.get(\'/stale\', () => []);\n',
+            'Router.get(\'/stale\', () => [])\n',
         )
 
         await writeFile(
@@ -78,8 +75,6 @@ describe('makeLeanProfile', () => {
             JSON.stringify(
                 {
                     dependencies: {
-                        '@prisma/adapter-pg': '^7.4.0',
-                        '@prisma/client': '^7.4.0',
                         pg: '^8.18.0',
                         keep: '^1.0.0',
                         arkormx: '^0.2.0',
@@ -105,23 +100,18 @@ describe('makeLeanProfile', () => {
         expect(existsSync(join(location, 'prisma'))).toBe(false)
 
         const pkg = JSON.parse(await readFile(join(location, 'package.json'), 'utf-8'))
-        expect(pkg.dependencies['@prisma/adapter-pg']).toBeUndefined()
-        expect(pkg.dependencies['@prisma/client']).toBeUndefined()
+        expect(pkg.dependencies['arkormx']).toBeUndefined()
         expect(pkg.dependencies.pg).toBeUndefined()
         expect(pkg.dependencies.arkormx).toBeUndefined()
         expect(pkg.devDependencies.prisma).toBeUndefined()
-        expect(pkg.devDependencies['@types/pg']).toBeUndefined()
         expect(pkg.dependencies.keep).toBe('^1.0.0')
         expect(pkg.devDependencies.keepDev).toBe('^1.0.0')
 
         const appContent = await readFile(join(location, 'src/core/app.ts'), 'utf-8')
-        expect(appContent).not.toContain('import { prisma } from "src/core/database";')
-        expect(appContent).not.toContain('await prisma.$disconnect()')
-        expect(appContent).toContain('Shuts down the application and exits the process.')
+        expect(appContent).not.toContain('import { ModelNotFoundException } from \'arkormx\'')
 
         const handlersContent = await readFile(join(location, 'src/core/utils/request-handlers.ts'), 'utf-8')
-        expect(handlersContent).not.toContain('import { Prisma } from "@prisma/client";')
-        expect(handlersContent).not.toContain('Prisma.PrismaClientKnownRequestError')
+        expect(handlersContent).not.toContain('ModelNotFoundException')
         expect(handlersContent).not.toContain('not found!')
 
     })
