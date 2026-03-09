@@ -64,11 +64,11 @@ jobs:
         run: |
           cd express; pnpm prisma generate; pnpm build
           cd ../h3; pnpm prisma generate; pnpm build
-          cd ../; pnpm prisma generate; pnpm prisma migrate dev;
+          cd ../; pnpm prisma migrate dev;
           pnpm build:packages
 
       - name: Run tests
-        run: pnpm test:coverage
+        run: pnpm prisma generate; pnpm test:coverage
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
