@@ -8,6 +8,13 @@ The format follows semantic versioning principles.
 
 ### Added
 
+### Changed
+
+## [0.2.0] - 2026-03-09
+
+### Added
+
+- Add support for Arkormˣ in controllers and services, removing direct Prisma client usage.
 - Framework-agnostic shared packages: `@arkstack/contract`, `@arkstack/common`, `@arkstack/console`
 - Dedicated runtime drivers: `@arkstack/driver-express` and `@arkstack/driver-h3`.
 - Shared console base commands in `@arkstack/console`: `route:list`, `make:controller`, `make:resource`, `make:full-resource`, `dev`, `build`.
@@ -16,14 +23,17 @@ The format follows semantic versioning principles.
 
 ### Changed
 
+- Reorganize console command discovery paths and middleware imports
 - Moved duplicated console logic from kit-local implementations into shared console package architecture.
 - Standardized router contract usage for route binding/listing across runtimes.
 - Lean kit generation now strips app/api/database scaffolding by removing `src/app`, `src/routes/api.ts`, Prisma/database files, and DB dependencies.
 - Added root script `publish:packages` to publish `@arkstack/*` packages.
+- Remove direct prisma client usage from controllers and services, encouraging use of Arkormˣ models instead.
 
 ### Docs
 
 - Expanded docs landing page, getting started guide, architecture overview, API reference, and roadmap content.
+- Enhance documentation with CLI and database modeling guides
 
 ## [0.1.1] - 2026-02-20
 
