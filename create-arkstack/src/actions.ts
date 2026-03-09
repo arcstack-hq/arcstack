@@ -1,11 +1,12 @@
 import { Logger, Resolver } from '@h3ravel/shared'
 import { copyFile, readFile, rm, unlink, writeFile } from 'node:fs/promises'
+import { depsToAdd, depsToRemove, filesToRemove } from './data'
 import { detectPackageManager, installPackage } from '@antfu/install-pkg'
 import path, { basename, join, relative } from 'node:path'
 
 import { Str } from '@h3ravel/support'
 import { chdir } from 'node:process'
-import { dependencyTemplates } from './templates'
+import { depsList } from './data'
 import { downloadTemplate } from 'giget'
 import { existsSync } from 'node:fs'
 
@@ -58,6 +59,7 @@ export default class {
       dir: this.location,
       auth,
       install,
+      provider: 'github',
       registry: await this.pm(),
       forceClean: false,
     })
@@ -141,7 +143,7 @@ export default class {
       pkg.description = this.description
     }
 
-    for (const [name, version] of Object.entries(dependencyTemplates)) {
+    for (const [name, version] of Object.entries(depsList)) {
       pkg.dependencies[name] = version
     }
 
@@ -179,18 +181,6 @@ export default class {
   }
 
   async makeLeanProfile (_kit: 'express' | 'h3') {
-    const filesToRemove = [
-      'src/app',
-      'src/models',
-      'database',
-      'src/routes/api.ts',
-      'src/core/database.ts',
-      'prisma',
-      'prisma.config.ts',
-      'arkorm.config.ts',
-      'arkormx.config.ts',
-    ]
-
     await Promise.allSettled(
       filesToRemove.map((file) => rm(join(this.location!, file), { force: true, recursive: true })),
     )
@@ -198,18 +188,14 @@ export default class {
     const pkgPath = join(this.location!, 'package.json')
     if (existsSync(pkgPath)) {
       const pkg = await readFile(pkgPath, 'utf-8').then(JSON.parse)
-      const depsToRemove = [
-        '@prisma/adapter-pg',
-        '@prisma/client',
-        'pg',
-        'prisma',
-        'arkormx',
-        '@types/pg',
-      ]
 
       for (const dep of depsToRemove) {
         delete pkg.dependencies?.[dep]
         delete pkg.devDependencies?.[dep]
+      }
+
+      for (const [name, version] of Object.entries(depsToAdd)) {
+        pkg.dependencies[name] = version
       }
 
       await writeFile(pkgPath, JSON.stringify(pkg, null, 2))
@@ -230,20 +216,20 @@ export default class {
       let content = await readFile(filePath, 'utf-8')
 
       content = content
-        .replace('import { ModelNotFoundException } from \'arkormx\';\n', '')
-        .replace('import { prisma } from \'src/core/database\';\n', '')
-        .replace('import { Prisma } from \'@prisma/client\';\n', '')
-        .replace('  async shutdown () {\n    await prisma.$disconnect();\n    process.exit(0);\n  }', '  async shutdown () {\n    process.exit(0);\n  }')
+        .replace('import { ModelNotFoundException } from \'arkormx\'\n', '')
+        .replace('import { prisma } from \'src/core/database\'\n', '')
+        .replace('import { Prisma } from \'@prisma/client\'\n', '')
+        .replace('  async shutdown () {\n    await prisma.$disconnect()\n    process.exit(0)\n  }', '  async shutdown () {\n    process.exit(0)\n  }')
         .replace(
           ' * Shuts down the application by disconnecting from the database and exiting the process.',
           ' * Shuts down the application and exits the process.',
         )
         .replace(
-          /\n\s*if \((?:err|cause) instanceof Prisma\.PrismaClientKnownRequestError && (?:err|cause)\.code === "P2025"\) \{\n\s*error\.code = 404;\n\s*error\.message = `\$\{(?:err|cause)\.meta\?\.modelName\} not found!`;\n\s*\}\n/g,
+          /\n\s*if \((?:err|cause) instanceof Prisma\.PrismaClientKnownRequestError && (?:err|cause)\.code === "P2025"\) \{\n\s*error\.code = 404\n\s*error\.message = `\$\{(?:err|cause)\.meta\?\.modelName\} not found!`\n\s*\}\n/g,
           '\n',
         )
         .replace(
-          /\n\s*if \((?:err|cause) instanceof ModelNotFoundException\) \{\n\s*error\.code = 404;\n\s*error\.message = `\$\{(?:err|cause)\.getModelName\(\)\} not found!`;\n\s*\}\n/g,
+          /\n\s*if \((?:err|cause) instanceof ModelNotFoundException\) \{\n\s*error\.code = 404\n\s*error\.message = `\$\{(?:err|cause)\.getModelName\(\)\} not found!`\n\s*\}\n/g,
           '\n',
         )
 

@@ -1,0 +1,36 @@
+export const filesToRemove = [
+    'src/app',
+    'src/models',
+    'database',
+    'src/routes/api.ts',
+    'src/core/database.ts',
+    'prisma',
+    'prisma.config.ts',
+    'arkorm.config.ts',
+    'arkormx.config.ts',
+    'arkorm.config.js',
+    'arkormx.config.js',
+    'arkorm.config.mjs',
+    'arkormx.config.mjs',
+]
+
+export const depsToRemove = [
+    '@prisma/adapter-pg',
+    '@arkstack/console',
+    '@prisma/client',
+    '@types/pg',
+    'pg',
+    'prisma',
+    'arkormx',
+]
+
+export const depsToAdd = {
+    '@arkstack/console-slim': '^0.1.2',
+}
+
+export const depsList = {
+    '@arkstack/common': '^0.1.4',
+    '@arkstack/console': '^0.1.4',
+    '@arkstack/contract': '^0.1.4',
+    '@arkstack/driver-express': '^0.1.4'
+}
