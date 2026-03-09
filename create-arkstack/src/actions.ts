@@ -54,13 +54,15 @@ export default class {
     this.skipInstallation = !install
     this.removeLockFile()
 
-    return await downloadTemplate(template, {
+    const status = await downloadTemplate(template, {
       dir: this.location,
       auth,
       install,
       registry: await this.pm(),
       forceClean: false,
     })
+
+    return status
   }
 
   async installPackage (name: string) {

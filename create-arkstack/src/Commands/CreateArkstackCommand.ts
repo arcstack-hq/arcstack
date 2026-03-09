@@ -50,8 +50,8 @@ export class CreateArkstackCommand extends Command {
           this.info('Thanks for trying out our starter kit.')
           process.exit(0)
         }
-        
-return err
+
+        return err
       })
 
     let { appName, description } = await inquirer
@@ -77,8 +77,8 @@ return err
           this.info('Thanks for trying out our starter kit.')
           process.exit(0)
         }
-        
-return err
+
+        return err
       })
 
     let { location } = await inquirer
@@ -96,8 +96,8 @@ return err
           this.info('Thanks for trying out our starter kit.')
           process.exit(0)
         }
-        
-return err
+
+        return err
       })
 
     /**
@@ -133,8 +133,8 @@ return err
           this.info('Thanks for trying out our starter kit.')
           process.exit(0)
         }
-        
-return err
+
+        return err
       })
 
     pre = options.pre ?? pre
