@@ -62,7 +62,7 @@ Or use the Arkstack CLI to generate a model and a linked prisma schema entry:
 npx ark make:model User
 ```
 
-If you need to make changes to the database schema, the Arkstack CLI can also generate Prisma migration files:
+If you need to make changes to the database schema, the Arkstack CLI can also generate Prisma schema, migrations and sync model files:
 
 ```sh
 npx ark make:migration add-users-table
