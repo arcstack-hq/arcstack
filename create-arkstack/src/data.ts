@@ -25,7 +25,7 @@ export const depsToRemove = [
 ]
 
 export const depsToAdd = {
-    '@arkstack/console-slim': '^0.1.2',
+    '@arkstack/console-slim': '^0.1.4',
 }
 
 export const depsList = {
