@@ -1,0 +1,31 @@
+import { readFileSync, writeFileSync } from 'node:fs'
+
+import { defineConfig } from 'tsdown'
+import path from 'node:path'
+
+export default defineConfig({
+    entry: ['src/index.ts', 'src/app.ts'],
+    format: 'esm',
+    sourcemap: true,
+    dts: true,
+    clean: true,
+    outDir: 'dist',
+    outExtensions (ctx) {
+        return {
+            'js': ctx.format === 'cjs' ? '.cjs' : '.js',
+            'd.ts': '.ts',
+        }
+    },
+    hooks (e) {
+        e.hook('build:done', async (e) => {
+            for (let i = 0; i < e.chunks.length; i++) {
+                const chunk = e.chunks[i]
+                if (chunk.fileName.endsWith('.js')) {
+                    let code = readFileSync(path.join(chunk.outDir, chunk.fileName), 'utf-8')
+                    code = code.replace(/src\//g, 'dist/').replace(/\.ts/g, '.js')
+                    writeFileSync(path.join(chunk.outDir, chunk.fileName), code, 'utf-8')
+                }
+            }
+        })
+    },
+})

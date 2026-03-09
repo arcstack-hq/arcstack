@@ -1,7 +1,6 @@
 import { bindGracefulShutdown } from '@arkstack/common'
 
 import config from 'src/config/middleware'
-import { prisma } from 'src/core/database'
 import { ArkstackKitDriver, ArkstackRouterAwareCore, ArkstackRouterContract, ArkstackRouteListOptions } from '@arkstack/contract'
 import { H3Driver, type H3Middleware } from '@arkstack/driver-h3'
 import { H3 } from 'h3'
@@ -106,7 +105,6 @@ export default class Application implements ArkstackRouterAwareCore<H3, unknown>
    * Shuts down the application by disconnecting from the database and exiting the process.
    */
   async shutdown () {
-    await prisma.$disconnect()
     process.exit(0)
   }
 }

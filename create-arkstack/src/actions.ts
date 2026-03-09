@@ -179,10 +179,14 @@ export default class {
   async makeLeanProfile (_kit: 'express' | 'h3') {
     const filesToRemove = [
       'src/app',
+      'src/models',
+      'database',
       'src/routes/api.ts',
       'src/core/database.ts',
       'prisma',
       'prisma.config.ts',
+      'arkorm.config.ts',
+      'arkormx.config.ts',
     ]
 
     await Promise.allSettled(
@@ -193,11 +197,11 @@ export default class {
     if (existsSync(pkgPath)) {
       const pkg = await readFile(pkgPath, 'utf-8').then(JSON.parse)
       const depsToRemove = [
-        '@arkstack/database',
         '@prisma/adapter-pg',
         '@prisma/client',
         'pg',
         'prisma',
+        'arkormx',
         '@types/pg',
       ]
 

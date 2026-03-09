@@ -1,10 +1,10 @@
-import BaseController from '@controllers/BaseController';
+import { BaseController } from '@controllers/BaseController'
 import { HttpContext } from 'clear-router/types/express'
 
 /**
  * {{ControllerName}}
  */
-export default class extends BaseController {
+export default class {{ControllerName}} extends BaseController {
     index = async ({ res }: HttpContext) => {
         res.send('<p>Hello!</p>')
     }

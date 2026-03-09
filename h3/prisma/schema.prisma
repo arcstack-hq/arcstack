@@ -33,6 +33,7 @@ model User {
   avatar                String?
   bio                   String?
   phone                 String?
+  address String?
   googleId              String?   @db.VarChar(255)
   facebookId            String?   @db.VarChar(255)
   emailVerifiedAt       DateTime?

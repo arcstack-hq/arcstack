@@ -1,37 +1,69 @@
 import { describe, expect, it } from 'vitest'
 
-import { createDatabaseClient } from '../../packages/database/src'
+import { Model } from 'arkormx'
+import { beforeEach } from 'node:test'
 
-describe('createDatabaseClient', () => {
-    it('uses explicit connection string when provided', () => {
-        const client = createDatabaseClient({
-            connectionString: 'postgres://explicit',
-            createAdapter: ({ connectionString }) => ({ connectionString }),
-            createClient: ({ adapter }) => ({ adapter }),
-        })
+let inc: number = new Date().getTime()
 
-        expect(client).toEqual({
-            adapter: {
-                connectionString: 'postgres://explicit',
-            },
-        })
+class User extends Model {
+    declare id: number
+    declare name: string
+    declare email: string
+}
+
+describe('Modeling Dats', () => {
+    beforeEach(async () => {
+        inc = new Date().getTime()
     })
 
-    it('falls back to DATABASE_URL from environment', () => {
-        const previous = process.env.DATABASE_URL
-        process.env.DATABASE_URL = 'postgres://env'
-
-        const client = createDatabaseClient({
-            createAdapter: ({ connectionString }) => ({ connectionString }),
-            createClient: ({ adapter }) => ({ adapter }),
+    it('Can create a new model', async () => {
+        const user = await User.query().create({
+            name: 'John Doe',
+            email: `john.doe${inc}@example.com`
         })
 
-        expect(client).toEqual({
-            adapter: {
-                connectionString: 'postgres://env',
-            },
-        })
+        expect(user).toBeDefined()
+        expect(user.id).toBeDefined()
+        expect(user.email).toBe(`john.doe${inc}@example.com`)
+        expect(user.name).toBe('John Doe')
+    })
 
-        process.env.DATABASE_URL = previous
+    it('can get a model', async () => {
+        const user = await User.query().where({ email: `john.doe${inc}@example.com` }).first()
+
+        expect(user).toBeDefined()
+        expect(user?.id).toBeDefined()
+        expect(user?.email).toBe(`john.doe${inc}@example.com`)
+        expect(user?.name).toBe('John Doe')
+    })
+
+    it('can update a model', async () => {
+        const user = await User.query().where({ email: `john.doe${inc}@example.com` }).first()
+
+        expect(user).toBeDefined()
+
+        if (user) {
+            user.name = 'Jane Doe'
+            await user.save()
+
+            const updatedUser = await User.query().where({ email: `john.doe${inc}@example.com` }).first()
+
+            expect(updatedUser).toBeDefined()
+            expect(updatedUser?.name).toBe('Jane Doe')
+        }
+    })
+
+    it('can delete a model', async () => {
+        const user = await User.query().where({ email: `john.doe${inc}@example.com` }).first()
+
+        expect(user).toBeDefined()
+
+        if (user) {
+            await user.delete()
+
+            const deletedUser = await User.query().where({ email: `john.doe${inc}@example.com` }).first()
+
+            expect(deletedUser).toBeNull()
+        }
     })
 })

@@ -8,7 +8,7 @@ The format follows semantic versioning principles.
 
 ### Added
 
-- Framework-agnostic shared packages: `@arkstack/contract`, `@arkstack/common`, `@arkstack/console`, `@arkstack/database`.
+- Framework-agnostic shared packages: `@arkstack/contract`, `@arkstack/common`, `@arkstack/console`.
 - Dedicated runtime drivers: `@arkstack/driver-express` and `@arkstack/driver-h3`.
 - Shared console base commands in `@arkstack/console`: `route:list`, `make:controller`, `make:resource`, `make:full-resource`, `dev`, `build`.
 - Lean starter profiles in scaffolding: `express-lean` and `h3-lean`.
@@ -34,7 +34,6 @@ The format follows semantic versioning principles.
 
 - Updated controller model stubs to use the new Resource class from 'resora' for handling JSON responses.
 - Removed deprecated resource collection and resource stubs.
-- Changed database import path from '@core/DB' to '@core/database'.
 - Deleted passport-related files and dependencies as they are no longer needed.
 - Updated middleware configuration for H3 and Express to include CORS and method override.
 - Introduced a new router implementation for Express and H3 using 'clear-router'.

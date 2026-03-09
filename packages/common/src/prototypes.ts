@@ -11,8 +11,14 @@ export const loadPrototypes = () => {
     String.prototype.camelCase = function () {
         return this.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function (match, index) {
             if (+match === 0) return '' // or if (/\s+/.test(match)) for white spaces
-            
-return index === 0 ? match.toLowerCase() : match.toUpperCase()
+
+            return index === 0 ? match.toLowerCase() : match.toUpperCase()
+        })
+    }
+
+    String.prototype.pascalCase = function () {
+        return this.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, function (match) {
+            return match.toUpperCase()
         })
     }
 
@@ -26,7 +32,7 @@ return index === 0 ? match.toLowerCase() : match.toUpperCase()
         if (lastSpaceIndex > 0) {
             return truncated.substring(0, lastSpaceIndex) + suffix
         }
-        
-return truncated + suffix
+
+        return truncated + suffix
     }
 } 

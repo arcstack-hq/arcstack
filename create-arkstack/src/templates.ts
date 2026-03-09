@@ -53,6 +53,5 @@ export const dependencyTemplates = {
   '@arkstack/common': '^0.1.4',
   '@arkstack/console': '^0.1.4',
   '@arkstack/contract': '^0.1.4',
-  '@arkstack/database': '^0.1.4',
   '@arkstack/driver-express': '^0.1.4'
 }

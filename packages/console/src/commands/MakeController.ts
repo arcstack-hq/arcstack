@@ -1,4 +1,5 @@
-import { ArkstackConsoleApp } from '@arkstack/console/app'
+import { ArkstackConsoleApp } from '../app'
+import { CliApp } from 'arkormx'
 import { Command } from '@h3ravel/musket'
 
 // oxlint-disable-next-line typescript/no-explicit-any
@@ -7,6 +8,9 @@ export class MakeController extends Command<ArkstackConsoleApp<any>> {
         {name : name of the controller to create}
         {--api : make an API controller}
         {--m|model? : name of model to attach to controller}
+        {--f|factory : Create and link a factory}
+        {--s|seeder : Create a seeder file for the model (only if --model is specified)}
+        {--x|migration : Create a migration file for the model (only if --model is specified)}
         {--force : force overwrite if controller already exists}
     `
 
@@ -19,6 +23,21 @@ export class MakeController extends Command<ArkstackConsoleApp<any>> {
 
         const name = this.app.makeController(this.argument('name'), this.options())
 
-        this.success(`Controller ${name} created successfully!`)
+        const app = new CliApp()
+
+        const model = this.option('model')
+            ? app.makeModel(this.argument('model'), { ...this.options(), force: false })
+            : null
+
+        this.success('Controller created successfully!');
+
+        [
+            ['Controller', name],
+            model ? ['Model', model.model.path] : '',
+            model ? [`Prisma schema ${model.prisma.updated ? '(updated)' : '(already up to date)'}`, model?.prisma.path] : '',
+            model?.factory ? ['Factory', model.factory.path] : '',
+            model?.seeder ? ['Seeder', model.seeder.path] : '',
+            model?.migration ? ['Migration', model.migration.path] : ''
+        ].filter(Boolean).map(([name, path]) => this.success(app.splitLogger(name!, path!)))
     }
 }

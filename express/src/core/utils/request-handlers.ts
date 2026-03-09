@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 
 import { BaseError } from './errors'
-import { Prisma } from '@prisma/client'
+import { ModelNotFoundException } from 'arkormx'
 import { ServerResponse } from 'node:http'
 import { ValidationException } from 'kanun'
 import { buildHtmlErrorResponse } from '@arkstack/common'
@@ -44,9 +44,9 @@ export const ErrorHandler = (
     error.errors = { [key]: [content.trim(), ...rest.map((e) => e.trim())] }
   }
 
-  if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === 'P2025') {
+  if (err instanceof ModelNotFoundException) {
     error.code = 404
-    error.message = `${err.meta?.modelName} not found!`
+    error.message = `${err.getModelName()} not found!`
   }
 
   if (err instanceof ValidationException) {

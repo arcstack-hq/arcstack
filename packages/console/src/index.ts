@@ -7,9 +7,16 @@ import { BuildCommand } from './commands/BuildCommand'
 import { DevCommand } from './commands/DevCommand'
 import { Kernel } from '@h3ravel/musket'
 import { MakeController } from './commands/MakeController'
+import { MakeFactoryCommand } from './commands/MakeFactoryCommand'
 import { MakeFullResource } from './commands/MakeFullResource'
+import { MakeMigrationCommand } from './commands/MakeMigrationCommand'
+import { MakeModelCommand } from './commands/MakeModelCommand'
 import { MakeResource } from './commands/MakeResource'
+import { MakeSeederCommand } from './commands/MakeSeederCommand'
+import { MigrateCommand } from './commands/MigrateCommand'
+import { ModelsSyncCommand } from './commands/ModelsSyncCommand'
 import { RouteList } from './commands/RouteList'
+import { SeedCommand } from './commands/SeedCommand'
 import { join } from 'node:path'
 import { loadPrototypes } from '@arkstack/common'
 import logo from './logo'
@@ -27,8 +34,8 @@ export interface RunConsoleOptions {
 const loadCoreApp = async () => {
     const bootstrapPath = pathToFileURL(join(process.cwd(), 'src/core/bootstrap.ts')).href
     const module = await import(bootstrapPath)
-    
-return module.app
+
+    return module.app
 }
 
 /**
@@ -51,7 +58,14 @@ export const runConsoleKernel = async (options: RunConsoleOptions = {}) => {
             MakeController,
             MakeFullResource,
             DevCommand,
-            BuildCommand
+            BuildCommand,
+            MakeFactoryCommand,
+            MakeMigrationCommand,
+            MakeModelCommand,
+            MakeSeederCommand,
+            MigrateCommand,
+            ModelsSyncCommand,
+            SeedCommand,
         ],
         discoveryPaths: [join(process.cwd(), 'src/core/console/commands/*.ts')],
         exceptionHandler (exception) {

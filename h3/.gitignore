@@ -6,3 +6,5 @@ dist
 /generated/prisma
 /storage/**/*.log
 /storage/**/*.tmp
+/src/models/**/*.ts
+/database/**/*.ts

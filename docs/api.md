@@ -141,7 +141,6 @@ Core shared packages:
 - `@arkstack/contract`
 - `@arkstack/common`
 - `@arkstack/console`
-- `@arkstack/database` (full kits)
 
 Driver packages:
 

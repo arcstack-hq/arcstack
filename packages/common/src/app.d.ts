@@ -9,6 +9,10 @@ declare global {
      */
     camelCase (): string;
     /**
+     * Converts the string to pascal case.
+     */
+    pascalCase (): string;
+    /**
      * Truncates the string to a specified length while preserving words
      * and adds a suffix if necessary.
      * 

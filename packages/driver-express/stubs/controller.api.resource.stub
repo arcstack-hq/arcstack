@@ -1,14 +1,14 @@
-import BaseController from '@controllers/BaseController'
+import { BaseController } from '@controllers/BaseController'
 import { HttpContext } from 'clear-router/types/express'
 import {{ResourceName}} from '@app/http/resources/{{ResourceName}}'
 import {{CollectionResourceName}} from '@app/http/resources/{{CollectionResourceName}}'
 
-import { Resource, ResourceCollection } from 'resora';
+import { Resource, ResourceCollection } from 'resora'
 
 /**
  * {{ControllerName}}
  */
-export default class extends BaseController {
+export default class {{ControllerName}} extends BaseController {
     /**
      * Get all resources
      * 

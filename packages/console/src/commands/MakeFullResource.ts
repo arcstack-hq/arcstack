@@ -1,11 +1,15 @@
-import { ArkstackConsoleApp } from '@arkstack/console/app'
+import { ArkstackConsoleApp } from '../app'
+import { CliApp } from 'arkormx'
 import { Command } from '@h3ravel/musket'
 
 // oxlint-disable-next-line typescript/no-explicit-any
 export class MakeFullResource extends Command<ArkstackConsoleApp<any>> {
     protected signature = `make:full-resource
         {prefix : prefix of the resources to create, "Admin" will create AdminResource, AdminCollection and AdminController}
-        {--m|model? : name of model to attach to the generated controller}
+        {--m|model? : name of model to attach to the generated controller (will be created if it doesn't exist)}
+        {--f|factory : Create and link a factory}
+        {--s|seeder : Create a seeder file for the model (only if --model is specified)}
+        {--x|migration : Create a migration file for the model (only if --model is specified)}
         {--force : force overwrite if resources already exist}
     `
 
@@ -15,14 +19,37 @@ export class MakeFullResource extends Command<ArkstackConsoleApp<any>> {
     async handle () {
         this.app.command = this
 
-        const res1 = this.app.makeResource(this.argument('prefix'), {})
-        const res2 = this.app.makeResource(this.argument('prefix') + 'Collection', {
-            collection: true,
+        const res = this.app.makeResource(this.argument('prefix'), {
+            force: this.option('force')
         })
-        const name3 = this.app.makeController(
+
+        const col = this.app.makeResource(this.argument('prefix') + 'Collection', {
+            collection: true,
+            force: this.option('force'),
+        })
+
+        const cont = this.app.makeController(
             this.argument('prefix'),
-            Object.assign({}, this.options(), { api: true }),
+            Object.assign({}, this.options(), { api: true, force: this.option('force') }),
         )
-        this.success(`Created full resource set: ${res1.name}, ${res2.name}, ${name3}`)
+
+        const app = new CliApp()
+
+        const model = this.option('model')
+            ? app.makeModel(this.argument('prefix'), { ...this.options(), force: false })
+            : null
+
+        this.success('Created full resource set:');
+
+        [
+            ['Resource', res.path],
+            ['Collection', col.path],
+            ['Controller', cont],
+            model ? ['Model', model.model.path] : '',
+            model ? [`Prisma schema ${model.prisma.updated ? '(updated)' : '(already up to date)'}`, model.prisma.path] : '',
+            model?.factory ? ['Factory', model.factory.path] : '',
+            model?.seeder ? ['Seeder', model.seeder.path] : '',
+            model?.migration ? ['Migration', model.migration.path] : ''
+        ].filter(Boolean).map(([name, path]) => this.success(app.splitLogger(name!, path!)))
     }
 }

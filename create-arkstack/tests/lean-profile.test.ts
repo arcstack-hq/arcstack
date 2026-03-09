@@ -78,11 +78,11 @@ describe('makeLeanProfile', () => {
             JSON.stringify(
                 {
                     dependencies: {
-                        '@arkstack/database': 'workspace:^',
                         '@prisma/adapter-pg': '^7.4.0',
                         '@prisma/client': '^7.4.0',
                         pg: '^8.18.0',
                         keep: '^1.0.0',
+                        arkormx: '^0.2.0',
                     },
                     devDependencies: {
                         prisma: '^7.4.0',
@@ -105,10 +105,10 @@ describe('makeLeanProfile', () => {
         expect(existsSync(join(location, 'prisma'))).toBe(false)
 
         const pkg = JSON.parse(await readFile(join(location, 'package.json'), 'utf-8'))
-        expect(pkg.dependencies['@arkstack/database']).toBeUndefined()
         expect(pkg.dependencies['@prisma/adapter-pg']).toBeUndefined()
         expect(pkg.dependencies['@prisma/client']).toBeUndefined()
         expect(pkg.dependencies.pg).toBeUndefined()
+        expect(pkg.dependencies.arkormx).toBeUndefined()
         expect(pkg.devDependencies.prisma).toBeUndefined()
         expect(pkg.devDependencies['@types/pg']).toBeUndefined()
         expect(pkg.dependencies.keep).toBe('^1.0.0')

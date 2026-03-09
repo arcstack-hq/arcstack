@@ -10,7 +10,6 @@ This roadmap tracks Arkstack progress and upcoming priorities.
   - `@arkstack/contract`
   - `@arkstack/common`
   - `@arkstack/console`
-  - `@arkstack/database`
 - ✅ Driver packages for current runtimes
   - `@arkstack/driver-express`
   - `@arkstack/driver-h3`

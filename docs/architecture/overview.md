@@ -26,10 +26,6 @@ Provides reusable runtime helpers, including lifecycle and error response utilit
 
 Provides a shared console kernel and base commands used by all kits.
 
-### `@arkstack/database`
-
-Provides shared database bootstrap helpers for full templates.
-
 ## Driver Packages
 
 Each runtime implements the contract through a dedicated driver package:

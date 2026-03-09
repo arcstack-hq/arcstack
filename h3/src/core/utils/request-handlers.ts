@@ -2,7 +2,7 @@
 import { H3Event, HTTPError, HTTPResponse } from 'h3'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 
-import { Prisma } from '@prisma/client'
+import { ModelNotFoundException } from 'arkormx'
 import { ValidationException } from 'kanun'
 import { buildHtmlErrorResponse } from '@arkstack/common'
 import { env } from './helpers'
@@ -38,9 +38,9 @@ export const ErrorHandler = (err: HTTPError, event: H3Event) => {
     error.errors = { [key]: [content.trim(), ...rest.map((e) => e.trim())] }
   }
 
-  if (cause instanceof Prisma.PrismaClientKnownRequestError && cause.code === 'P2025') {
+  if (cause instanceof ModelNotFoundException) {
     error.code = 404
-    error.message = `${cause.meta?.modelName} not found!`
+    error.message = `${cause.getModelName()} not found!`
   }
 
   if (cause instanceof ValidationException) {

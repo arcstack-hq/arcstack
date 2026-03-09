@@ -110,6 +110,5 @@ Arkstack kits build on shared packages:
 - `@arkstack/contract`
 - `@arkstack/common`
 - `@arkstack/console`
-- `@arkstack/database` (full kits)
 
 For architecture details, see [Architecture Overview](/architecture/overview).

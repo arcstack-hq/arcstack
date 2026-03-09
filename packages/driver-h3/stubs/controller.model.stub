@@ -1,13 +1,13 @@
-import BaseController from '@controllers/BaseController'
+import { BaseController } from '@controllers/BaseController'
 import { HttpContext } from 'clear-router/types/h3'
-import { Resource } from 'resora';
-import { prisma } from '@core/DB'
+import { Resource } from 'resora'
+import { {{Model}} } from 'src/models/{{Model}}'
 import { readBody } from 'h3'
 
 /**
  * {{ControllerName}}
  */
-export default class extends BaseController {
+export default class {{ControllerName}} extends BaseController {
     /**
      * Get all resource from the database
      * 
@@ -15,9 +15,7 @@ export default class extends BaseController {
      * @param res 
      */
     index = async ({ res }: HttpContext) => {
-        const data = await prisma.{{ModelName}}.findMany(
-            { orderBy: { id: 'asc' } }
-        )
+        const data = await {{Model}}.query().orderBy({ id: 'asc' }).get()
 
         return await new Resource({ data })
         .additional({
@@ -36,9 +34,7 @@ export default class extends BaseController {
      * @param res 
      */
     show = async ({ res, context }: HttpContext) => {
-        const data = await prisma.{{ModelName}}.findFirst(
-            { where: { id: String(context.params?.id) } }
-        )
+        const data = await {{Model}}.query().where({ id: String(context.params?.id) }).firstOrFail()
 
         return await new Resource({ data })
         .additional({
@@ -61,7 +57,7 @@ export default class extends BaseController {
      * @param res 
      */
     create = async (evt: HttpContext) => {
-        const data = await prisma.{{ModelName}}.create({
+        const data = await {{Model}}.query().create({
             data: readBody(evt) as any,
         })
 
@@ -82,10 +78,11 @@ export default class extends BaseController {
      * @param res 
      */
     update = async (evt: HttpContext) => {
-        const data = await prisma.{{ModelName}}.update({
-            where: { id: String(evt.context.params?.id) },
-            data: readBody(evt) as any,
-        })
+        const data = await {{Model}}.query()
+            .where({ id: String(evt.context.params?.id) })
+            .update({
+                data: readBody(evt) as any,
+            })
 
         return await new Resource({ data })
         .additional({
@@ -104,9 +101,7 @@ export default class extends BaseController {
      * @param res 
      */
     destroy = async ({ res, context }: HttpContext) => {
-        await prisma.{{ModelName}}.delete(
-            { where: { id: String(context.params?.id) } }
-        )
+        await {{Model}}.query().where({ id: String(context.params?.id) }).delete()
 
         return await new Resource({ data: null })
         .additional({

@@ -1,12 +1,12 @@
-import BaseController from '@controllers/BaseController';
+import { BaseController } from '@controllers/BaseController'
 import { HttpContext } from 'clear-router/types/h3'
 
-import { Resource } from 'resora';
+import { Resource } from 'resora'
 
 /**
  * {{ControllerName}}
  */
-export default class extends BaseController {
+export default class {{ControllerName}} extends BaseController {
     /**
      * Get all resources
      * 
