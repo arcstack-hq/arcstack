@@ -24,6 +24,24 @@ pnpm prisma generate
 
 ## Define a model
 
+Create a Prisma schema model entry in `prisma/schema.prisma`:
+
+```prisma
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+```
+
+Then run the Prisma generate command to update the client:
+
+```sh
+pnpm prisma generate
+```
+
 Create a model class (example):
 
 ```ts
@@ -33,16 +51,26 @@ export class User extends Model {
   declare id: number;
   declare name: string;
   declare email: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
 }
 ```
 
-Or use the Arkstack CLI to generate a model:
+Or use the Arkstack CLI to generate a model and a linked prisma schema entry:
 
 ```sh
 npx ark make:model User
 ```
 
-For advanced Arkstack CLI model generation options, see [Arkstack CLI](/guide/cli#arkormx-powered-commands).
+If you need to make changes to the database schema, the Arkstack CLI can also generate Prisma migration files:
+
+```sh
+npx ark make:migration add-users-table
+npx ark migrate --name add-users-table ## Or use `pnpm ark migrate --all` for short
+npx ark models:sync ## Sync model files with Prisma schema (optional, for type safety)
+```
+
+For advanced Arkstack CLI model generation options, see [Arkstack CLI](/guide/cli#arkormx-powered-commands) or the [Arkormˣ documentation](https://arkorm.toneflix.net/guide/migrations-cli.html#generate-files).
 
 ## Query data with Arkormˣ
 
