@@ -1,7 +1,7 @@
 import { H3Event, serveStatic } from 'h3'
 import { readFile, stat } from 'node:fs/promises'
 
-import { before } from '../utils/helpers'
+import { before } from 'src/core/utils/helpers'
 import { join } from 'node:path'
 
 /**
@@ -27,8 +27,8 @@ export const staticAssetHandler = (publicPath: string = 'public') => {
       indexNames: ['/index.html'],
       getContents: (id) => {
         const file = join(process.cwd(), publicPath, before(publicPath, id))
-        
-return <never>readFile(file).catch(() => null)
+
+        return <never>readFile(file).catch(() => null)
       },
       getMeta: async (id) => {
         const file = join(process.cwd(), publicPath, before(publicPath, id))

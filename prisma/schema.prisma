@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  // output   = "../generated/prisma"
 }
 
 datasource db {
@@ -24,12 +25,45 @@ model Configuration {
 
 // User model for both regular users and curators
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id                    String    @id @default(uuid())
+  email                 String    @unique
+  password              String
+  firstName             String
+  lastName              String
+  avatar                String?
+  bio                   String?
+  phone                 String?
+  address               String?
+  googleId              String?   @db.VarChar(255)
+  facebookId            String?   @db.VarChar(255)
+  emailVerifiedAt       DateTime?
+  emailVerificationCode String?   @db.VarChar(64)
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  // Relations
+  personalAccessTokens PersonalAccessToken[] @relation("TokenUser")
+  locationId           String?
 
   @@index([email])
   @@map("users")
+}
+
+// User personal access token model
+model PersonalAccessToken {
+  id         String    @id @default(uuid())
+  userId     String
+  name       String
+  token      String    @unique @db.Text
+  abilities  Json?
+  lastUsedAt DateTime?
+  expiresAt  DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  // Relations
+  user User @relation("TokenUser", fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("personal_access_tokens")
 }
