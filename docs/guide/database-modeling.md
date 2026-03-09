@@ -42,7 +42,7 @@ Or use the Arkstack CLI to generate a model:
 npx ark make:model User
 ```
 
-For advanced Arkstack CLI model generation options, see [Arkstack CLI](/guide/cli#make-model).
+For advanced Arkstack CLI model generation options, see [Arkstack CLI](/guide/cli#arkormx-powered-commands).
 
 ## Query data with Arkormˣ
 

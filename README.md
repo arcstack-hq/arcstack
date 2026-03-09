@@ -44,6 +44,10 @@ npm install
 npm run dev
 ```
 
+## Documentation
+
+To learn how to use Arkstack, see the [Guide](https://arkstack.toneflix.net/guide/getting-started).
+
 ---
 
 ## Project Structure
@@ -53,20 +57,27 @@ src/
  ├── app/
  │   ├── console/
  │   │   └── commands/
+ │   │
  │   ├── http/
  │   │   ├── middlewares/
  │   │   ├── controllers/
- │   |   |── resources/
+ │   │   └── resources/
+ │   │
  │   └── services/
  │
  ├── config/
  │
  ├── core/
- │   └── utils/
+ │   ├── utils/
+ │   ├── app.ts
+ │   ├── bootstrap.ts
+ │   └── router.ts
  │
  ├── routes/
  │   ├── api/
  │   └── web/
+ │
+ ├── types/
  │
  └── server.ts
 ```
