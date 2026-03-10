@@ -138,6 +138,8 @@ export default class {
     delete pkg.scripts.build
     delete pkg.scripts.dev
 
+    pkg.scripts.postinstall = 'prepare'
+
     pkg.name = Str.slugify(
       this.appName ?? basename(this.location!).replace('.', ''), '-'
     )

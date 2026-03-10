@@ -34,7 +34,8 @@
         "access": "public"
     },
     "bin": {
-        "ark": "./dist/index.js"
+        "ark": "./dist/index.js",
+        "prepare": "./dist/prepare.js"
     },
     "exports": {
         ".": {

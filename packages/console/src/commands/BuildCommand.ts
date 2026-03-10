@@ -24,8 +24,8 @@ export class BuildCommand extends Command {
             child.on('exit', (code) => {
                 if (code === 0 || code === null) {
                     resolve()
-                    
-return
+
+                    return
                 }
 
                 reject(new Error(`tsdown exited with code ${code}`))
