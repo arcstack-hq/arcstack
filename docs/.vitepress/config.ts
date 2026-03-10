@@ -38,9 +38,14 @@ export default defineConfig({
           { text: 'Getting Started', link: '/guide/getting-started' },
           { text: 'CLI', link: '/guide/cli' },
           { text: 'Database & Modeling', link: '/guide/database-modeling' },
-          { text: 'Express Runtime Interaction', link: '/guide/express-runtime' },
-          { text: 'H3 Runtime Interaction', link: '/guide/h3-runtime' },
           { text: 'API Reference', link: '/api' },
+        ]
+      },
+      {
+        text: 'Runtime Interaction',
+        items: [
+          { text: 'Express', link: '/guide/express-runtime' },
+          { text: 'H3', link: '/guide/h3-runtime' },
         ]
       },
       {
