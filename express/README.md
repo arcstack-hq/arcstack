@@ -1,6 +1,11 @@
 # Arkstack Express.js
 
-Express.js app scaffolded with Tonelix's Arkstack
+Express.js app scaffolded with Toneflix's Arkstack.
+
+Full framework documentations are available from [https://arkstack.toneflix.net](https://arkstack.toneflix.net/).
+
+- Runtime interaction guide: [guide/express-runtime](https://arkstack.toneflix.net/guide/express-runtime)
+- Getting started guide: [guide/getting-started](https://arkstack.toneflix.net/guide/getting-started)
 
 ## Developing
 
@@ -16,13 +21,13 @@ npm install
 npx prisma generate
 ```
 
-### Run Migrations
+### Run migrations
 
 ```sh
 npx prisma migrate dev
 ```
 
-### Start Dev Server
+### Start dev server
 
 ```sh
 npm run dev
