@@ -74,7 +74,6 @@
     "giget": "^2.0.0",
     "inquirer": "^12.9.6",
     "ora": "^9.0.0",
-    "tinyexec": "^1.0.2",
     "tsdown": "^0.15.4"
   },
   "devDependencies": {

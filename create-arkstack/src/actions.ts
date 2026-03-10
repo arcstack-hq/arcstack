@@ -8,7 +8,6 @@ import { chdir } from 'node:process'
 import { depsList } from './data'
 import { detectPackageManager } from '@antfu/install-pkg'
 import { downloadTemplate } from 'giget'
-import { exec } from 'tinyexec'
 import { existsSync } from 'node:fs'
 import { spawnSync } from 'node:child_process'
 
