@@ -163,6 +163,7 @@ export default class {
     delete pkg.scripts.precmd
     delete pkg.scripts.build
     delete pkg.scripts.dev
+    delete pkg.scripts.cmd
 
     pkg.scripts.postinstall = 'prepare'
 
