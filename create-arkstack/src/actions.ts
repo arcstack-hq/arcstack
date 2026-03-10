@@ -1,5 +1,5 @@
 import { Logger, Resolver } from '@h3ravel/shared'
-import { copyFile, readFile, rm, unlink, writeFile } from 'node:fs/promises'
+import { copyFile, readFile, readdir, rm, unlink, writeFile } from 'node:fs/promises'
 import { depsToAdd, depsToRemove, filesToRemove } from './data'
 import { detectPackageManager, installPackage } from '@antfu/install-pkg'
 import path, { basename, join, relative } from 'node:path'
@@ -39,17 +39,20 @@ export default class {
     if (this.location?.includes('.temp') || (overwrite && existsSync(this.location!))) {
       await rm(this.location!, { force: true, recursive: true })
     } else if (existsSync(this.location!)) {
-      console.log('\n')
-      Logger.parse(
-        [
-          [' ERROR ', 'bgRed'],
-          [this.location!, ['gray', 'italic']],
-          ['is not empty.', 'white'],
-        ],
-        ' ',
-      )
-      console.log('')
-      process.exit(0)
+      const files = await readdir(this.location ?? './')
+      if (files?.length > 0) {
+        console.log('\n')
+        Logger.parse(
+          [
+            [' ERROR ', 'bgRed'],
+            [this.location!, ['gray', 'italic']],
+            ['is not empty.', 'white'],
+          ],
+          ' ',
+        )
+        console.log('')
+        process.exit(0)
+      }
     }
 
     this.skipInstallation = !install
