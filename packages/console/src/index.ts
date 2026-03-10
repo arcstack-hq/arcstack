@@ -6,6 +6,7 @@ import { ArkstackConsoleApp } from './app'
 import { BuildCommand } from './commands/BuildCommand'
 import { DevCommand } from './commands/DevCommand'
 import { Kernel } from '@h3ravel/musket'
+import { MakeCommand } from './commands/MakeCommand'
 import { MakeController } from './commands/MakeController'
 import { MakeFactoryCommand } from './commands/MakeFactoryCommand'
 import { MakeFullResource } from './commands/MakeFullResource'
@@ -66,8 +67,13 @@ export const runConsoleKernel = async (options: RunConsoleOptions = {}) => {
             MigrateCommand,
             ModelsSyncCommand,
             SeedCommand,
+            MakeCommand
         ],
-        discoveryPaths: [join(process.cwd(), 'src/app/console/commands/*.ts')],
+        discoveryPaths: [
+            join(process.cwd(), 'src', 'app/console/commands/*.ts'),
+            join(process.cwd(), 'src', 'app/console/commands/*.js'),
+            join(process.cwd(), 'src', 'app/console/commands/*.mjs'),
+        ],
         exceptionHandler (exception) {
             throw exception
         },
