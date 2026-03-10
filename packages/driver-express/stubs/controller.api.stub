@@ -1,6 +1,6 @@
 import { BaseController } from '@controllers/BaseController'
 import { HttpContext } from 'clear-router/types/express'
-import { Resource, ResourceCollection } from "resora"
+import { Resource, ResourceCollection } from 'resora'
 
 /**
  * {{ControllerName}}
@@ -15,8 +15,8 @@ export default class {{ControllerName}} extends BaseController {
     index = async ({ res }: HttpContext) => {
         return new ResourceCollection({ data: [] }, res)
         .additional({
-            status: "success",
-            message: "OK",
+            status: 'success',
+            message: 'OK',
             code: 200,
         })
         .response()
@@ -32,8 +32,8 @@ export default class {{ControllerName}} extends BaseController {
     show = async ({ res }: HttpContext) => {
         return new Resource({ data: {} }, res)
         .additional({
-            status: "success",
-            message: "OK",
+            status: 'success',
+            message: 'OK',
             code: 200,
         })
         .response()
@@ -49,8 +49,8 @@ export default class {{ControllerName}} extends BaseController {
     create = async ({ res }: HttpContext) => {
         return new Resource({ data: {} }, res)
         .additional({
-            status: "success",
-            message: "New {{Name}} created successfully",
+            status: 'success',
+            message: 'New {{Name}} created successfully',
             code: 201,
         })
         .response()
@@ -66,8 +66,8 @@ export default class {{ControllerName}} extends BaseController {
     update = async ({ res }: HttpContext) => {
         return new Resource({ data: {} }, res)
         .additional({
-            status: "success",
-            message: "{{Name}} updated successfully",
+            status: 'success',
+            message: '{{Name}} updated successfully',
             code: 202,
         })
         .response()
@@ -82,8 +82,8 @@ export default class {{ControllerName}} extends BaseController {
     destroy = async ({ res }: HttpContext) => {
         return new Resource({ data: {} }, res)
         .additional({
-            status: "success",
-            message: "{{Name}} deleted successfully",
+            status: 'success',
+            message: '{{Name}} deleted successfully',
             code: 202,
         })
         .response()

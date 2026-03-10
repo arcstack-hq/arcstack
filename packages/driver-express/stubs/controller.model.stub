@@ -1,6 +1,6 @@
 import { BaseController } from '@controllers/BaseController'
 import { HttpContext } from 'clear-router/types/express'
-import { Resource, ResourceCollection } from "resora"
+import { Resource, ResourceCollection } from 'resora'
 import { {{Model}} } from 'src/models/{{Model}}'
 
 /**
