@@ -1,6 +1,12 @@
 # Getting Started
 
-Arkstack helps you scaffold TypeScript backend apps with a consistent architecture across frameworks.
+Arkstack is a framework-agnostic backend starter kit for modern TypeScript servers that helps you scaffold backend apps with a consistent architecture across frameworks.
+
+Arkstack is mature enough to be called a framework, but it’s really a collection of starter kits built on shared contracts, utilities and runtime drivers, we simply chose not to call it a framework.
+
+Arkstack provides a structured foundation for building APIs with Express, H3, and future runtimes — without locking your application to a single framework.
+
+It prioritizes architecture first, framework second.
 
 ## Prerequisites
 
