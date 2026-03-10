@@ -151,8 +151,8 @@ importers:
         specifier: ^5.6.2
         version: 5.6.2
       clear-router:
-        specifier: ^2.1.6
-        version: 2.1.6(express@5.2.1)(h3@2.0.1-rc.14)
+        specifier: ^2.1.7
+        version: 2.1.7(express@5.2.1)(h3@2.0.1-rc.14)
       commander:
         specifier: ^14.0.3
         version: 14.0.3
@@ -275,8 +275,8 @@ importers:
         specifier: ^5.6.2
         version: 5.6.2
       clear-router:
-        specifier: ^2.1.6
-        version: 2.1.6(express@5.2.1)(h3@2.0.1-rc.14)
+        specifier: ^2.1.7
+        version: 2.1.7(express@5.2.1)(h3@2.0.1-rc.14)
       commander:
         specifier: ^14.0.3
         version: 14.0.3
@@ -372,8 +372,8 @@ importers:
         specifier: ^5.6.2
         version: 5.6.2
       clear-router:
-        specifier: ^2.1.6
-        version: 2.1.6(express@5.2.1)(h3@2.0.1-rc.14)
+        specifier: ^2.1.7
+        version: 2.1.7(express@5.2.1)(h3@2.0.1-rc.14)
       resora:
         specifier: ^0.2.6
         version: 0.2.6(@types/node@25.2.3)
@@ -393,8 +393,8 @@ importers:
         specifier: ^5.6.2
         version: 5.6.2
       clear-router:
-        specifier: ^2.1.6
-        version: 2.1.6(express@5.2.1)(h3@2.0.1-rc.14)
+        specifier: ^2.1.7
+        version: 2.1.7(express@5.2.1)(h3@2.0.1-rc.14)
       resora:
         specifier: ^0.2.6
         version: 0.2.6(@types/node@25.2.3)
@@ -420,8 +420,8 @@ importers:
         specifier: workspace:^
         version: link:../contract
       clear-router:
-        specifier: ^2.1.6
-        version: 2.1.6(express@5.2.1)(h3@2.0.1-rc.14)
+        specifier: ^2.1.7
+        version: 2.1.7(express@5.2.1)(h3@2.0.1-rc.14)
       h3:
         specifier: 2.0.1-rc.14
         version: 2.0.1-rc.14
@@ -2313,8 +2313,8 @@ packages:
   citty@0.2.1:
     resolution: {integrity: sha512-kEV95lFBhQgtogAPlQfJJ0WGVSokvLr/UEoFPiKKOXF7pl98HfUVUD0ejsuTCld/9xH9vogSywZ5KqHzXrZpqg==}
 
-  clear-router@2.1.6:
-    resolution: {integrity: sha512-Eh/Xhy4qqaSuNcMmLd/SqbJYrzHDelYO1hGRKtckJBYY/S5KyAfax4Cdk8p2eI9FPpSnIV5/OVdzBUuSfExWog==}
+  clear-router@2.1.7:
+    resolution: {integrity: sha512-gxngdwTclqVd/EUG7UdAZ4XgDX58R3G13GvWMhekV6Yd0pGOdVdYBmKqfeRnCN461KHtqA2XSMHY4doc0SD3SA==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       express: ^5.1.0
@@ -6543,7 +6543,7 @@ snapshots:
 
   citty@0.2.1: {}
 
-  clear-router@2.1.6(express@5.2.1)(h3@2.0.1-rc.14):
+  clear-router@2.1.7(express@5.2.1)(h3@2.0.1-rc.14):
     optionalDependencies:
       express: 5.2.1
       h3: 2.0.1-rc.14
