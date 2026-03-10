@@ -1,7 +1,7 @@
 {
   "name": "create-arkstack",
   "type": "module",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Scaffold new H3.js or Express.js applications using Toneflix's arkstack templates and starter kits",
   "homepage": "https://arkstack.toneflix.net",
   "repository": {
@@ -65,7 +65,6 @@
     "bin/run.js"
   ],
   "dependencies": {
-    "tsdown": "^0.15.4",
     "@antfu/install-pkg": "1.1.0",
     "@h3ravel/collect.js": "^5.3.4",
     "@h3ravel/musket": "^0.10.1",
@@ -74,7 +73,9 @@
     "@inquirer/core": "^10.2.2",
     "giget": "^2.0.0",
     "inquirer": "^12.9.6",
-    "ora": "^9.0.0"
+    "ora": "^9.0.0",
+    "tinyexec": "^1.0.2",
+    "tsdown": "^0.15.4"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.5",

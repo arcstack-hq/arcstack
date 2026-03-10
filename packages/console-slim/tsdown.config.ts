@@ -4,7 +4,7 @@ import { defineConfig } from 'tsdown'
 import path from 'node:path'
 
 export default defineConfig({
-    entry: ['src/index.ts', 'src/app.ts'],
+    entry: ['src/index.ts', 'src/app.ts', 'src/prepare.ts'],
     format: 'esm',
     sourcemap: true,
     dts: true,

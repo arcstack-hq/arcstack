@@ -123,7 +123,7 @@ export class CreateArkstackCommand extends Command {
         {
           type: 'confirm',
           name: 'install',
-          message: 'Would you want to install node_modules right away:',
+          message: 'Would you like to install node_modules right away?:',
           default: true,
           when: () => !options.install,
         },

@@ -1,14 +1,16 @@
 import { Logger, Resolver } from '@h3ravel/shared'
 import { copyFile, readFile, readdir, rm, unlink, writeFile } from 'node:fs/promises'
 import { depsToAdd, depsToRemove, filesToRemove } from './data'
-import { detectPackageManager, installPackage } from '@antfu/install-pkg'
 import path, { basename, join, relative } from 'node:path'
 
 import { Str } from '@h3ravel/support'
 import { chdir } from 'node:process'
 import { depsList } from './data'
+import { detectPackageManager } from '@antfu/install-pkg'
 import { downloadTemplate } from 'giget'
+import { exec } from 'tinyexec'
 import { existsSync } from 'node:fs'
+import { spawnSync } from 'node:child_process'
 
 export default class {
   skipInstallation?: boolean
@@ -61,7 +63,6 @@ export default class {
     const status = await downloadTemplate(template, {
       dir: this.location,
       auth,
-      install,
       provider: 'github',
       registry: await this.pm(),
       forceClean: false,
@@ -70,14 +71,40 @@ export default class {
     return status
   }
 
-  async installPackage (name: string) {
-    await installPackage(name, {
-      cwd: this.location,
-      silent: true,
+  /**
+   * Installs the project dependencies using the detected package manager. 
+   * If a specific package name is provided, it will install that package 
+   * instead of all dependencies.
+   * 
+   * @param name 
+   * @param args 
+   * @returns 
+   */
+  async installPackage (name?: string, args: string[] = []) {
+    const bcmd = await Resolver.getPakageInstallCommand() + (name ? ` ${name}` : '')
+    const cmd = bcmd.split(' ')[0]
+    if (bcmd.includes(' ')) {
+      args.unshift(...bcmd.split(' ').slice(1))
+    }
+
+    const child = spawnSync(cmd, args, {
+      cwd: process.cwd(),
+      stdio: 'ignore',
     })
+
+    if (child.error) {
+      return child.status
+    }
+
+    return 0
   }
 
-  async complete (installed = false) {
+  async complete (install = false) {
+    let installed = false
+    if (install) {
+      installed = await this.installPackage() === 0
+    }
+
     console.log('')
 
     const installPath = './' + relative(process.cwd(), this.location!)
