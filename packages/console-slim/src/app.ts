@@ -37,7 +37,7 @@ export class ArkstackConsoleApp<TCore> extends CliApp {
     }
 
     makeController = (name: string, opts: any) => {
-        const normalized = name.endsWith('Controller') ? name.replace(/controller/i, '') : name
+        const normalized = (name.endsWith('Controller') ? name.replace(/controller/i, '') : name).split('/').pop()!.split('.').shift()!
 
         const controllersDir = path.resolve(process.cwd(), 'src', 'app/http/controllers')
         const controllerName = normalized.endsWith('Controller') ? normalized : `${normalized}Controller`
@@ -67,6 +67,7 @@ export class ArkstackConsoleApp<TCore> extends CliApp {
             stubPath,
             outputPath,
             {
+                // If class name contains / or ., take only the last part for the class name
                 ControllerName: controllerName,
                 Model: opts.model?.pascalCase(),
                 ModelName: opts.model?.camelCase(),
