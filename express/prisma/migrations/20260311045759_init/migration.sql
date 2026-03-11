@@ -1,31 +1,11 @@
 -- CreateTable
-CREATE TABLE "configurations" (
-    "id" TEXT NOT NULL,
-    "key" TEXT NOT NULL,
-    "value" TEXT NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "configurations_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
 CREATE TABLE "users" (
     "id" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
-    "firstName" TEXT NOT NULL,
-    "lastName" TEXT NOT NULL,
-    "avatar" TEXT,
-    "bio" TEXT,
-    "phone" TEXT,
-    "googleId" VARCHAR(255),
-    "facebookId" VARCHAR(255),
-    "emailVerifiedAt" TIMESTAMP(3),
-    "emailVerificationCode" VARCHAR(64),
+    "name" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
-    "locationId" TEXT,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );
@@ -44,9 +24,6 @@ CREATE TABLE "personal_access_tokens" (
 
     CONSTRAINT "personal_access_tokens_pkey" PRIMARY KEY ("id")
 );
-
--- CreateIndex
-CREATE UNIQUE INDEX "configurations_key_key" ON "configurations"("key");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "users_email_key" ON "users"("email");

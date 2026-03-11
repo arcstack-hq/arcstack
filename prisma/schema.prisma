@@ -13,37 +13,16 @@ datasource db {
   provider = "postgresql"
 }
 
-model Configuration {
+// User model for both regular users and curators
+model User {
   id        String   @id @default(uuid())
-  key       String   @unique // One response per review
-  value     String
+  email     String   @unique
+  password  String
+  name      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@map("configurations")
-}
-
-// User model for both regular users and curators
-model User {
-  id                    String    @id @default(uuid())
-  email                 String    @unique
-  password              String
-  firstName             String
-  lastName              String
-  avatar                String?
-  bio                   String?
-  phone                 String?
-  address               String?
-  googleId              String?   @db.VarChar(255)
-  facebookId            String?   @db.VarChar(255)
-  emailVerifiedAt       DateTime?
-  emailVerificationCode String?   @db.VarChar(64)
-  createdAt             DateTime  @default(now())
-  updatedAt             DateTime  @updatedAt
-
-  // Relations
   personalAccessTokens PersonalAccessToken[] @relation("TokenUser")
-  locationId           String?
 
   @@index([email])
   @@map("users")

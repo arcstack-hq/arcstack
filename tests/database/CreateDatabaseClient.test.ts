@@ -7,8 +7,7 @@ let inc: number = new Date().getTime()
 
 class User extends Model {
     declare id: number
-    declare firstName: string
-    declare lastName: string
+    declare name: string
     declare email: string
 }
 
@@ -23,15 +22,13 @@ describer('Modeling Dats', () => {
         const user = await User.query().create({
             email: `john.doe${inc}@example.com`,
             password: 'password123',
-            firstName: 'John',
-            lastName: 'Doe',
+            name: 'John Doe',
         })
 
         expect(user).toBeDefined()
         expect(user.id).toBeDefined()
         expect(user.email).toBe(`john.doe${inc}@example.com`)
-        expect(user.firstName).toBe('John')
-        expect(user.lastName).toBe('Doe')
+        expect(user.name).toBe('John Doe')
     })
 
     it('can get a model', async () => {
@@ -40,8 +37,7 @@ describer('Modeling Dats', () => {
         expect(user).toBeDefined()
         expect(user?.id).toBeDefined()
         expect(user?.email).toBe(`john.doe${inc}@example.com`)
-        expect(user?.firstName).toBe('John')
-        expect(user?.lastName).toBe('Doe')
+        expect(user?.name).toBe('John Doe')
     })
 
     it('can update a model', async () => {
@@ -50,15 +46,13 @@ describer('Modeling Dats', () => {
         expect(user).toBeDefined()
 
         if (user) {
-            user.firstName = 'Jane'
-            user.lastName = 'Doe'
+            user.name = 'Jane Doe'
             await user.save()
 
             const updatedUser = await User.query().where({ email: `john.doe${inc}@example.com` }).first()
 
             expect(updatedUser).toBeDefined()
-            expect(updatedUser?.firstName).toBe('Jane')
-            expect(updatedUser?.lastName).toBe('Doe')
+            expect(updatedUser?.name).toBe('Jane Doe')
         }
     })
 
