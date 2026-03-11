@@ -37,10 +37,10 @@ export class ArkstackConsoleApp<TCore> extends CliApp {
     }
 
     makeController = (name: string, opts: any) => {
-        const normalized = (name.endsWith('Controller') ? name.replace(/controller/i, '') : name).split('/').pop()!.split('.').shift()!
+        const normalized = (name.endsWith('Controller') ? name.replace(/controller/i, '') : name)
 
+        let controllerName = normalized.endsWith('Controller') ? normalized : `${normalized}Controller`
         const controllersDir = path.resolve(process.cwd(), 'src', 'app/http/controllers')
-        const controllerName = normalized.endsWith('Controller') ? normalized : `${normalized}Controller`
         const fileName = `${controllerName}.${opts?.ext ?? 'ts'}`
         const outputPath = join(controllersDir, fileName)
         const stubsDir = resolveStubsDir(this.config as any, this.options)
@@ -62,6 +62,8 @@ export class ArkstackConsoleApp<TCore> extends CliApp {
             console.error(`Error: Stub file ${stubPath} not found.`)
             process.exit(1)
         }
+
+        controllerName = controllerName.split('/').pop() as string
 
         this.generateFile(
             stubPath,
