@@ -25,12 +25,13 @@ export const depsToRemove = [
 ]
 
 export const depsToAdd = {
-    '@arkstack/console-slim': '^0.1.11',
+    '@arkstack/console-slim': '^0.1.12',
 }
 
-export const depsList = {
-    '@arkstack/common': '^0.1.11',
-    '@arkstack/console': '^0.1.11',
-    '@arkstack/contract': '^0.1.11',
-    '@arkstack/driver-express': '^0.1.11'
+export const depsList: Record<string, string> = {
+    '@arkstack/common': '^0.1.12',
+    '@arkstack/console': '^0.1.12',
+    '@arkstack/contract': '^0.1.12',
+    '@arkstack/driver-h3': '^0.1.12',
+    '@arkstack/driver-express': '^0.1.12'
 }

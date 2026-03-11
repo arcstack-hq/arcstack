@@ -3,6 +3,7 @@ import { copyFile, readFile, readdir, rm, unlink, writeFile } from 'node:fs/prom
 import { depsToAdd, depsToRemove, filesToRemove } from './data'
 import path, { basename, join, relative } from 'node:path'
 
+import type { KitName } from './types'
 import { Str } from '@h3ravel/support'
 import { chdir } from 'node:process'
 import { depsList } from './data'
@@ -153,7 +154,7 @@ export default class {
     ])
   }
 
-  async cleanup () {
+  async cleanup (kit: KitName) {
     const pkgPath = join(this.location!, 'package.json')
     const pkg = await readFile(pkgPath!, 'utf-8').then(JSON.parse)
 
@@ -176,8 +177,11 @@ export default class {
     }
 
     for (const [name, version] of Object.entries(depsList)) {
+      if (name.includes('@arkstack/driver')) continue
       pkg.dependencies[name] = version
     }
+
+    pkg.dependencies['@arkstack/driver-' + kit] = depsList[('@arkstack/driver-' + kit)]
 
     await Promise.allSettled([
       writeFile(pkgPath, JSON.stringify(pkg, null, 2)),
@@ -212,7 +216,7 @@ export default class {
     }
   }
 
-  async makeLeanProfile (_kit: 'express' | 'h3') {
+  async makeLeanProfile (_kit: KitName) {
     await Promise.allSettled(
       filesToRemove.map((file) => rm(join(this.location!, file), { force: true, recursive: true })),
     )

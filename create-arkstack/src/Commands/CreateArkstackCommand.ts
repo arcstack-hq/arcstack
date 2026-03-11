@@ -9,6 +9,7 @@ import Actions from 'src/actions'
 import ora from 'ora'
 import { Logger } from '@h3ravel/shared'
 import { cleanDirectoryExcept, hoistDirectoryContents } from 'src/utils'
+import type { KitName } from 'src/types'
 
 export class CreateArkstackCommand extends Command {
   protected signature = `create-arkstack
@@ -153,16 +154,16 @@ export class CreateArkstackCommand extends Command {
       process.exit(1)
     }
 
+    const kitName = (kit.baseAlias ?? kit.alias).replace(/-lean$/i, '') as KitName
     const source: string = pre && kit.prereleaseSource ? kit.prereleaseSource! : kit.source
-    const selectedAlias = (kit.baseAlias ?? kit.alias).replace(/-lean$/i, '') as 'express' | 'h3'
     const actions = new Actions(join(process.cwd(), location), appName, description)
     const spinner = ora('Loading Template...').start()
 
     const result = await actions.download(source, install, token, options.overwrite)
 
-    if (result.dir && selectedAlias) {
-      await cleanDirectoryExcept(result.dir, selectedAlias)
-      await hoistDirectoryContents(result.dir, join(result.dir, selectedAlias))
+    if (result.dir && kitName) {
+      await cleanDirectoryExcept(result.dir, kitName)
+      await hoistDirectoryContents(result.dir, join(result.dir, kitName))
     }
 
     if (kit.lean) {
@@ -170,11 +171,11 @@ export class CreateArkstackCommand extends Command {
         'Applying lean profile...',
         'green',
       ]], '', false)).start()
-      await actions.makeLeanProfile(selectedAlias)
+      await actions.makeLeanProfile(kitName)
     }
 
     spinner.info(Logger.parse([['Cleaning Up...', 'green']], '', false)).start()
-    await actions.cleanup()
+    await actions.cleanup(kitName)
 
     spinner.info(Logger.parse([['Initializing Project...', 'green']], '', false)).start()
     await actions.copyExampleEnv()
