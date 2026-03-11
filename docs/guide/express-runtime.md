@@ -1,6 +1,6 @@
 # Express Runtime Interaction
 
-This page documents every supported way to interact directly with Arkstack's Express runtime.
+Arkstack's Express runtime integration provides multiple ways to interact with the underlying Express instance, allowing for flexible middleware application, route handling, and lifecycle control.
 
 ## Bootstrap Exports
 
@@ -91,5 +91,6 @@ await app.shutdown();
 ## Notes
 
 - `app.boot(port)` mounts public assets, binds router, applies middleware, registers error handling, starts the server, and attaches graceful shutdown.
+- For middleware layering and recommended usage, see [Middleware Guide](/guide/middleware).
 - Use the router contract (`getRouter`) for framework-agnostic behavior where possible.
 - Prefer `expressApp` only when you specifically need native Express APIs.

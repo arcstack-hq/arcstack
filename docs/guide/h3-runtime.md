@@ -1,6 +1,6 @@
 # H3 Runtime Interaction
 
-This page documents every supported way to interact directly with Arkstack's H3 runtime.
+Arkstack's H3 runtime integration provides multiple ways to interact with the underlying H3 instance, allowing for flexible middleware application, route handling, and lifecycle control.
 
 ## Bootstrap Exports
 
@@ -93,5 +93,6 @@ await app.shutdown();
 ## Notes
 
 - `app.boot(port)` mounts public assets, binds router, applies middleware, starts the server, and attaches graceful shutdown.
+- For middleware layering and recommended usage, see [Middleware Guide](/guide/middleware).
 - Use the router contract (`getRouter`) for framework-agnostic behavior where possible.
 - Prefer `h3App` only when you specifically need native H3 APIs.
