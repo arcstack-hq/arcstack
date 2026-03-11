@@ -23,7 +23,7 @@ export default class {{ControllerName}} extends BaseController {
             code: 200,
         })
         .response()
-        .setStatusCode(200);
+        .setStatusCode(200)
     }
 
     /**
@@ -42,7 +42,7 @@ export default class {{ControllerName}} extends BaseController {
             code: 200,
         })
         .response()
-        .setStatusCode(200);
+        .setStatusCode(200)
     }
 
     /**
@@ -50,7 +50,7 @@ export default class {{ControllerName}} extends BaseController {
      * 
      * The calling route must recieve a multer.RequestHandler instance
      * 
-     * @example router.post('/{{ModelName}}s', upload.none(), new AdminController().create);
+     * @example router.post('/{{ModelName}}s', upload.none(), new AdminController().create)
      * 
      * @param req 
      * @param res 
@@ -69,7 +69,7 @@ export default class {{ControllerName}} extends BaseController {
             code: 201,
         })
         .response()
-        .setStatusCode(201);
+        .setStatusCode(201)
     }
 
     /**
@@ -92,7 +92,7 @@ export default class {{ControllerName}} extends BaseController {
             code: 202,
         })
         .response()
-        .setStatusCode(202);
+        .setStatusCode(202)
     }
 
     /**
@@ -113,6 +113,6 @@ export default class {{ControllerName}} extends BaseController {
             code: 202,
         })
         .response()
-        .setStatusCode(202);
+        .setStatusCode(202)
     }
 }
