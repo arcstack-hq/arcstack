@@ -87,10 +87,21 @@ export default class Application implements ArkstackRouterAwareCore<H3, unknown>
     // Load public assets
     await this.driver.mountPublicAssets(this.app, 'public')
 
+    // Apply global middleware
+    for (const middleware of config(this.app).global) {
+      await this.driver.applyMiddleware(this.app, middleware)
+    }
+
+    // Apply before middleware
+    for (const middleware of config(this.app).before) {
+      await this.driver.applyMiddleware(this.app, middleware)
+    }
+
     // Bind the router
     await this.driver.bindRouter(this.app)
 
-    for (const middleware of config(this.app).global) {
+    // Apply after middleware
+    for (const middleware of config(this.app).after) {
       await this.driver.applyMiddleware(this.app, middleware)
     }
 
