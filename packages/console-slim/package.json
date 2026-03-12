@@ -1,6 +1,6 @@
 {
     "name": "@arkstack/console-slim",
-    "version": "0.1.17",
+    "version": "0.1.18",
     "type": "module",
     "description": "Slim console package for Arkstack providing lightweight console-specific implementations of core Arkstack features such as routing, middleware.",
     "homepage": "https://arkstack.toneflix.net",
@@ -55,6 +55,6 @@
         "@arkstack/contract": "workspace:^",
         "@h3ravel/musket": "^0.10.1",
         "chalk": "^5.6.2",
-        "resora": "^0.2.6"
+        "resora": "^0.2.9"
     }
 }
