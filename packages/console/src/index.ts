@@ -15,6 +15,7 @@ import { MakeModelCommand } from './commands/MakeModelCommand'
 import { MakeResource } from './commands/MakeResource'
 import { MakeSeederCommand } from './commands/MakeSeederCommand'
 import { MigrateCommand } from './commands/MigrateCommand'
+import { MigrationHistoryCommand } from './commands/MigrationHistoryCommand'
 import { ModelsSyncCommand } from './commands/ModelsSyncCommand'
 import { RouteList } from './commands/RouteList'
 import { SeedCommand } from './commands/SeedCommand'
@@ -67,7 +68,8 @@ export const runConsoleKernel = async (options: RunConsoleOptions = {}) => {
             MigrateCommand,
             ModelsSyncCommand,
             SeedCommand,
-            MakeCommand
+            MakeCommand,
+            MigrationHistoryCommand
         ],
         discoveryPaths: [
             join(process.cwd(), 'src', 'app/console/commands/*.ts'),
