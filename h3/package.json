@@ -32,7 +32,7 @@
     "dotenv": "^17.3.1",
     "h3": "2.0.1-rc.14",
     "jsonwebtoken": "^9.0.3",
-    "kanun": "^0.1.6",
+    "kanun": "^0.1.7",
     "pg": "^8.18.0",
     "resora": "^0.2.9",
     "simple-body-validator": "^1.3.9"
