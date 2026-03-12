@@ -1,6 +1,6 @@
 {
     "name": "@arkstack/console",
-    "version": "0.1.18",
+    "version": "0.1.19",
     "type": "module",
     "description": "Console package for Arkstack providing console-specific implementations of core Arkstack features such as routing, middleware, and database integration.",
     "homepage": "https://arkstack.toneflix.net",
@@ -48,7 +48,7 @@
         }
     },
     "peerDependencies": {
-        "clear-router": "^2.1.7",
+        "clear-router": "^2.1.8",
         "arkormx": "^0.2.5"
     },
     "dependencies": {

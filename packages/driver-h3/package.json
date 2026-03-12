@@ -1,6 +1,6 @@
 {
     "name": "@arkstack/driver-h3",
-    "version": "0.1.18",
+    "version": "0.1.19",
     "type": "module",
     "private": true,
     "description": "H3 driver package for Arkstack providing H3-specific implementations of core Arkstack features such as routing, middleware, and database integration.",
@@ -44,7 +44,7 @@
         "@arkstack/contract": "workspace:^"
     },
     "peerDependencies": {
-        "clear-router": "^2.1.7",
+        "clear-router": "^2.1.8",
         "h3": "2.0.1-rc.14"
     }
 }
