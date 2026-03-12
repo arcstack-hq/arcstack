@@ -1,7 +1,7 @@
 {
   "name": "create-arkstack",
   "type": "module",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "Scaffold new H3.js or Express.js applications using Toneflix's arkstack templates and starter kits",
   "homepage": "https://arkstack.toneflix.net",
   "repository": {
