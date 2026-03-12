@@ -8,3 +8,5 @@ dist
 /storage/**/*.tmp
 /src/models/**/*.ts
 /database/**/*.ts
+
+.arkormx
