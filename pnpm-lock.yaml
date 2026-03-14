@@ -30,8 +30,8 @@ importers:
         specifier: 3.2.4
         version: 3.2.4(vitest@3.2.4(@types/debug@4.1.12)(@types/node@25.2.3)(jiti@2.6.1)(tsx@4.21.0))
       arkormx:
-        specifier: ^0.2.5
-        version: 0.2.5(@prisma/client@7.4.2(prisma@7.4.0(@types/react@19.2.14)(magicast@0.3.5)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3))(@types/node@25.2.3)
+        specifier: ^0.2.6
+        version: 0.2.6(@prisma/client@7.4.2(prisma@7.4.0(@types/react@19.2.14)(magicast@0.3.5)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3))(@types/node@25.2.3)
       dotenv:
         specifier: ^17.3.1
         version: 17.3.1
@@ -145,14 +145,14 @@ importers:
         specifier: ^0.44.0
         version: 0.44.0
       arkormx:
-        specifier: ^0.2.5
-        version: 0.2.5(@prisma/client@7.4.2(prisma@7.4.0(@types/react@19.2.14)(magicast@0.3.5)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3))(@types/node@25.2.3)
+        specifier: ^0.2.6
+        version: 0.2.6(@prisma/client@7.4.2(prisma@7.4.0(@types/react@19.2.14)(magicast@0.3.5)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3))(@types/node@25.2.3)
       chalk:
         specifier: ^5.6.2
         version: 5.6.2
       clear-router:
-        specifier: ^2.1.7
-        version: 2.1.7(express@5.2.1)(h3@2.0.1-rc.14)
+        specifier: ^2.1.8
+        version: 2.1.8(express@5.2.1)(h3@2.0.1-rc.14)
       commander:
         specifier: ^14.0.3
         version: 14.0.3
@@ -175,8 +175,8 @@ importers:
         specifier: ^9.0.3
         version: 9.0.3
       kanun:
-        specifier: ^0.1.4
-        version: 0.1.4
+        specifier: ^0.1.7
+        version: 0.1.7
       method-override:
         specifier: ^3.0.0
         version: 3.0.0
@@ -184,8 +184,8 @@ importers:
         specifier: ^8.18.0
         version: 8.18.0
       resora:
-        specifier: ^0.2.6
-        version: 0.2.6(@types/node@25.2.3)
+        specifier: ^0.2.9
+        version: 0.2.9(@types/node@25.2.3)
       simple-body-validator:
         specifier: ^1.3.9
         version: 1.3.9
@@ -269,14 +269,14 @@ importers:
         specifier: ^0.44.0
         version: 0.44.0
       arkormx:
-        specifier: ^0.2.5
-        version: 0.2.5(@prisma/client@7.4.2(prisma@7.4.2(@types/react@19.2.14)(magicast@0.3.5)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3))(@types/node@25.2.3)
+        specifier: ^0.2.6
+        version: 0.2.6(@prisma/client@7.4.2(prisma@7.4.2(@types/react@19.2.14)(magicast@0.3.5)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3))(@types/node@25.2.3)
       chalk:
         specifier: ^5.6.2
         version: 5.6.2
       clear-router:
-        specifier: ^2.1.7
-        version: 2.1.7(express@5.2.1)(h3@2.0.1-rc.14)
+        specifier: ^2.1.8
+        version: 2.1.8(express@5.2.1)(h3@2.0.1-rc.14)
       commander:
         specifier: ^14.0.3
         version: 14.0.3
@@ -296,14 +296,14 @@ importers:
         specifier: ^9.0.3
         version: 9.0.3
       kanun:
-        specifier: ^0.1.4
-        version: 0.1.4
+        specifier: ^0.1.7
+        version: 0.1.7
       pg:
         specifier: ^8.18.0
         version: 8.18.0
       resora:
-        specifier: ^0.2.6
-        version: 0.2.6(@types/node@25.2.3)
+        specifier: ^0.2.9
+        version: 0.2.9(@types/node@25.2.3)
       simple-body-validator:
         specifier: ^1.3.9
         version: 1.3.9
@@ -366,17 +366,17 @@ importers:
         specifier: ^0.10.1
         version: 0.10.1(@types/node@25.2.3)
       arkormx:
-        specifier: ^0.2.5
-        version: 0.2.5(@prisma/client@7.4.2(prisma@7.4.2(@types/react@19.2.14)(magicast@0.3.5)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3))(@types/node@25.2.3)
+        specifier: ^0.2.6
+        version: 0.2.6(@prisma/client@7.4.2(prisma@7.4.2(@types/react@19.2.14)(magicast@0.3.5)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3))(@types/node@25.2.3)
       chalk:
         specifier: ^5.6.2
         version: 5.6.2
       clear-router:
-        specifier: ^2.1.7
-        version: 2.1.7(express@5.2.1)(h3@2.0.1-rc.14)
+        specifier: ^2.1.8
+        version: 2.1.8(express@5.2.1)(h3@2.0.1-rc.14)
       resora:
-        specifier: ^0.2.6
-        version: 0.2.6(@types/node@25.2.3)
+        specifier: ^0.2.9
+        version: 0.2.9(@types/node@25.2.3)
 
   packages/console-slim:
     dependencies:
@@ -393,11 +393,11 @@ importers:
         specifier: ^5.6.2
         version: 5.6.2
       clear-router:
-        specifier: ^2.1.7
-        version: 2.1.7(express@5.2.1)(h3@2.0.1-rc.14)
+        specifier: ^2.1.8
+        version: 2.1.8(express@5.2.1)(h3@2.0.1-rc.14)
       resora:
-        specifier: ^0.2.6
-        version: 0.2.6(@types/node@25.2.3)
+        specifier: ^0.2.9
+        version: 0.2.9(@types/node@25.2.3)
 
   packages/contract: {}
 
@@ -420,8 +420,8 @@ importers:
         specifier: workspace:^
         version: link:../contract
       clear-router:
-        specifier: ^2.1.7
-        version: 2.1.7(express@5.2.1)(h3@2.0.1-rc.14)
+        specifier: ^2.1.8
+        version: 2.1.8(express@5.2.1)(h3@2.0.1-rc.14)
       h3:
         specifier: 2.0.1-rc.14
         version: 2.0.1-rc.14
@@ -2162,8 +2162,8 @@ packages:
   argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
 
-  arkormx@0.2.5:
-    resolution: {integrity: sha512-XIm6PpJU30h4HsMmrTP1pK6gFh8LnoPRtDDwyRc4dRtkIlumnSPSt5N+HREGFJbBgfQae3s6g2tpm0QilxQ/DA==}
+  arkormx@0.2.6:
+    resolution: {integrity: sha512-mOdsbXHStM+51qjZHNtq2FF/UahFNoeFh6FY5Ghr244wW766PS0l7yVeWf6EglEsaySjiMWkf+n8GdU09N1Rag==}
     engines: {node: '>=20.0.0'}
     hasBin: true
     peerDependencies:
@@ -2313,8 +2313,8 @@ packages:
   citty@0.2.1:
     resolution: {integrity: sha512-kEV95lFBhQgtogAPlQfJJ0WGVSokvLr/UEoFPiKKOXF7pl98HfUVUD0ejsuTCld/9xH9vogSywZ5KqHzXrZpqg==}
 
-  clear-router@2.1.7:
-    resolution: {integrity: sha512-gxngdwTclqVd/EUG7UdAZ4XgDX58R3G13GvWMhekV6Yd0pGOdVdYBmKqfeRnCN461KHtqA2XSMHY4doc0SD3SA==}
+  clear-router@2.1.8:
+    resolution: {integrity: sha512-18pH3ir4NqjxLnki9gFWwlJLtOJYxN5j/EXwaGcrq7J3OSnVWA6TSUJRSXlkIH0hvZ7iippF/VqyQdUakqglIw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       express: ^5.1.0
@@ -2409,6 +2409,9 @@ packages:
 
   dayjs@1.11.19:
     resolution: {integrity: sha512-t5EcLVS6QPBNqM2z8fakk/NKel+Xzshgt8FFKAn+qwlD1pzZWxh0nVCrvFK7ZDb6XucZeF9z8C7CBWTRIVApAw==}
+
+  dayjs@1.11.20:
+    resolution: {integrity: sha512-YbwwqR/uYpeoP4pu043q+LTDLFBLApUP6VxRihdfNTqu4ubqMlGDLd6ErXhEgsyvY0K6nCs7nggYumAN+9uEuQ==}
 
   debug@3.1.0:
     resolution: {integrity: sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==}
@@ -3147,8 +3150,8 @@ packages:
   jws@4.0.1:
     resolution: {integrity: sha512-EKI/M/yqPncGUUh44xz0PxSidXFr/+r0pA70+gIYhjv+et7yxM+s29Y+VGDkovRofQem0fs7Uvf4+YmAdyRduA==}
 
-  kanun@0.1.4:
-    resolution: {integrity: sha512-gjcSdGc+DQFSo6PeO4CO2yhmxQzlWZL8rsiE20cZwOAozlLY9RDak+PFiiQk2T5LP6EfWZUVy4Wnhrnw9Qnr5Q==}
+  kanun@0.1.7:
+    resolution: {integrity: sha512-HnUM+tUKpZWlog5Ufyb5onIYiQixVZCmCBXU5GQAmUQptEGFMLXPZI0J+zEu8mV5unE0wAfROKuaBuIoHkCEVA==}
 
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
@@ -3857,8 +3860,8 @@ packages:
   resolve-pkg-maps@1.0.0:
     resolution: {integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==}
 
-  resora@0.2.6:
-    resolution: {integrity: sha512-JiGUSYbrtvm7rLuKRq6tTU+EXSYH0GGgy6Z+CoUzjxD2m2cBbnf716pLEig50Zbgik/OyD0I1Z5nDRxI2NcLQQ==}
+  resora@0.2.9:
+    resolution: {integrity: sha512-y5n3rhNZ9xFOl8LJLCA6jJx0/EVJMxTztgN6lV0uxK7Cut/VVBCqVL/Ze8goiGcQCvZyazAz/ZwM4AtSmiffTA==}
     engines: {node: '>=20.0.0'}
     hasBin: true
 
@@ -6364,7 +6367,7 @@ snapshots:
 
   argparse@2.0.1: {}
 
-  arkormx@0.2.5(@prisma/client@7.4.2(prisma@7.4.0(@types/react@19.2.14)(magicast@0.3.5)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3))(@types/node@25.2.3):
+  arkormx@0.2.6(@prisma/client@7.4.2(prisma@7.4.0(@types/react@19.2.14)(magicast@0.3.5)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3))(@types/node@25.2.3):
     dependencies:
       '@h3ravel/collect.js': 5.3.6
       '@h3ravel/musket': 0.10.1(@types/node@25.2.3)
@@ -6376,7 +6379,7 @@ snapshots:
       - '@types/node'
       - crossws
 
-  arkormx@0.2.5(@prisma/client@7.4.2(prisma@7.4.2(@types/react@19.2.14)(magicast@0.3.5)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3))(@types/node@25.2.3):
+  arkormx@0.2.6(@prisma/client@7.4.2(prisma@7.4.2(@types/react@19.2.14)(magicast@0.3.5)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3))(typescript@5.9.3))(@types/node@25.2.3):
     dependencies:
       '@h3ravel/collect.js': 5.3.6
       '@h3ravel/musket': 0.10.1(@types/node@25.2.3)
@@ -6543,7 +6546,7 @@ snapshots:
 
   citty@0.2.1: {}
 
-  clear-router@2.1.7(express@5.2.1)(h3@2.0.1-rc.14):
+  clear-router@2.1.8(express@5.2.1)(h3@2.0.1-rc.14):
     optionalDependencies:
       express: 5.2.1
       h3: 2.0.1-rc.14
@@ -6609,6 +6612,8 @@ snapshots:
   date-fns@4.1.0: {}
 
   dayjs@1.11.19: {}
+
+  dayjs@1.11.20: {}
 
   debug@3.1.0:
     dependencies:
@@ -7426,7 +7431,9 @@ snapshots:
       jwa: 2.0.1
       safe-buffer: 5.2.1
 
-  kanun@0.1.4: {}
+  kanun@0.1.7:
+    dependencies:
+      dayjs: 1.11.20
 
   keyv@4.5.4:
     dependencies:
@@ -8264,7 +8271,7 @@ snapshots:
 
   resolve-pkg-maps@1.0.0: {}
 
-  resora@0.2.6(@types/node@25.2.3):
+  resora@0.2.9(@types/node@25.2.3):
     dependencies:
       '@h3ravel/musket': 0.10.1(@types/node@25.2.3)
     transitivePeerDependencies:
