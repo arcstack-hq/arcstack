@@ -8,7 +8,7 @@ export class MakeFullResource extends Command<ArkstackConsoleApp<any>> {
         {--m|model? : name of model to attach to the generated controller}
         {--f|factory : Create and link a factory}
         {--s|seeder : Create a seeder file for the model (only if --model is specified)}
-        {--m|migration : Create a migration file for the model (only if --model is specified)}
+        {--x|migration : Create a migration file for the model (only if --model is specified)}
         {--force : force overwrite if resources already exist}
     `
 
